@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Estate Reports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="text-2xl font-bold text-gray-900">
+                <a href="index.html" class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 inline-block text-indigo-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.712 5.456L10 9.848l-7.712-4.392A1 1 0 013 4.608V15a1 1 0 001 1h12a1 1 0 001-1V4.608a1 1 0 01.712.848zM2 5l8 4.5L18 5" />
+                    </svg>
+                    PA Analytics
+                </a>
+            </div>
+            <a href="index.html" class="text-indigo-600 hover:text-indigo-800 transition duration-300">&larr; Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-900">All Estate Reports</h1>
+            <p class="text-lg text-gray-600 mt-2">Select an estate to view its detailed performance report.</p>
+        </header>
+
+        <!-- Estates Grid -->
+        <div id="estates-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Estate cards will be populated here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Plantation & Agronomy Analytics. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const estates = [
+                { id: 'psk', name: 'PSK Estate', area: '1,999.83 ha' },
+                { id: 'juasa', name: 'Juasa A & B Estate', area: '3,069.54 ha' },
+                { id: 'nuklias', name: 'Nuklias 6 Estate', area: '824.50 ha' },
+                { id: 'prosperkemayan', name: 'Prosper Kemayan Estate', area: '974.82 ha' },
+                { id: 'semaisempurna', name: 'Semai Sempurna Estate', area: '668.40 ha' },
+                { id: 'darabif', name: 'Ladang Darabif & Insan Jaya', area: '2,130.00 ha' },
+                { id: 'sgenggang', name: 'Ladang Sungai Enggang', area: '2,809.16 ha' },
+                { id: 'sgsisik', name: 'Ladang Sungai Sisik', area: '1,965.01 ha' },
+                { id: 'simpai1', name: 'Ladang Simpai 1', area: '1,249.22 ha' },
+                { id: 'grancia', name: 'Ladang Grancia', area: '205.00 ha' },
+                { id: 'tagar1', name: 'Ladang Tagar 1', area: '1,846.00 ha' },
+                { id: 'tagar2', name: 'Ladang Tagar 2', area: '734.35 ha' },
+                { id: 'tagar3', name: 'Ladang Tagar 3', area: '1,685.62 ha' },
+                { id: 'srisek', name: 'Ladang Sri Sisek', area: '315.69 ha' },
+                { id: 'tanjungtualang', name: 'Ladang Tanjung Tualang', area: '399.2 ha' },
+                { id: 'tumbuk', name: 'Ladang Tumbuk', area: '305.5 ha' },
+                { id: 'sungaiberanang', name: 'Ladang Sungai Beranang', area: '324.88 ha' },
+                { id: 'chembong', name: 'Ladang Chembong', area: '121.97 ha' },
+                { id: 'batusablas', name: 'Ladang Batu Sablas', area: '464 ha' },
+                { id: 'perhentiantinggi', name: 'Ladang Perhentian Tinggi', area: '714 ha' }
+            ];
+
+            const grid = document.getElementById('estates-grid');
+            
+            // Sort estates alphabetically by name
+            estates.sort((a, b) => a.name.localeCompare(b.name));
+
+            grid.innerHTML = estates.map(estate => `
+                <a href="${estate.id}.html" class="block bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <h3 class="text-xl font-bold text-gray-900">${estate.name}</h3>
+                    <p class="text-gray-500 mt-2">Total Area: ${estate.area}</p>
+                    <div class="mt-4 text-indigo-600 font-semibold flex items-center">
+                        View Report
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </a>
+            `).join('');
+        });
+    </script>
+
+</body>
+</html>
