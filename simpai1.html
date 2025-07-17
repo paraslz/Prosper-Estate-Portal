@@ -188,4 +188,83 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'FFB Produ
+                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#c026d3', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
+                                { label: 'Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
+                            ]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, 'y-ffb': { type: 'linear', position: 'left', title: { display: true, text: 'FFB Production (MT)' } }, 'y-rainfall': { type: 'linear', position: 'right', title: { display: true, text: 'Rainfall (mm)' }, grid: { drawOnChartArea: false } } } }
+                    });
+                }
+
+                const ageCtx = document.getElementById(ageCanvasId)?.getContext('2d');
+                if(ageCtx) {
+                    chartInstances[ageCanvasId] = new Chart(ageCtx, {
+                        type: 'pie',
+                        data: {
+                            labels: estateData.chartData.ageProfile.labels,
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#F44336', '#FFC107', '#4CAF50'], hoverOffset: 4 }]
+                        },
+                        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
+                    });
+                }
+            }
+            
+            function populateInternalDropdowns() {
+                const agronomyDiv = document.getElementById(`${estateData.id}-agronomy`);
+                const plantationDiv = document.getElementById(`${estateData.id}-plantation`);
+                const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
+                
+                if (agronomyDiv && estateData.reports.agronomy) {
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                }
+                if (plantationDiv && estateData.reports.plantation) {
+                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                }
+                 if (pinfosysDiv && estateData.reports.pinfosys) {
+                    pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                }
+            }
+
+            function attachEventListeners() {
+                container.querySelectorAll('.dropdown-btn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const id = event.currentTarget.dataset.dropdownId;
+                        const content = document.getElementById(id);
+                        // Close other open dropdowns
+                        container.querySelectorAll('.details-content.active').forEach(openContent => {
+                            if (openContent.id !== id) {
+                                openContent.classList.remove('active');
+                                container.querySelector(`[data-dropdown-id="${openContent.id}"]`).classList.remove('active');
+                            }
+                        });
+                        // Toggle current dropdown
+                        content.classList.toggle('active');
+                        event.currentTarget.classList.toggle('active');
+                    });
+                });
+                container.querySelector('.policy-modal-btn')?.addEventListener('click', openPolicyModal);
+            }
+
+            renderEstate();
+        });
+        
+        function openPolicyModal() {
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            const estateName = document.querySelector('.text-3xl.font-bold').innerText;
+            const policyData = document.querySelector('.policy-data-source').innerHTML; // You need a source element
+            
+            modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateName}`;
+            modalContent.innerHTML = policyData;
+            document.getElementById('policyModal').classList.add('active');
+        }
+
+        function closePolicyModal() {
+            document.getElementById('policyModal').classList.remove('active');
+        }
+    </script>
+    <div id="policy-data-source" class="hidden">
+        <p>Policy cross-references are not yet available for this estate.</p>
+    </div>
+</body>
+</html>
