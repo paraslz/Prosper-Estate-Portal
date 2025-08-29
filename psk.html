@@ -65,35 +65,36 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- DATA STORE ---
-            // Data updated based on Agronomy Report 1-2025 and PA Report 2-2024, with page references
             const estateData = {
                 "id": "psk",
                 "name": "PSK Estate",
-                "reportInfo": "Data based on Agronomy Report (1/2025) and PA Report (2/2024).",
+                "reportInfo": "Data based on Agronomy Report (1/2025) and PA Report (2/2025, visit on 6th August 2025).",
                 "summaryMetrics": {
                     "area": { "title": "Estate Area", "lines": ["Mature: 1,999.83 ha", "Immature: 0.00 ha", "Total: 1,999.83 ha"] },
-                    "yield": { "title": "Yield/Ha (YTD 2024)", "value": "6.17 MT", "note": "22% below budget (as of June 2024)" },
-                    "cost": { "title": "FFB Cost/Tonne (YTD 2024)", "value": "RM 251.99", "note": "Artificially low due to incomplete upkeep" },
-                    "weeding": { "title": "Weeding Progress (2024)", "value": "49%", "note": "Circle: 31%, Selective: 50% (as of June)" },
-                    "manuring": { "title": "Manuring Progress (2024)", "value": "31%", "note": "Delayed due to flooding & late delivery" }
+                    "yield": { "title": "Yield/Ha (Actual vs Budget)", "value": "5.45 / 8.03 MT", "note": "YTD June 2025" },
+                    "cost": { "title": "FFB Cost/Tonne (Actual vs Budget)", "value": "RM 260.60 / RM 340.06", "note": "YTD June 2025" },
+                    "weeding": { "title": "Weeding Progress (YTD June 2025)", "value": "Circle: 39%, Selective: 57%", "note": "Delayed due to flooding & sprayer shortage" },
+                    "manuring": { "title": "Manuring Progress (YTD June 2025)", "value": "33%", "note": "Delayed due to flooding" }
                 },
                 "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Ratio", "value": "1:29 ha (Short 12 Harvesters)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "High Rat Damage (>10%)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "16.11% (Actual)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "1.1-1.8 MT/md (Low)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "19 days (Avg)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Ratio", "value": "1:33 ha (Short 23 Harvesters)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Rat Damage at 1%" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "15.82% (Actual)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "1.7-2.0 MT/md" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "16 days (Avg)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Suboptimal (Mg Deficiency)" }
                 ],
                 "chartData": {
-                    "production": { "labels": ["Jan-24", "Feb-24", "Mar-24", "Apr-24", "May-24", "Jun-24", "Jul-24", "Aug-24", "Sep-24", "Oct-24", "Nov-24", "Dec-24"], "ffb": [12337.22, 15811, 15811, 15811, 15811, 15811, 15811, 15811, 15811, 15811, 15811, 15811], "rainfall": [1485, 51, 103, 153, 85, 180, 75, 128, 187.5, 321, 554, 448], "note": "*FFB data from Jan-Jun 2024 is actual, rest is budget. Rainfall from PA report." },
-                    "ageProfile": { "labels": ["0-3 Years", "4-7 Years", "8-19 Years", "20-25 Years", ">26 Years"], "data": [0, 2.43, 657.65, 1339.75, 0], "title": "PSK Estate Palm Age Distribution (ha)", "note": "*67% of palms are in old age category (20-25 years)." }
+                    "production": { "labels": ["Jan-25", "Feb-25", "Mar-25", "Apr-25", "May-25", "Jun-25", "Jul-25", "Aug-25", "Sep-25", "Oct-25", "Nov-25", "Dec-25"], "ffb": [10903.58, 0, 0, 0, 0, 0, 16051, 16051, 16051, 16051, 16051, 16051], "rainfall": [1485, 51, 103, 153, 85, 180, 75, 128, 187.5, 321, 554, 448], "note": "*FFB data from Jan-Jun 2025 is actual, rest is budget. Rainfall from previous PA report." },
+                    "ageProfile": { "labels": ["0-3 Years", "4-7 Years", "8-19 Years", "20-25 Years", ">26 Years"], "data": [0.12, 0, 82.8, 16.28, 0], "title": "PSK Estate Palm Age Distribution (ha)", "note": "*83% of palms are in prime age category (8-19 years)." }
                 },
                 "observations": [
-                    "<b>Critical Harvester Shortage:</b> A shortage of 12 harvesters leads to high turnover, low productivity (1.1-1.8 MT/md), and extended harvesting intervals (avg. 19 days), causing significant crop loss from over-ripe bunches. (PA Report, Pg. 10, 45, 51; Agronomy Report, Pg. 17, 48)",
-                    "<b>Delayed Field Work:</b> Manuring and pruning programs are severely delayed. The 2024 manuring was only 67% complete, and the 2025 program is off to a slow start (5% as of March). Pruning is also critically behind schedule. (PA Report, Pg. 27, 31, 51; Agronomy Report, Pg. 11, 25)",
-                    "<b>Poor Palm Health & Nutrient Status:</b> Palm vigour is unsatisfactory, especially in peat areas, with signs of Magnesium deficiency. This is exacerbated by incomplete fertilizer application and a leaking fertilizer store roof. (Agronomy Report, Pg. 4, 15, 23)",
-                    "<b>Pest & Weed Control Issues:</b> Rat damage is high (exceeding 10% in many blocks) with insufficient baiting. Barn owl box maintenance is poor. Weed control is slow, with undesirable weeds present in many areas. (PA Report, Pg. 38-40, 51; Agronomy Report, Pg. 33, 43-44)"
+                    "<b>Critical Labour Shortage:</b> The estate is short of 23 harvesters and 15 sprayers, the root cause of high worker turnover, low productivity, and significant delays in all major field operations. (PA Report, Pg. 10, 50)",
+                    "<b>Delayed Field Work & Pruning Backlog:</b> Due to labour shortages and flooding, manuring is only 33% complete, and a critical corrective pruning backlog of 1,298 ha exists, directly impacting harvesting and palm health. (PA Report, Pg. 29, 30; Agronomy Report, Pg. 11, 26)",
+                    "<b>Low Crop Production:</b> YTD yield is 5.45 MT/ha (32% below budget), a direct consequence of the harvester shortage, extended harvesting intervals, and incomplete loose fruit collection noted in both reports. (PA Report, Pg. 44; Agronomy Report, Pg. 48-50)",
+                    "<b>Poor Weeding & VOP Infestation:</b> Weeding is slow (Circle 39%, Selective 57%), with low-lying areas heavily infested with VOPs and Stenochlaena, which will compete for nutrients and hinder access. (PA Report, Pg. 16, 20, 50; Agronomy Report, Pg. 34)",
+                    "<b>Low Worker Productivity and Wages:</b> Low productivity in spraying and harvesting has led to earnings below the basic wage, fueling high worker turnover and making it difficult to resolve the labour shortage. (PA Report, Pg. 10, 16, 21, 42)",
+                    "<b>Unsatisfactory Palm Health:</b> The agronomy report noted unsatisfactory palm vigor, especially in peat areas with signs of Magnesium deficiency, exacerbated by incomplete fertilizer applications. (Agronomy Report, Pg. 15, 23)"
                 ],
                 "reports": {
                     "agronomy": {
@@ -104,17 +105,17 @@
                         "Fertilizer recommendation": "No amendments to the 2025 fertilizer program are recommended. The estate is advised to expedite application immediately after the rainy season and ensure proper drainage to prevent waterlogging. (Pg. 51)"
                     },
                     "plantation": {
-                        "Executive Summary": "PSK Estate faces a critical shortage of harvesters and sprayers, leading to high turnover due to low wages. The manuring program is significantly delayed, and there's a substantial backlog in pruning. Harvester productivity is low, and the Vehicle Running Account records require immediate correction. (PA Report, Pg. 51-52)",
-                        "Area statement": "The total mature planted area is 1,999.83 ha, with 0.00 ha immature. There has been no change in the area statement, and no replanting is scheduled for 2025. (PA Report, Pg. 9)",
-                        "Labour Statement": "There is a critical shortage of 12 harvesters (actual ratio 1:29 ha vs. 1:25 ha required) and 4 sprayers. High turnover is attributed to low harvesting rates, with 16 out of 23 new recruits having left the estate. (PA Report, Pg. 10-11)",
-                        "Staff Establishment": "Staff establishment is considered adequate. One trainee conductor absconded in April, and a new one joined in June. (PA Report, Pg. 12)",
-                        "General Charges": "Expenditure was underspent by 6% as of June. However, there was a gross over-expenditure for Upkeep Sundry Buildings due to unbudgeted rewiring for all labour quarters (RM 68,000). (PA Report, Pg. 13)",
-                        "Upkeep Cultivation": "Overall upkeep was underspent by 57% due to incomplete work. Weeding progress was low (Circle 31%, Selective 50%) due to flooding and sprayer shortage (Pg. 15, 20). Manuring was only 31% complete due to flooding and late delivery (Pg. 28). Pruning was only 33% complete due to harvester shortage (Pg. 31).",
-                        "Harvesting and Collection": "The harvesting cost was RM 65.73/tonne. The average harvesting interval was 19 days due to harvester shortage, with only 9 out of 12 budgeted rounds completed. Harvester productivity is low, averaging 1.8-1.9 tons/man-day. (PA Report, Pg. 44-45)",
-                        "Crop Production": "Yield achieved was 6.17 ton/ha as of June, 22% below budget. The shortfall is primarily due to harvester shortage, unpruned palms, and resulting high crop loss. (PA Report, Pg. 46)",
-                        "Production Cost": "The cost of production was RM 251.99/tonne FFB. This low cost is misleading as it's due to a significant amount of upkeep and cultivation work not being executed. (PA Report, Pg. 48)",
-                        "Vehicles Running Cost": "The Vehicle Running Account records were found to be incorrectly calculated and recorded. The data requires immediate correction based on proper methodology. (PA Report, Pg. 49)",
-                        "Capital Expenditure": "Capital expenditure was underspent as of June. (PA Report, Pg. 50)",
+                        "Executive Summary": "The estate faces a critical shortage of 23 harvesters and 15 sprayers, leading to high turnover and low wages. Priority must be given to clearing Volunteer Oil Palms (VOPs) and Stenochlaena in low-lying areas. A task force is urgently needed to complete a significant corrective pruning backlog by October. Harvester productivity needs to be increased. (PA Report, Pg. 50-51)",
+                        "Area statement": "Total mature planted area is 1,999.83 ha. There has been no change in the area statement. (PA Report, Pg. 9)",
+                        "Labour Statement": "A critical shortage of 23 harvesters (actual ratio 1:33 ha vs. 1:24 ha required) and 15 sprayers exists. The overall worker to land ratio is 1:25 ha, indicating a severe shortage. (PA Report, Pg. 10-11)",
+                        "Staff Establishment": "The staff establishment is considered sufficient, with 1 manager, 3 executives, 5 field staff, and 2 clerks. However, the majority of staff are inexperienced, having been on the estate for less than 3 years. (PA Report, Pg. 12-13)",
+                        "General Charges": "Expenditure was underspent by 49% as of June and is considered under control. (PA Report, Pg. 14)",
+                        "Upkeep Cultivation": "Circle spraying is 39% complete and selective spraying is 57% complete, both delayed by flooding and sprayer shortages (Pg. 16, 20). The manuring program is only 33% complete due to flooding (Pg. 29). A significant corrective pruning backlog of 1,298 ha exists, with only 13% of the annual program done (Pg. 30).",
+                        "Harvesting and Collection": "The harvesting cost was RM 78.90/tonne. The average harvesting interval was 16 days, with only 9 out of 12 budgeted rounds completed. Harvester productivity is between 1.7 to 2.0 tons/man-day. (PA Report, Pg. 41-42)",
+                        "Crop Production": "Yield achieved was 5.45 ton/ha as of June, 32% below budget. The shortfall is due to flooding and harvester shortage. (PA Report, Pg. 44)",
+                        "Production Cost": "The cost of production was RM 260.60/tonne FFB. This is acceptable as it's due to underspending in General Charges and Upkeep. (PA Report, Pg. 47)",
+                        "Vehicles Running Cost": "The Vehicle Running Account for the Hilux was satisfactory. (PA Report, Pg. 48)",
+                        "Capital Expenditure": "Capital expenditure was underspent as of June. (PA Report, Pg. 49)",
                         "Immature": "N/A (0.00 ha of immature palms). (PA Report, Pg. 9)"
                     }
                 },
@@ -221,7 +222,7 @@
 
                 const ageCtx = document.getElementById(ageCanvasId)?.getContext('2d');
                 if(ageCtx) {
-                    chartInstances[ageCanvasId] = new Chart(ageCtx, {
+                    chartInstances[ageCtx] = new Chart(ageCtx, {
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
