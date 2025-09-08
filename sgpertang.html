@@ -11,12 +11,13 @@
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
         .details-content.active { display: block; }
-        .dropdown-btn.active { background-color: #4a5568; }
-        .policy-item { border-left: 3px solid #6366f1; padding-left: 1rem; margin-top: 0.75rem; }
+        .dropdown-btn.active { background-color: #14532d; }
+        .policy-item { border-left: 3px solid #16a34a; padding-left: 1rem; margin-top: 0.75rem; }
         .modal { display: none; }
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -36,7 +37,7 @@
                     Sungai Pertang Estate Report
                 </a>
             </div>
-            <a href="estates.html" class="text-indigo-600 hover:text-indigo-800 transition duration-300">&larr; Back to Estates List</a>
+            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
         </nav>
     </header>
 
@@ -68,10 +69,10 @@
             const estateData = {
                 "id": "sgpertang",
                 "name": "Ladang Sungai Pertang",
-                "reportInfo": "Data based on Agronomy Report 1/2025 (Visit: 13th August 2025).",
+                "reportInfo": "Data based on Agronomy Report 1/2025 (Visit: 13th August 2025). Plantation Advisory and Pinfosys data not available.",
                 "summaryMetrics": {
                     "area": { "title": "Estate Area", "lines": ["Total Oil Palm: 1,228.00 ha", "Mature: 1,030.00 ha", "Immature: 100.00 ha", "Replanting: 98.00 ha"] },
-                    "yield": { "title": "Yield/Ha (Actual vs Budget)", "value": "N/A", "note": "YTD data not available" },
+                    "yield": { "title": "Yield/Ha (Actual vs Budget)", "value": "2.62 MT", "note": "To-Date (June-July 2025)" },
                     "cost": { "title": "FFB Cost/Tonne (Actual vs Budget)", "value": "N/A", "note": "Pinfosys data not available" },
                     "weeding": { "title": "Weeding Quality", "value": "Needs Improvement", "note": "Overgrown weeds and over-spraying issues noted." },
                     "manuring": { "title": "Manuring Progress (2025)", "value": "Delayed", "note": "Multiple applications behind schedule as of July." }
@@ -99,38 +100,26 @@
                     }
                 },
                 "observations": [
-                    "<b>Harvesting Delays & Crop Loss:</b> Harvesting intervals have extended beyond 20 days in old plantings, leading to over-ripe bunches and crop loss, especially in neglected ravine areas. (AR Pg. 17-19, 53)",
-                    "<b>Pruning Program Not Started:</b> No pruning has been done since the management takeover, resulting in under-pruned conditions in old plantings that obstruct harvesting. (AR Pg. 4, 22-23)",
-                    "<b>Delayed Manuring Program:</b> As of July 2025, only Borate application is complete. Urea, MOP, NK Mixture, and Kieserite applications are behind schedule, potentially impacting palm nutrition. (AR Pg. 14)",
-                    "<b>Suboptimal Weeding Quality:</b> Despite progress being reported, field conditions show overgrown broadleaf weeds, signs of over-spraying in some areas, and incomplete eradication of weeds, indicating a need for better supervision and technique. (AR Pg. 30-32)",
-                    "<b>Less Than Ideal Palm Age Profile:</b> Over half of the estate's palms are old (>20 years) and in a descending yield stage. Only 17% are in their prime, which is far below the ideal of 48%. (AR Pg. 9)",
-                    "<b>Low Barn Owl Occupancy:</b> The occupancy rate of barn owl boxes is low at 40%, which could lead to higher rat populations if not addressed. (AR Pg. 36)"
+                    "<b>Harvesting Delays & Crop Loss:</b> Harvesting intervals have extended beyond 20 days in old plantings, leading to over-ripe bunches and crop loss, especially in neglected ravine areas. <span class='observation-ref'>(AR Pg. 17-19, 53)</span>",
+                    "<b>Pruning Program Not Started:</b> No pruning has been done since the management takeover, resulting in under-pruned conditions in old plantings that obstruct harvesting. <span class='observation-ref'>(AR Pg. 4, 22-23)</span>",
+                    "<b>Delayed Manuring Program:</b> As of July 2025, only Borate application is complete. Urea, MOP, NK Mixture, and Kieserite applications are behind schedule, potentially impacting palm nutrition. <span class='observation-ref'>(AR Pg. 14)</span>",
+                    "<b>Suboptimal Weeding Quality:</b> Despite progress being reported, field conditions show overgrown broadleaf weeds, signs of over-spraying in some areas, and incomplete eradication of weeds, indicating a need for better supervision and technique. <span class='observation-ref'>(AR Pg. 30-32)</span>",
+                    "<b>Less Than Ideal Palm Age Profile:</b> Over half of the estate's palms are old (>20 years) and in a descending yield stage. Only 17% are in their prime, which is far below the ideal of 48%. <span class='observation-ref'>(AR Pg. 9)</span>",
+                    "<b>Low Barn Owl Occupancy:</b> The occupancy rate of barn owl boxes is low at 40%, which could lead to higher rat populations if not addressed. <span class='observation-ref'>(AR Pg. 36)</span>"
                 ],
                 "reports": {
                     "agronomy": { 
-                        "Executive Summary": "The palm age profile is less than ideal with over half the plantings being old. Key immediate issues are significant harvesting delays, a complete lack of pruning progress since takeover, and the need to improve weeding quality. Mild nutrient deficiency symptoms were observed, and leaf sampling is planned. The 2026 fertilizer program has been drafted. (Agronomy Report, Pg. 4-6)",
-                        "Nutrient Inputs/Progress of Manuring": "The 2025 manuring program is behind schedule. As of July, only Borate application was completed. Applications for Urea, MOP, NK Mixture, and Kieserite were all delayed. A revised schedule has been advised. (Agronomy Report, Pg. 14-16)",
-                        "Agronomic Observation": "Harvesting intervals in old plantings exceed 20 days, causing over-ripe bunches and crop loss in ravines. Loose fruit collection is incomplete. No pruning has been done, leading to under-pruned conditions. Frond stacking quality is substandard. Weeding quality is poor, with overgrown weeds and over-spraying noted. (Agronomy Report, Pg. 17-35)",
-                        "Yield Performance": "Harvesting under new management began in June 2025, with July production at 2032 MT (~2mt/ha), which is acceptable. However, there is significant room for improvement by resolving harvesting delays, addressing the pruning backlog, and improving weeding standards. The targeted yield is 20-25 MT/ha. (Agronomy Report, Pg. 52-55)",
-                        "Fertilizer Recommendation": "The 2026 fertilizer program has been drafted for budgeting purposes and will be reviewed. It is recommended to use 600g of Controlled Release Fertilizer for new supply palms. (Agronomy Report, Pg. 57)"
+                        "Executive Summary": "The palm age profile is less than ideal with over half the plantings being old. Key immediate issues are significant harvesting delays, a complete lack of pruning progress since takeover, and the need to improve weeding quality. Mild nutrient deficiency symptoms were observed, and leaf sampling is planned. The 2026 fertilizer program has been drafted. <span class='observation-ref'>(AR, Pg. 4-6)</span>",
+                        "Nutrient Inputs/Progress of Manuring": "The 2025 manuring program is behind schedule. As of July, only Borate application was completed. Applications for Urea, MOP, NK Mixture, and Kieserite were all delayed. A revised schedule has been advised. <span class='observation-ref'>(AR, Pg. 14-16)</span>",
+                        "Agronomic Observation": "Harvesting intervals in old plantings exceed 20 days, causing over-ripe bunches and crop loss in ravines. Loose fruit collection is incomplete. No pruning has been done, leading to under-pruned conditions. Frond stacking quality is substandard. Weeding quality is poor, with overgrown weeds and over-spraying noted. <span class='observation-ref'>(AR, Pg. 17-35)</span>",
+                        "Yield Performance": "Harvesting under new management began in June 2025, with July production at 2032 MT (~2mt/ha), which is considered acceptable. However, there is significant room for improvement by resolving harvesting delays, addressing the pruning backlog, and improving weeding standards. The targeted yield is 20-25 MT/ha. <span class='observation-ref'>(AR, Pg. 52-55)</span>",
+                        "Fertilizer Recommendation": "The 2026 fertilizer program has been drafted for budgeting purposes and will be reviewed. It is recommended to use 600g of Controlled Release Fertilizer for new supply palms. <span class='observation-ref'>(AR, Pg. 57)</span>"
                     },
                     "plantation": { 
-                        "Executive Summary": "N/A",
-                        "Area Statement": "N/A",
-                        "Labour Statement": "N/A",
-                        "Staff Establishment": "N/A",
-                        "General Charges": "N/A",
-                        "Upkeep and Cultivation": "N/A",
-                        "Harvesting and Collection": "N/A",
-                        "Crop Production": "N/A",
-                        "Production Cost": "N/A",
-                        "Vehicles Running Cost": "N/A",
-                        "Capital Expenditure": "N/A",
-                        "Immature": "N/A"
+                        "Executive Summary": "N/A", "Area Statement": "N/A", "Labour Statement": "N/A", "Staff Establishment": "N/A", "General Charges": "N/A", "Upkeep and Cultivation": "N/A", "Harvesting and Collection": "N/A", "Crop Production": "N/A", "Production Cost": "N/A", "Vehicles Running Cost": "N/A", "Capital Expenditure": "N/A", "Immature": "N/A"
                     },
                     "pinfosys": {
-                        "CEO Financial Summary": "N/A",
-                        "Summary of Oil Palm Expenditure": "N/A"
+                        "CEO Financial Summary": "N/A", "Summary of Oil Palm Expenditure": "N/A"
                     }
                 },
                 "policy": "<p>No specific policy cross-references were available in the provided reports.</p>"
@@ -152,7 +141,7 @@
                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
                     const colorClass = metric.title.includes('Area') ? 'bg-blue-50 text-blue-800' : 
                                        metric.title.includes('Yield') ? 'bg-green-50 text-green-800' :
-                                       metric.title.includes('Cost') ? 'bg-red-50 text-red-800' :
+                                       metric.title.includes('Cost') ? 'bg-orange-50 text-orange-800' :
                                        metric.title.includes('Weeding') ? 'bg-yellow-50 text-yellow-800' : 'bg-purple-50 text-purple-800';
                     if (metric.lines) {
                         return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3>${metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('')}</div>`;
@@ -179,7 +168,7 @@
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
-                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
+                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
                             <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
                             <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
@@ -204,7 +193,7 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#c026d3', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
+                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#ca8a04', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
                                 { label: 'Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
                             ]
                         },
@@ -218,7 +207,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336', '#9C27B0'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#fde047', '#facc15', '#eab308', '#ca8a04', '#a16207'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
@@ -234,10 +223,10 @@
                     agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (plantationDiv) {
-                    plantationDiv.innerHTML = `<p class="text-sm text-gray-600">Plantation Advisory Report not available.</p>`;
+                     plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (pinfosysDiv) {
-                    pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Pinfosys Report not available.</p>`;
+                     pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
             }
 
