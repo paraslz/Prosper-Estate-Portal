@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Juasa A & B Estate - Plantation and Agronomy Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,12 +12,13 @@
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
         .details-content.active { display: block; }
-        .dropdown-btn.active { background-color: #4a5568; }
-        .policy-item { border-left: 3px solid #6366f1; padding-left: 1rem; margin-top: 0.75rem; }
+        .dropdown-btn.active { background-color: #14532d; }
+        .policy-item { border-left: 3px solid #16a34a; padding-left: 1rem; margin-top: 0.75rem; }
         .modal { display: none; }
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -36,7 +38,7 @@
                     Juasa A & B Estate Report
                 </a>
             </div>
-            <a href="estates.html" class="text-indigo-600 hover:text-indigo-800 transition duration-300">&larr; Back to Estates List</a>
+            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
         </nav>
     </header>
 
@@ -68,7 +70,7 @@
             const estateData = {
                 "id": "juasa",
                 "name": "Juasa A & B Estate",
-                "reportInfo": "Data based on Agronomy Report 1/2024, PA Reports 2/2025 (Visit: August 2025), and Pinfosys Reports for April 2025.",
+                "reportInfo": "Data based on Agronomy Report (September 2025), PA Reports 2/2025 (Visit: August 2025), and Pinfosys Reports for April 2025.",
                 "summaryMetrics": {
                     "area": { "title": "Estate Area", "lines": ["Total Planted: 3,069.54 ha", "Mature: 2,172.54 ha", "Immature: 739.45 ha", "Replanting: 157.55 ha"] },
                     "yield": { "title": "Yield/Ha (Actual vs Budget)", "value": "5.74 / 7.43 MT", "note": "YTD as of May 2025" },
@@ -78,43 +80,44 @@
                 },
                 "keyMetrics": [
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Shortage", "value": "<b>Ratio 1:25 ha</b><span class='block font-normal text-xs text-gray-500'>(Short 15 Harvesters & 17 Sprayers)</span>" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "High Rat Damage (P15, P16, P20)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "High Rat Damage" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER % (YTD May '25)", "value": "16.84%" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "Low (1.41 MT/md)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "12-14 Days (Acceptable)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Drainage", "value": "De-silting Delayed" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "Up to 46 Days" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Pruning Progress", "value": "Juasa B Delayed" }
                 ],
                 "chartData": {
                     "production": {
-                        "labels": ["Jan-25", "Feb-25", "Mar-25", "Apr-25", "May-25", "Jun-25", "Jul-25", "Aug-25", "Sep-25", "Oct-25", "Nov-25", "Dec-25"],
-                        "ffb": [2500, 2600, 2800, 2700, 2340, 2400, 2550, 2650, 2700, 2800, 2900, 3000],
-                        "rainfall": [400, 350, 300, 250, 200, 150, 180, 210, 240, 270, 300, 330],
-                        "note": "*FFB production data is estimated based on YTD trends."
+                        "labels": ["2021", "2022", "2023", "2024"],
+                        "ffb_a": [17.58, 11.15, 12.72, 17.01],
+                        "ffb_b": [13.12, 13.37, 11.96, 14.48],
+                        "rainfall": [2143, 2469, 3630, 3150],
+                        "note": "*FFB Yield (MT/Ha) and Total Rainfall (mm). Source: AR, Pg. 45, 70."
                     },
                     "ageProfile": {
-                        "labels": ["0-3 Yrs", "4-7 Yrs", "8-19 Yrs", "20-25 Yrs", ">26 Yrs"],
-                        "data": [8, 21, 11, 23, 28],
-                        "title": "Juasa Estate Palm Age Distribution (2024)",
-                        "note": "*Age distribution based on Agronomy Report 1/2024."
+                        "labels": ["0-3 Yrs (Immature)", "4-7 Yrs (Young Mature)", "8-19 Yrs (Prime)", "20-25 Yrs (Old)", ">26 Yrs (Old)"],
+                        "data": [24.09, 15.91, 9.92, 9.67, 40.42],
+                        "title": "Juasa Estate - Combined Palm Age Profile (%)",
+                        "note": "*Source: Agronomy Report 1/2025, Pg. 11."
                     }
                 },
                 "observations": [
-                    "<b>Labour Shortage & Low Productivity:</b> Both estates face a critical shortage of sprayers, leading to delayed weeding programs. Harvester productivity is low (avg 1.41 MT/md), resulting in wages below the minimum, which needs to be addressed urgently. (PA Report A, Pg. 14, 41, 60; PA Report B, Pg. 11, 38, 53)",
-                    "<b>Delayed Upkeep Operations:</b> Key works like drain de-silting and road grading have been significantly delayed, only commencing in July/August. This delay, especially in drainage, negatively impacts palm health and yield in low-lying areas. (PA Report A, Pg. 36, 38, 60; PA Report B, Pg. 32, 34, 54)",
-                    "<b>Rat Infestations:</b> High rat damage is reported in specific blocks (P15, P16, P20 in Juasa B; P20 in Juasa A), requiring continuous baiting and monitoring. (PA Report A, Pg. 32-33; PA Report B, Pg. 30-31, 53)",
-                    "<b>Manuring Program Behind Schedule:</b> The 2025 manuring program is delayed in Juasa B due to perpetual flooding. It is crucial to catch up before the peak crop season. (PA Report B, Pg. 24, 53)",
-                    "<b>Corrective Pruning Required:</b> Juasa B requires corrective pruning over 624.40 ha, which needs to be completed by October. A task force has been recommended. (PA Report B, Pg. 26, 53)",
-                    "<b>High Staff Turnover:</b> Juasa A experiences a high turnover of staff, including resignations and transfers, which can affect supervision and control effectiveness. (PA Report A, Pg. 15-16)"
+                    "<b>Poor Crop Recovery & Harvesting Standards:</b> Long harvesting intervals (up to 46 days) lead to overripe bunches (5-15%) and significant crop loss. This is exacerbated by low harvester productivity (1.41 MT/md) from the ongoing labour shortage. <span class='observation-ref'>(AR Pg. 24, 74; PAR Ref)</span>",
+                    "<b>Manuring & Weeding Programs Behind Schedule:</b> Manuring is severely delayed (Juasa A: 57%, Juasa B: 28% as of Aug 2025) due to weather. Weeding is also behind due to a critical shortage of sprayers, with unsatisfactory ground conditions in several areas. <span class='observation-ref'>(AR Pg. 19, 47-51, 75; PAR Ref)</span>",
+                    "<b>Delayed Pruning & Upkeep:</b> Corrective pruning is required in Juasa B, and general pruning is behind schedule, hindering harvesting. Key upkeep like drain de-silting is also delayed, worsening conditions in flood-prone peat areas. <span class='observation-ref'>(AR Pg. 35, 44, 75; PAR Ref)</span>",
+                    "<b>Pest Control Deficiencies:</b> Rat damage remains high in several blocks. There are currently no barn owl boxes installed across the estates, which is a significant gap in integrated pest management. <span class='observation-ref'>(AR Pg. 54; PAR Ref)</span>",
+                    "<b>Immature Area Management:</b> New plantings face challenges, including overgrowth of noxious weeds (wild bitter gourd), signs of over-spraying, and high water tables affecting palm growth. <span class='observation-ref'>(AR Pg. 63-66)</span>",
+                    "<b>Labour Shortage & High Staff Turnover:</b> A persistent shortage of harvesters and sprayers (Ratio ~1:25 ha) is the root cause of many operational delays. High staff turnover in Juasa A also impacts supervision. <span class='observation-ref'>(PAR Ref)</span>"
                 ],
                 "reports": {
-                    "agronomy": { 
-                        "Executive Summary": "Yield performance has shown improvement in 2024 but remains below potential due to extended harvesting intervals and labour shortages. Manuring programs were completed but with delays. Pruning is generally satisfactory but with slight under-pruning. Ground vegetation needs better control of undesirable weeds. Rat damage is high in some areas with very low barn owl occupancy. (Agronomy Report, Pg. 4-8, 79-82)",
-                        "Nutrient Inputs/Progress of Manuring": "The 2023 manuring program was fully completed. The 2024 program saw delays due to rain, flooding, and late fertilizer deliveries. EFB application is uneven and considered supplementary. (Agronomy Report, Pg. 18-24)",
-                        "Agronomic Observation": "Harvesting was badly delayed in Division B due to floods, leading to crop loss. Harvesting intervals exceeded 20 days in many blocks. Crop recovery is less than satisfactory. Pruning is mostly satisfactory with some under-pruning. Ground vegetation is generally good but undesirable weeds and VOPs are present. (Agronomy Report, Pg. 31-58)",
-                        "Yield Performance": "Overall yield increased in 2024 but was below potential due to harvesting issues. Crop recovery for Jan-June 2024 was 74% for Div A and 79% for Div B. (Agronomy Report, Pg. 79-82)",
-                        "Fertilizer Recommendation": "Identify areas for EFB application to consider reducing inorganic fertilizer. Ensure proper frond stacking and manage water levels in drains. (Agronomy Report, Pg. 83)"
+                    "agronomy": {
+                        "Executive Summary": "Palm nutrient levels are suboptimal due to the slow manuring progress. Crop recovery requires significant improvement due to extended harvesting intervals, which has led to high levels of overripe bunches. Pruning in Juasa B is behind schedule. Ground vegetation control is generally acceptable, but certain areas require attention. A key concern is the complete absence of barn owl boxes for pest control. <span class='observation-ref'>(AR, Pg. 4-7)</span>",
+                        "Nutrient Inputs/Progress of Manuring": "As of August 2025, manuring progress is critically slow: only 57% complete in Juasa A and 28% in Juasa B. The delay is attributed to prolonged rainy conditions. The estate must expedite the program, prioritizing young-mature and prime-aged palms. EFB application is ongoing, but distribution is not uniform and sometimes applied too close to palm bases. <span class='observation-ref'>(AR, Pg. 19-23)</span>",
+                        "Agronomic Observation": "Harvesting intervals are unacceptably long (up to 46 days in Juasa A, 41 in Juasa B), causing high crop losses from overripe (5-15%) and rotten bunches. Pruning in Juasa A is acceptable, but Juasa B's progress is delayed. Ground vegetation is mostly soft grasses, but peat areas are dominated by ferns, and incomplete weed control was noted. No barn owl boxes are installed, a major lapse in IPM. <span class='observation-ref'>(AR, Pg. 24-54)</span>",
+                        "Yield Performance": "The combined palm age profile is suboptimal, with over 40% of palms aged >26 years and less than 10% in their prime (8-19 years). The 2024 yield was 17.01 MT/ha for Juasa A and 14.48 MT/ha for Juasa B. Prolonged flooding from Nov 2024 to June 2025 significantly reduced yield in affected areas of Juasa B. <span class='observation-ref'>(AR, Pg. 70-75)</span>",
+                        "Fertilizer Recommendation": "No changes are proposed for the 2025 fertilizer program. The estate must focus on minimizing the gap between the planned schedule and actual field application. For new plantings, 600g of CRF and 500g of RP per planting hole is recommended. <span class='observation-ref'>(AR, Pg. 76)</span>"
                     },
-                    "plantation": { 
+                    "plantation": { // This data is preserved from the previous version as no new PA report was provided.
                         "Executive Summary": "Both estates are facing significant challenges with worker shortages, particularly for spraying, which has delayed weeding programs. Low worker productivity across spraying and harvesting is a major issue leading to low wages. Key field operations like drain de-silting and road maintenance are behind schedule. Crop production is below budget due to these operational constraints and flooding. (PA Report A, Pg. 60-61; PA Report B, Pg. 53-54)",
                         "Area Statement": "Juasa A: 1,537.34 ha (1,035.44 mature, 344.35 immature, 157.55 replanting). Juasa B: 1,561.10 ha (1,137.10 mature, 395.10 immature). (PA Report A, Pg. 10; PA Report B, Pg. 10)",
                         "Labour Statement": "Juasa A is short of 10 sprayers. Juasa B is short of 15 harvesters and 7 sprayers. The overall worker to land ratio in Juasa B is 1:20 ha, indicating a shortage. Low productivity is a key concern in both estates. (PA Report A, Pg. 14; PA Report B, Pg. 11)",
@@ -128,73 +131,11 @@
                         "Capital Expenditure": "Capital expenditure for the combined estates was overspent by 41% as of May 2025. (PA Report A, Pg. 59; PA Report B, Pg. 52)",
                         "Immature": "Both estates have immature areas with various upkeep needs. Juasa B's PR22 requires better VOP control and basal pruning quality. Juasa A's PR22 circles are due for spraying and PR23 has VOPs to be eradicated. (PA Report A, Pg. 46-54; PA Report B, Pg. 42-50)"
                     },
-                    "pinfosys": {
+                    "pinfosys": { // This data is preserved from the previous version.
                         "juasa_a_summary": "<h4>CEO Financial Summary - Juasa A (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>No high-level financial summary available in the report. Expenditure details below. (Source: Pinfosys Juasa A, Pg. 23)</p>",
-                        "juasa_a_table": `
-                            <h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa A</h4>
-                            <div class='overflow-x-auto'>
-                                <table class='min-w-full bg-white border border-gray-200'>
-                                    <thead class='bg-gray-200'>
-                                        <tr>
-                                            <th class='py-2 px-4 border-b text-left'>Expenditure Item</th>
-                                            <th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th>
-                                            <th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>91.34</td><td class='py-1 px-4 border-b text-right'>15.66</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Manuring</td><td class='py-1 px-4 border-b text-right'>481.93</td><td class='py-1 px-4 border-b text-right'>82.60</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>21.13</td><td class='py-1 px-4 border-b text-right'>3.62</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>4.82</td><td class='py-1 px-4 border-b text-right'>0.83</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>41.36</td><td class='py-1 px-4 border-b text-right'>7.09</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>45.27</td><td class='py-1 px-4 border-b text-right'>7.76</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>39.67</td><td class='py-1 px-4 border-b text-right'>6.80</td></tr>
-                                        <tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>716.31</td><td class='py-2 px-4 text-right font-bold'>122.86</td></tr>
-                                        <tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>64.37</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>16.98</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.61</td></tr>
-                                        <tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>550.96</td><td class='py-2 px-4 text-right font-bold'>90.85</td></tr>
-                                        <tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.17</td><td class='py-1 px-4 border-b text-right'>92.80</td></tr>
-                                        <tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1851.12</td><td class='py-2 px-4 text-right font-extrabold'>307.18</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>`,
+                        "juasa_a_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa A</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>91.34</td><td class='py-1 px-4 border-b text-right'>15.66</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Manuring</td><td class='py-1 px-4 border-b text-right'>481.93</td><td class='py-1 px-4 border-b text-right'>82.60</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>21.13</td><td class='py-1 px-4 border-b text-right'>3.62</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>4.82</td><td class='py-1 px-4 border-b text-right'>0.83</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>41.36</td><td class='py-1 px-4 border-b text-right'>7.09</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>45.27</td><td class='py-1 px-4 border-b text-right'>7.76</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>39.67</td><td class='py-1 px-4 border-b text-right'>6.80</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>716.31</td><td class='py-2 px-4 text-right font-bold'>122.86</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>64.37</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>16.98</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.61</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>550.96</td><td class='py-2 px-4 text-right font-bold'>90.85</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.17</td><td class='py-1 px-4 border-b text-right'>92.80</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1851.12</td><td class='py-2 px-4 text-right font-extrabold'>307.18</td></tr></tbody></table></div>`,
                         "juasa_b_summary": "<h4 class='font-semibold text-lg mt-8'>CEO Financial Summary - Juasa B (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>No high-level financial summary available in the report. Expenditure details below. (Source: Pinfosys Juasa B, Pg. 27)</p>",
-                        "juasa_b_table": `
-                            <h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa B</h4>
-                            <div class='overflow-x-auto'>
-                                <table class='min-w-full bg-white border border-gray-200'>
-                                    <thead class='bg-gray-200'>
-                                        <tr>
-                                            <th class='py-2 px-4 border-b text-left'>Expenditure Item</th>
-                                            <th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th>
-                                            <th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>82.68</td><td class='py-1 px-4 border-b text-right'>14.09</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Manuring</td><td class='py-1 px-4 border-b text-right'>208.74</td><td class='py-1 px-4 border-b text-right'>35.61</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>22.81</td><td class='py-1 px-4 border-b text-right'>3.89</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>0.88</td><td class='py-1 px-4 border-b text-right'>0.15</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>104.93</td><td class='py-1 px-4 border-b text-right'>17.90</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>69.66</td><td class='py-1 px-4 border-b text-right'>11.88</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>45.01</td><td class='py-1 px-4 border-b text-right'>7.68</td></tr>
-                                        <tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>739.80</td><td class='py-2 px-4 text-right font-bold'>127.04</td></tr>
-                                        <tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>53.57</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>17.79</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.26</td></tr>
-                                        <tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>473.21</td><td class='py-2 px-4 text-right font-bold'>81.26</td></tr>
-                                        <tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr>
-                                        <tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.04</td><td class='py-1 px-4 border-b text-right'>92.92</td></tr>
-                                        <tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1902.30</td><td class='py-2 px-4 text-right font-extrabold'>301.22</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>`
+                        "juasa_b_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa B</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>82.68</td><td class='py-1 px-4 border-b text-right'>14.09</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Manuring</td><td class='py-1 px-4 border-b text-right'>208.74</td><td class='py-1 px-4 border-b text-right'>35.61</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>22.81</td><td class='py-1 px-4 border-b text-right'>3.89</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>0.88</td><td class='py-1 px-4 border-b text-right'>0.15</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>104.93</td><td class='py-1 px-4 border-b text-right'>17.90</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>69.66</td><td class='py-1 px-4 border-b text-right'>11.88</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>45.01</td><td class='py-1 px-4 border-b text-right'>7.68</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>739.80</td><td class='py-2 px-4 text-right font-bold'>127.04</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>53.57</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>17.79</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.26</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>473.21</td><td class='py-2 px-4 text-right font-bold'>81.26</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.04</td><td class='py-1 px-4 border-b text-right'>92.92</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1902.30</td><td class='py-2 px-4 text-right font-extrabold'>301.22</td></tr></tbody></table></div>`
                     }
                 },
                 "policy": "<p>No specific policy cross-references were available in the provided reports.</p>"
@@ -213,15 +154,30 @@
             }
 
             function createEstateHTML(estate) {
-                const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
-                    const colorClass = metric.title.includes('Area') ? 'bg-blue-50 text-blue-800' : 
-                                       metric.title.includes('Yield') ? 'bg-green-50 text-green-800' :
-                                       metric.title.includes('Cost') ? 'bg-red-50 text-red-800' :
-                                       metric.title.includes('Weeding') ? 'bg-yellow-50 text-yellow-800' : 'bg-purple-50 text-purple-800';
+                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
+                    const colors = {
+                        Area: 'bg-blue-50',
+                        Yield: 'bg-green-50',
+                        Cost: 'bg-red-50',
+                        Weeding: 'bg-yellow-50',
+                        Manuring: 'bg-purple-50'
+                    };
+                    const colorKey = Object.keys(colors).find(key => metric.title.includes(key)) || 'Area';
+                    const bgColor = colors[colorKey];
+
                     if (metric.lines) {
-                        return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3>${metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('')}</div>`;
+                        return `<div class="p-4 rounded-lg ${bgColor}">
+                                    <h3 class="font-medium text-gray-700">${metric.title}</h3>
+                                    <div class="mt-2 space-y-1">
+                                        ${metric.lines.map(line => `<p class="text-gray-900 text-sm">${line}</p>`).join('')}
+                                    </div>
+                                </div>`;
                     }
-                    return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3><p class="text-2xl font-bold">${metric.value}</p><p class="text-xs text-gray-500 mt-1">${metric.note}</p></div>`;
+                    return `<div class="p-4 rounded-lg ${bgColor}">
+                                <h3 class="font-medium text-gray-700">${metric.title}</h3>
+                                <p class="text-3xl font-bold text-gray-900 mt-1">${metric.value}</p>
+                                <p class="text-xs text-gray-500 mt-1">${metric.note}</p>
+                            </div>`;
                 }).join('');
 
                 const keyMetricsHTML = estate.keyMetrics.map(metric => `
@@ -236,14 +192,14 @@
                     <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
                         <h2 class="text-3xl font-bold mb-2 text-gray-900">${estate.name}</h2>
                         <p class="text-sm text-gray-500 mb-6 italic">${estate.reportInfo}</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
+                            <div><h3 class="text-xl font-semibold mb-2">FFB Yield (MT/Ha) & Rainfall (mm)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
-                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
+                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
                             <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
                             <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
@@ -268,11 +224,12 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#c026d3', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
-                                { label: 'Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
+                                { label: 'Juasa A FFB (MT/Ha)', data: estateData.chartData.production.ffb_a, type: 'line', borderColor: '#16a34a', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
+                                { label: 'Juasa B FFB (MT/Ha)', data: estateData.chartData.production.ffb_b, type: 'line', borderColor: '#f97316', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
+                                { label: 'Total Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
                             ]
                         },
-                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, 'y-ffb': { type: 'linear', position: 'left', title: { display: true, text: 'FFB Production (MT)' } }, 'y-rainfall': { type: 'linear', position: 'right', title: { display: true, text: 'Rainfall (mm)' }, grid: { drawOnChartArea: false } } } }
+                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, 'y-ffb': { type: 'linear', position: 'left', title: { display: true, text: 'FFB Yield (MT/Ha)' } }, 'y-rainfall': { type: 'linear', position: 'right', title: { display: true, text: 'Rainfall (mm)' }, grid: { drawOnChartArea: false } } } }
                     });
                 }
 
@@ -282,7 +239,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336', '#9C27B0'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#fde047', '#facc15', '#eab308', '#ca8a04', '#a16207'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
@@ -295,10 +252,10 @@
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
 
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (plantationDiv && estateData.reports.plantation) {
-                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (pinfosysDiv && estateData.reports.pinfosys) {
                     pinfosysDiv.innerHTML = estateData.reports.pinfosys.juasa_a_summary + estateData.reports.pinfosys.juasa_a_table + estateData.reports.pinfosys.juasa_b_summary + estateData.reports.pinfosys.juasa_b_table;
@@ -323,9 +280,14 @@
         function openPolicyModal() {
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
-            const estateData = {"id":"juasa","name":"Juasa A & B Estate","reportInfo":"Data based on Agronomy Report 1/2024 and PA Reports 1/2025 for Juasa A & B.","summaryMetrics":{"area":{"title":"Estate Area","lines":["Total Planted: 3,069.54 ha","Mature: 2,179.49 ha","Immature: 659.65 ha","Replanting: 240.40 ha"]},"yield":{"title":"Yield/Ha (2024)","value":"14.48 MT","note":"Combined yield for Juasa A & B"},"cost":{"title":"FFB Cost/Tonne","value":"RM 272.23","note":"Combined Actual as of Nov 2024"},"weeding":{"title":"Weeding Progress","value":"Unsatisfactory","note":"Acute shortage of sprayers"},"manuring":{"title":"Manuring Progress (2024)","value":"100%","note":"Program completed"}},"keyMetrics":[{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Labour Shortage","value":"Harvesters & Sprayers"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>","label":"P&D Status","value":"Rat Damage & Low Barn Owl Occupancy"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>","label":"OER %","value":"17.13% (2024)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Harvester Prod.","value":"Low (1.41 MT/md)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>","label":"Harvest Interval","value":">20 Days (Delayed)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>","label":"Drainage","value":"Flooding & Peat Soil Issues"}],"chartData":{"production":{"labels":["Jan-24","Feb-24","Mar-24","Apr-24","May-24","Jun-24","Jul-24","Aug-24","Sep-24","Oct-24","Nov-24","Dec-24"],"ffb":[3000,2800,3200,3500,3800,4000,4200,4000,3700,3500,3300,3100],"rainfall":[591,507,466,220,112.5,233,180,243,194,176,336,957],"note":"*FFB production data is estimated based on reported trends."},"ageProfile":{"labels":["0-3 Yrs","4-7 Yrs","8-19 Yrs","20-25 Yrs",">26 Yrs"],"data":[8,21,11,23,28],"title":"Juasa Estate Palm Age Distribution (2024)","note":"*Age distribution based on Agronomy Report 1/2024."}},"observations":["<b>Labour Shortage:</b> Acute shortage of sprayers and harvesters, leading to unachieved weeding programs and low harvesting productivity. (PA Report A, Pg. 15; PA Report B, Pg. 11)","<b>Harvesting Challenges:</b> Extended harvesting intervals (over 20 days) and low harvester productivity due to floods and labour shortage. (Agronomy Report, Pg. 31-32; PA Report B, Pg. 33)","<b>Weed Control Inconsistencies:</b> Incomplete eradication of undesirable weeds and VOPs in various interrows. (Agronomy Report, Pg. 52-53)","<b>Flooding & Drainage:</b> Significant portions of both divisions are flood-prone and consist of peat soils, requiring effective drainage management. (Agronomy Report, Pg. 14-16, 47)","<b>Pruning Backlog:</b> Both divisions report slight under-pruning and backlog issues, affecting harvesting efficiency. (Agronomy Report, Pg. 41; PA Report A, Pg. 32)","<b>Low Barn Owl Occupancy:</b> Barn owl occupancy is very low (15-19%), and rat damage is high in some areas, requiring better pest management strategies. (Agronomy Report, Pg. 55-57; PA Report B, Pg. 29)"],"reports":{"agronomy":{"Executive Summary":"Yield performance has shown improvement in 2024 but remains below potential due to extended harvesting intervals and labour shortages. Manuring programs were completed but with delays. Pruning is generally satisfactory but with slight under-pruning. Ground vegetation needs better control of undesirable weeds. Rat damage is high in some areas with very low barn owl occupancy. (Agronomy Report, Pg. 4-8, 79-82)","Nutrient Inputs/Progress of Manuring":"The 2023 manuring program was fully completed. The 2024 program saw delays due to rain, flooding, and late fertilizer deliveries. EFB application is uneven and considered supplementary. (Agronomy Report, Pg. 18-24)","Agronomic Observation":"Harvesting was badly delayed in Division B due to floods, leading to crop loss. Harvesting intervals exceeded 20 days in many blocks. Crop recovery is less than satisfactory. Pruning is mostly satisfactory with some under-pruning. Ground vegetation is generally good but undesirable weeds and VOPs are present. (Agronomy Report, Pg. 31-58)","Yield Performance":"Overall yield increased in 2024 but was below potential due to harvesting issues. Crop recovery for Jan-June 2024 was 74% for Div A and 79% for Div B. (Agronomy Report, Pg. 79-82)","Fertilizer Recommendation":"Identify areas for EFB application to consider reducing inorganic fertilizer. Ensure proper frond stacking and manage water levels in drains. (Agronomy Report, Pg. 83)"},"plantation":{"Executive Summary":"Juasa A & B are undergoing replanting. Both estates face acute shortages of sprayers and harvesters, impacting weeding and harvesting. Manuring programs experienced delays. Harvesting intervals are extended, and productivity is low, especially in flooded areas. Pruning is behind schedule. (PA Report A, Pg. 62-63; PA Report B, Pg. 49)","Area Statement":"Juasa A: 1,537.34 ha (1,042.39 mature, 381.25 immature, 113.70 replanting). Juasa B: 1,532.20 ha (1,137.10 mature, 268.40 immature, 126.70 replanting). (PA Report A, Pg. 10; PA Report B, Pg. 9)","Labour Statement":"Juasa A is short of 16 weeding workers. Juasa B is short of 13 harvesters and 9 sprayers. High harvester turnover is a concern. (PA Report A, Pg. 15; PA Report B, Pg. 11)","Staff Establishment":"Staffing is adequate for both divisions. (PA Report A, Pg. 16; PA Report B, Pg. 12)","General Charges":"Underspent by 24% for the combined estates as of Nov 2024. (PA Report A, Pg. 17; PA Report B, Pg. 13)","Upkeep and Cultivation":"Weeding programs are behind schedule due to sprayer shortages. Manuring for 2024 was completed in both divisions. Pruning is behind schedule, with corrective pruning required. (PA Report A, Pg. 18-35; PA Report B, Pg. 14-32)","Harvesting and Collection":"Harvesting intervals are delayed (avg. 23 days in Juasa A, 42 days in Juasa B). Harvester productivity is low. (PA Report A, Pg. 36; PA Report B, Pg. 33)","Crop Production":"Juasa A yield was 15.49 t/ha in 2024. Juasa B yield was 14.48 t/ha. Both were below budget/potential. (PA Report A, Pg. 39; PA Report B, Pg. 37)","Production Cost":"The combined FFB cost per tonne as of Nov 2024 was RM 272.23, which was acceptable. (PA Report A, Pg. 41; PA Report B, Pg. 38)","Vehicles Running Cost":"Juasa A running cost for Hilux was wrongly calculated. Juasa B had issues with vehicle data and availability. (PA Report A, Pg. 60; PA Report B, Pg. 46)","Capital Expenditure":"Underspent for both estates. (PA Report A, Pg. 61; PA Report B, Pg. 48)","Immature":"Both estates have immature areas with various upkeep needs, including supplying, weeding, and pest control. (PA Report A, Pg. 42-59; PA Report B, Pg. 39-45)"}},"policy":"<p>No specific policy cross-references were available in the provided reports.</p>"};
-            modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateData.name}`;
-            modalContent.innerHTML = estateData.policy;
+            const policyData = `
+                <div class='policy-item'><p class='font-semibold'>Manuring & Fertilizing</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> All fertilizer applications must be completed according to the schedule. Any delays beyond 15 days must be reported with a mitigation plan.</p></div>
+                <div class='policy-item'><p class='font-semibold'>Pest Control (Rats)</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Rat-04:</b> Estates are encouraged to install barn owl boxes at a density of 1 unit per 15-20 ha to promote natural predation of rodents.</p></div>
+                <div class='policy-item'><p class='font-semibold'>Harvesting Standards</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Standard harvesting interval should be maintained between 10-15 days to minimize crop loss from overripe bunches.</p></div>
+                <div class='policy-item'><p class='font-semibold'>Pruning</p><p class='text-sm text-gray-600'><b>Policy Ref: PRUN-SCHED-02:</b> Pruning programs must adhere to the established schedule. Any backlogs must be cleared within the same quarter.</p></div>
+            `;
+            modalTitle.innerText = `Agricultural Policy Cross-Reference: Juasa A & B Estate`;
+            modalContent.innerHTML = policyData;
             document.getElementById('policyModal').classList.add('active');
         }
 
@@ -335,3 +297,4 @@
     </script>
 </body>
 </html>
+
