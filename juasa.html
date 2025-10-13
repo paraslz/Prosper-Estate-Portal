@@ -141,6 +141,26 @@
                 "policy": "<p>No specific policy cross-references were available in the provided reports.</p>"
             };
 
+            // --- TAILWIND CONFIG EXTENSION ---
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'custom-blue-bg': '#eef6ff',
+                            'custom-blue-text': '#1d4ed8',
+                            'custom-green-bg': '#f0fff4',
+                            'custom-green-text': '#16a34a',
+                            'custom-red-bg': '#fff5f5',
+                            'custom-red-text': '#dc2626',
+                            'custom-yellow-bg': '#fefce8',
+                            'custom-yellow-text': '#ca8a04',
+                            'custom-purple-bg': '#faf5ff',
+                            'custom-purple-text': '#9333ea',
+                        }
+                    }
+                }
+            }
+
             let chartInstances = {};
             const container = document.getElementById('selected-estate-container');
 
@@ -154,28 +174,27 @@
             }
 
             function createEstateHTML(estate) {
-                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
+                 const summaryMetricsHTML = Object.entries(estate.summaryMetrics).map(([key, metric]) => {
                     const colors = {
-                        Area: 'bg-blue-50',
-                        Yield: 'bg-green-50',
-                        Cost: 'bg-red-50',
-                        Weeding: 'bg-yellow-50',
-                        Manuring: 'bg-purple-50'
+                        area: { bg: 'bg-custom-blue-bg', text: 'text-custom-blue-text' },
+                        yield: { bg: 'bg-custom-green-bg', text: 'text-custom-green-text', value: 'text-green-600' },
+                        cost: { bg: 'bg-custom-red-bg', text: 'text-custom-red-text', value: 'text-red-600' },
+                        weeding: { bg: 'bg-custom-yellow-bg', text: 'text-custom-yellow-text', value: 'text-yellow-600' },
+                        manuring: { bg: 'bg-custom-purple-bg', text: 'text-custom-purple-text', value: 'text-purple-600' }
                     };
-                    const colorKey = Object.keys(colors).find(key => metric.title.includes(key)) || 'Area';
-                    const bgColor = colors[colorKey];
+                    const colorClasses = colors[key];
 
                     if (metric.lines) {
-                        return `<div class="p-4 rounded-lg ${bgColor}">
-                                    <h3 class="font-medium text-gray-700">${metric.title}</h3>
-                                    <div class="mt-2 space-y-1">
-                                        ${metric.lines.map(line => `<p class="text-gray-900 text-sm">${line}</p>`).join('')}
+                        return `<div class="p-4 rounded-lg shadow-sm ${colorClasses.bg}">
+                                    <h3 class="font-semibold ${colorClasses.text}">${metric.title}</h3>
+                                    <div class="mt-2 space-y-1 text-sm text-gray-800">
+                                        ${metric.lines.map(line => `<p>${line}</p>`).join('')}
                                     </div>
                                 </div>`;
                     }
-                    return `<div class="p-4 rounded-lg ${bgColor}">
-                                <h3 class="font-medium text-gray-700">${metric.title}</h3>
-                                <p class="text-3xl font-bold text-gray-900 mt-1">${metric.value}</p>
+                    return `<div class="p-4 rounded-lg shadow-sm ${colorClasses.bg}">
+                                <h3 class="font-semibold ${colorClasses.text}">${metric.title}</h3>
+                                <p class="text-2xl font-bold mt-1 ${colorClasses.value}">${metric.value}</p>
                                 <p class="text-xs text-gray-500 mt-1">${metric.note}</p>
                             </div>`;
                 }).join('');
@@ -190,9 +209,8 @@
 
                 return `
                     <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
-                        <h2 class="text-3xl font-bold mb-2 text-gray-900">${estate.name}</h2>
                         <p class="text-sm text-gray-500 mb-6 italic">${estate.reportInfo}</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-8">${summaryMetricsHTML}</div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                             <div><h3 class="text-xl font-semibold mb-2">FFB Yield (MT/Ha) & Rainfall (mm)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
