@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Ladang Darabif & Insan Jaya - Plantation and Agronomy Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -17,6 +18,7 @@
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -67,69 +69,79 @@
             const estateData = {
                 "id":"darabif",
                 "name":"Ladang Darabif & Insan Jaya Estate",
-                "reportInfo":"Data based on Agronomy Report 1-2025, Darabif PA Report 1-2025, and Insan Jaya PA Report 1-2025.",
+                "reportInfo":"Data based on Agronomy Report 2-2025 (Visit: Sep 2025) & Plantation Advisory Reports 1-2025 (Visit: Jun 2025).",
                 "summaryMetrics":{
                     "area":{"title":"Estate Area","lines":["Ladang Insan Jaya: 483.00 ha Mature","Ladang Darabif: 1,647.00 ha Mature","Total: 2,130.00 ha"]},
-                    "yield":{"title":"Yield/Ha (Darabif)","value":"7.47 MT","note":"-14% vs Budget (as of May 2025)"},
-                    "cost":{"title":"FFB Cost/Tonne (Darabif)","value":"RM 199.19","note":"As of May 2025"},
-                    "weeding":{"title":"Weeding Progress (Darabif)","value":"On Schedule","note":"R1 Circle Spraying Complete"},
-                    "manuring":{"title":"Manuring Progress (Combined)","value":"Behind Schedule","note":"Darabif: 71%, Insan Jaya: 46%"}
+                    "yield":{"title":"Yield/Ha (Actual vs Budget)","value":"12.86 / (N/A) MT","note":"YTD Aug 2025 (Actual). Budget N/A (periods not comparable). Darabif: -13% vs 2024."},
+                    "cost":{"title":"FFB Cost/Tonne (Actual vs Budget)","value":"RM 199.19 / (N/A)","note":"YTD May 2025 (Darabif PA Report)"},
+                    "weeding":{"title":"Weeding Progress","value":"Acceptable","note":"On schedule, but some undesirable weeds. (Agro Report, Pg. 5, 28, 48)"},
+                    "manuring":{"title":"Manuring Progress","value":"Behind Schedule","note":"Darabif: 38%, Insan Jaya: 71% (Mix B as of Aug 2025) (Agro Report, Pg. 12)"}
                 },
                 "keyMetrics":[
-                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Harvester Shortage","value":"Darabif: -16, Insan Jaya: -4"},
-                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Worker Shortage","value":"Sprayers & Manuring Staff"},
-                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>","label":"Yield Shortfall","value":"Both Estates vs Budget/Last Year"},
-                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>","label":"Harvest Interval","value":"Darabif: 23 days, Insan Jaya: 19 days"},
-                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>","label":"Roads","value":"Grading & Surfacing Delayed"},
-                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>","label":"P&D Status","value":"Minimal Rat, Ganoderma Monitored"}
+                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Labour Ratio","value":"D: 1:17, IJ: 1:15","note":"Shortfall: 20 (D: -16, IJ: -4) (PA Reports)"},
+                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Worker Shortage","value":"Sprayers & Manuring Staff (PA Reports)","note":""},
+                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>","label":"Yield Shortfall (Darabif)","value":"-13% vs 2024 (as of Aug 2025)","note":""},
+                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>","label":"Harvest Interval","value":"Darabif: 17-22, Insan Jaya: >20 days","note":""},
+                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>","label":"Roads","value":"Grading & Surfacing Delayed (PA Reports)","note":""},
+                    {"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>","label":"P&D Status","value":"Insan Jaya: High (Rats), Darabif: Low","note":""}
                 ],
                 "chartData":{
-                    "production":{"labels":["Jan-24","Feb-24","Mar-24","Apr-24","May-24","Jun-24","Jul-24","Aug-24","Sep-24","Oct-24","Nov-24","Dec-24"],"ffb":[3100,3900,3450,3400,4800,4550,4450,4650,4950,4400,3600,3300],"rainfall":[607,32,60,95,111,88,34,139,120,358,449,0],"note":"*Combined FFB production and average rainfall for 2024."},
-                    "ageProfile":{"labels":["8-19 Years","20-25 Years"],"data":[14.5,85.5],"title":"Darabif & Insan Jaya Palm Age Distribution","note":"*Combined weighted age distribution for 2025."}
+                    "production":{
+                        "labels":["Jan-25", "Feb-25", "Mar-25", "Apr-25", "May-25", "Jun-25", "Jul-25", "Aug-25"],
+                        "ffb":[2938, 2915, 2951, 3148, 3650, 4050, 4252, 4017],
+                        "rainfall":[202, 61, 202, 311, 433, 127, 21, 168],
+                        "note":"*Combined FFB production and average rainfall for 2025 (Jan-Aug). (Agro Report, Pg. 56, 57, 65)"
+                    },
+                    "ageProfile":{
+                        "labels":["8-19 Years","20-25 Years"],
+                        "data":[14.5,85.5],
+                        "title":"Darabif & Insan Jaya Palm Age Distribution",
+                        "note":"*Combined weighted age distribution for 2025. (Data from PA Report 1-2025)"
+                    }
                 },
                 "observations":[
-                    "<b>Severe Labour Shortage (Both):</b> Both estates are critically short of workers, especially harvesters (-16 at Darabif, -4 at Insan Jaya), directly impacting all field operations. Recruitment is the top priority. (Darabif PA, Pg. 10-11; Insan Jaya PA, Pg. 9-10)",
-                    "<b>Significant Yield Shortfall (Both):</b> Both estates report yields well below budget and last year's performance, a direct result of harvester shortages and extended harvesting intervals (Darabif: 23 days, Insan Jaya: 19 days). (Darabif PA, Pg. 34, 37; Insan Jaya PA, Pg. 32, 36)",
-                    "<b>Delayed Field Work (Both):</b> Manuring programs are behind schedule on both estates. Road grading and surfacing are also delayed and must be completed before the monsoon. (Darabif PA, Pg. 23, 28; Insan Jaya PA, Pg. 21, 30)",
-                    "<b>Low Harvester Productivity (Darabif):</b> Despite using machines, Darabif's harvester productivity is low and needs to improve to at least 3 tons/man-day. (Darabif PA, Pg. 35)",
-                    "<b>Harvesting Quality Issues (Both):</b> Uncollected loose fruit and harvested bunches were observed at both estates, indicating a need for tighter supervision. (Darabif PA, Pg. 36; Insan Jaya PA, Pg. 34)",
-                    "<b>Land Tapping Issue (Darabif):</b> An ongoing land tapping claim by a cooperative is interrupting activities on 30 ha of the estate. (Darabif PA, Pg. 9)"
+                    "<b>Severe Labour Shortage (PA):</b> Darabif is critically short (-16 harvesters, -5 sprayers, -5 manuring). Insan Jaya is short (-4 harvesters, -1 manuring). <span class='observation-ref'>(Darabif PA, Pg. 11; Insan Jaya PA, Pg. 10)</span>",
+                    "<b>Extended Harvesting Intervals (Agro):</b> Intervals are extended. Insan Jaya >20 days, Darabif 17-22 days, leading to poor crop recovery. <span class='observation-ref'>(Agro Report, Pg. 17, 37, 59)</span>",
+                    "<b>Manuring Program Delayed (Agro):</b> Program is ~4 months behind. Darabif Mix B 38% complete, Insan Jaya 71%. <span class='observation-ref'>(Agro Report, Pg. 4, 12, 15)</span>",
+                    "<b>High Rat Infestation (Agro - Insan Jaya):</b> Insan Jaya rat attack is \"concerning\" (>10% damage), and baiting is not fully effective. Darabif is low (<5%). <span class='observation-ref'>(Agro Report, Pg. 5, 34-35, 53)</span>",
+                    "<b>Yield Performance (Agro):</b> Darabif yield is down -13% vs 2024. Insan Jaya is up 1%. Both are impacted by labour issues. <span class='observation-ref'>(Agro Report, Pg. 7, 55, 57)</span>",
+                    "<b>Roads Delayed (PA):</b> Road grading and surfacing are delayed on both estates and must be completed before the monsoon. <span class='observation-ref'>(Darabif PA, Pg. 28; Insan Jaya PA, Pg. 30)</span>"
                 ],
                 "reports":{
                     "agronomy":{
-                        "Executive Summary":"Palm census data has not been updated since 2019. Manuring programs experienced delays, and application quality needs improvement. Harvesting intervals are extended, leading to inconsistent crop quality and over-ripe bunches, though loose fruit collection has improved. Canopy management is generally acceptable, but under-pruning and inconsistent frond stacking were observed. Weeding programs are slightly delayed, with undesirable weeds present and some over-spraying. Rat infestation is minimal, and Ganoderma infection is being monitored. Yield performance for Jan-Feb 2025 is significantly lower due to seasonal factors, and road conditions are a concern for crop evacuation. Fertilizer recommendations remain unchanged. (Agronomy Report, Pg. 4-6)",
-                        "Nutrient Inputs/Progress of Manuring":"The 2024 manuring program was completed for Ladang Darabif, and 97% completed for Ladang Insan Jaya due to adverse weather and labor shortage. Delays of 3-5 months were observed in 2024. For 2025, Ladang Darabif is 17% complete and Ladang Insan Jaya is 8% complete as of Feb 2025, progressing slower than expected. Fertilizer delivery is also slower than scheduled. Application quality needs improvement (narrow and lumpy application observed). The fertilizer store is acceptable. (Agronomy Report, Pg. 4, 12-14, 16)",
-                        "Agronomic Observations (Ladang Insan Jaya)":"Harvesting intervals are mostly exceeding 20 days, leading to significant over-ripe and rotten bunches. FFB were left overnight in some areas. Loose fruit collection is generally acceptable. Palm appearance is acceptable, but retarded growth and small bunch formation observed in some areas. Pruning is progressing well, but under-pruning and pre-mature frond snapping were observed. Frond heap management is inconsistent. Weeding program is behind schedule for circle spraying. Undesirable weeds are present. Rat damage is minimal. Ganoderma symptoms require deboling. (Agronomy Report, Pg. 17-18, 21, 24-25, 29-31)",
-                        "Agronomic Observations (Ladang Darabif)":"Harvesting intervals are extended in most blocks. Crop quality is unsatisfactory with under-ripe and significant over-ripe/unfresh bunches observed. Palm appearance is generally acceptable, but less vigor in flood-prone areas. Pruning progress for 2025 is not yet reported, with some under-pruning and pre-matured frond snapping. Inconsistent frond stacking and need for roadside pruning. Inter-row spraying is progressing well, but circle weeding is slower than expected. VOPs and Epiphytes need eradication. Rat infestation is minimal. Ganoderma infection remains under control. (Agronomy Report, Pg. 36-37, 41-43, 45-47)",
-                        "Yield Performance":"Yields in 2024 were significantly higher than the previous year for both estates. However, crop recovery was not maximized due to less than 24 harvesting rounds. For Jan-Feb 2025, cumulative yields declined significantly (-23% for Darabif, -19% for Insan Jaya) due to seasonal factors. Road maintenance is a concern for crop evacuation. (Agronomy Report, Pg. 51-52, 54)",
-                        "Fertilizer Recommendation":"The 2025 fertilizer program remains unchanged. The 2026 program will be developed after the next agronomy report. (Agronomy Report, Pg. 55)"
+                        "Executive Summary":"Palm census by drone is in progress. Manuring programs are deviated from schedule, and applications delayed. Harvesting intervals are extended (>15 days), impacting crop recovery, especially at Darabif. Rat attack at Insan Jaya is 'concerning'. Darabif yield has significantly declined, while Insan Jaya is slightly up but below expectation. Key issues are labour shortage, manuring delays, and extended harvesting intervals. (Agro Report, Pg. 4-7)",
+                        "Nutrient Inputs/Progress of Manuring":"Overall progress is below target due to limited manpower. As of Aug 2025, Darabif (Mix B) is 38% complete, and Insan Jaya (Mix B) is 71% complete. Most applications are delayed by ~4 months. Darabif's sub-soil application for 5 blocks had no progress and was changed to broadcasting. Application quality in PM15G-4 was acceptable. (Agro Report, Pg. 12-16)",
+                        "Agronomic Observations (Ladang Insan Jaya)":"Harvesting intervals are inconsistent, exceeding 20 days (up to 26 in P15G). Overripe/rotten bunches and uncollected loose fruits observed (Pg. 17-20). Hilly areas (P15G) show N-deficiency symptoms (Pg. 22). Pruning is 68-100% complete, but frond stacking is below standard (Pg. 24, 26). Weeding is effective, but undesirable vegetation and epiphytes (E1/E2) need attention (Pg. 28, 30, 32). Rat damage exceeded the 10% threshold; baiting acceptance remains high, indicating a persistent issue (Pg. 34-35).",
+                        "Agronomic Observations (Ladang Darabif)":"Harvesting intervals are not meeting targets (17-22+ days) due to manpower, but crop quality was assessed as acceptable (Pg. 37-38). Palm appearance is acceptable (Pg. 40). Pruning is 71-100% complete, but slow in PM03D. Slight under-pruning noted (P03A/P03D) (Pg. 42). Frond stacking is not satisfactory (Pg. 45). Weeding is satisfactory (84-116% complete) (Pg. 48-49). Rat damage is within the acceptable threshold (3.9-5.0%) (Pg. 53).",
+                        "Yield Performance":"Darabif: Average yield is 12.86 mt/ha, a 13% decline vs 2024 (as of Aug 2025), due to manpower limits and manuring delays. Harvesting rounds are 69-87% of target (Pg. 55-56). Insan Jaya: Average yield is 14.32 mt/ha, a 1% increase vs 2024. Performance is varied by block. Harvesting rounds are only 41-54% of target (Pg. 57-58). Key limiting factors for both estates are labour shortage and delayed fertilizer application (Pg. 59).",
+                        "Fertilizer Recommendation":"Manuring progress for 2025 is unsatisfactory. The 2026 fertilizer program has been outlined in Appendix 2. (Agro Report, Pg. 60)"
                     },
                     "plantation_darabif":{
-                        "Executive Summary":"The primary issues are a severe shortage of harvesters and field workers, causing a 14% yield shortfall and delaying manuring. Harvester productivity is low despite mechanization. Field upkeep is satisfactory, but road surfacing is urgent. (PA Report, Pg. 42-43)",
-                        "Area Statement":"Total mature area is 1,647.00 ha. A tapping rights claim affects 30 ha. Block P05/E2 (20 ha) is managed by Insan Jaya. (PA Report, Pg. 9)",
-                        "Labour Statement":"The estate is short of 16 harvesters, 5 spraying workers, and 4 manuring workers. Recruitment is planned for July. (PA Report, Pg. 10-11)",
-                        "Staff Establishment":"Significant staff changes have occurred. Current staff is adequate. (PA Report, Pg. 12-13)",
-                        "General Charges":"Spending is 30% under budget and under control. (PA Report, Pg. 14)",
-                        "Upkeep & Cultivation":"Circle spraying is complete (R1). Manuring is 71% complete but behind schedule. Pruning is on schedule. P&D is minimal. Road works are delayed. (PA Report, Pg. 15)",
-                        "Harvesting and Collection":"Costs are acceptable, but rounds are behind budget (8 vs. 10) with a 23-day interval. Harvester productivity is low. (PA Report, Pg. 34-35)",
-                        "Crop Production":"Yield is 7.47 tons/ha, 14% below budget and 22% below last year, due to harvester shortage. (PA Report, Pg. 37)",
-                        "Production Cost":"FFB cost is RM 199.19 per tonne, which is acceptable. (PA Report, Pg. 39)",
-                        "Vehicles Running Cost":"Budgeting is required for two vehicles next year. (PA Report, Pg. 40)",
+                        "Executive Summary":"Primary issues are the severe shortage of harvesters (-16) and field workers (-5 sprayers, -5 manuring). This has directly caused a 14% yield shortfall vs budget (as of May) and delayed field work. Harvester productivity is low despite mechanization. Field upkeep is satisfactory, but road surfacing is urgent. (PA Report, Pg. 11, 37, 42-43)",
+                        "Area Statement":"Total mature area is 1,647.00 ha. A tapping rights claim affects 30 ha in blocks P03/C4, C5, C6, and B1, interrupting activities. Block P05/E2 (20 ha) is managed by Insan Jaya. (PA Report, Pg. 9)",
+                        "Labour Statement":"Total 94 workers. The estate is short 16 harvesters, 5 spraying workers, and 5 manuring workers. The ratio of workers to planted ha is 1:17, which is too high. 15 harvesters and 5 sprayers are expected in July. (PA Report, Pg. 10-11)",
+                        "Staff Establishment":"Significant staff changes have occurred: the Manager resigned, Sr. Manager retired, and a new Assistant In-Charge (Tomi Hendra) and new Assistant Manager (Mohd Faies) were transferred in. (PA Report, Pg. 12-13)",
+                        "General Charges":"Expenditure is 30% underspent and remains under control. (PA Report, Pg. 14)",
+                        "Upkeep & Cultivation":"Circle spraying (R1) is 100% complete and satisfactory. Manuring is 71% complete (as of May) but behind schedule due to worker shortage and rain. Pruning (R1) is 100% complete and satisfactory. Pest & Disease is under control with minimal rat damage (1%) and sporadic Ganoderma (0.65%). Road grading (0/1719 chains) and surfacing (0/686.5 chains) had not commenced and are urgent. (PA Report, Pg. 16, 23, 25, 26, 28, 31)",
+                        "Harvesting and Collection":"Harvesting rounds are behind budget (8 vs. 10 YTD May) with an average interval of 23 days, far exceeding targets. Harvester productivity is low (1.69-2.01 MT/md) and needs to improve to at least 3 MT/md, especially as mechanization is used. Uncollected harvested bunches were also noted. (PA Report, Pg. 34-36)",
+                        "Crop Production":"Yield YTD May is 7.47 tons/ha, which is 14% below budget (8.65 tons/ha) and 22% below last year's 9.59 tons/ha. This shortfall is attributed to the harvester shortage. (PA Report, Pg. 37)",
+                        "Production Cost":"FFB cost YTD May is RM 199.19 per tonne. This is acceptable, but the Upkeep cost (RM 60.65/t) is artificially low because programmed work (like manuring and roads) has not been completed. (PA Report, Pg. 39)",
+                        "Vehicles Running Cost":"Vehicle running costs are acceptable. The estate needs to budget for the new Hilux (ALM 1918) and the General Manager's vehicle for the next financial year. (PA Report, Pg. 40)",
                         "Capital Expenditure":"No budget for Capital Expenditure. (PA Report, Pg. 41)",
                         "Immature":"N/A"
                     },
                     "plantation_insanjaya":{
-                        "Executive Summary":"Main issues are production-related, from harvester/manuring worker shortages, leading to delayed work and a 13% yield shortfall. Road maintenance is critical. (PA Report, Pg. 43)",
-                        "Area Statement":"Total planted area is 483.00 ha, all mature. (PA Report, Pg. 8)",
-                        "Labour Statement":"The estate is short of 4 harvesters and 1 manuring worker. Recruitment is planned for July. (PA Report, Pg. 9-10)",
-                        "Staff Establishment":"Staffing is adequate; new Field Conductors require training. (PA Report, Pg. 11)",
-                        "General Charges":"39% under budget, but recruitment expenses are overspent by 1300%. (PA Report, Pg. 12)",
-                        "Upkeep & Cultivation":"Circle spraying is on schedule. Manuring is behind (46% complete). Pruning is 60% complete with some quality issues. (PA Report, Pg. 13)",
-                        "Harvesting and Collection":"Costs are acceptable, but rounds are very low (6.19 vs 10 budget) with a 19-day interval due to harvester shortage. (PA Report, Pg. 32)",
-                        "Crop Production":"Yield is 7.12 tons/ha, 13% below budget and 10% below last year. (PA Report, Pg. 36)",
-                        "Production Cost":"FFB cost is RM 184.15 per tonne, which is acceptable. (PA Report, Pg. 40)",
-                        "Vehicles Running Cost":"Vehicle running cost is acceptable. (PA Report, Pg. 41)",
-                        "Capital Expenditure":"No capital expenditure budgeted. (PA Report, Pg. 42)",
+                        "Executive Summary":"Main issues are production-related, stemming from harvester (-4) and manuring worker (-1) shortages. This has led to delayed field work (manuring 46% complete) and a 13% yield shortfall vs budget (as of May). Road maintenance is critical. (PA Report, Pg. 10, 21, 36, 43)",
+                        "Area Statement":"Total planted area is 483.00 ha, all mature. No change in area statement. (PA Report, Pg. 8)",
+                        "Labour Statement":"Total 29 workers. The estate is short 4 harvesters and 1 manuring worker. 4 harvesters and 2 manuring workers are expected in July. The ratio of workers to planted ha is 1:15, which is acceptable. (PA Report, Pg. 9-10)",
+                        "Staff Establishment":"Staffing is adequate. A new Trainee Field Conductor joined in June; the new conductors require training on field operations and data interpretation. (PA Report, Pg. 11)",
+                        "General Charges":"Expenditure is 39% underspent, which is acceptable. However, 'Recruitment Expenses' was overspent by 1300% due to high immigration processing costs for 5 new workers. (PA Report, Pg. 12)",
+                        "Upkeep & Cultivation":"Circle spraying (R1) is 104% complete and satisfactory. Manuring is severely behind schedule at 46% complete (as of May) due to worker shortage. Pruning is 60% complete, but some under-pruned palms were noted (P14/F2, P15/G3). Rat damage is high at 12.8%; baiting commenced in June. Ganoderma is sporadic (0.9%). Road grading and surfacing had not commenced. (PA Report, Pg. 14, 21, 23, 26, 28, 30)",
+                        "Harvesting and Collection":"Harvesting rounds are very low (6.19 vs. 10 budget) with an average interval of 19 days due to harvester shortage. Harvester productivity was low but improved significantly in June (ranging from 2.6 to 4.3 MT/md). Uncollected loose fruits were observed and require tighter supervision. (PA Report, Pg. 32, 34, 35)",
+                        "Crop Production":"Yield YTD May is 7.12 tons/ha, which is 13% below budget (8.15 tons/ha) and 10% below last year's 7.90 tons/ha. This is due to the harvester shortage. (PA Report, Pg. 36)",
+                        "Production Cost":"FFB cost YTD May is RM 184.15 per tonne, which is acceptable. (PA Report, Pg. 40)",
+                        "Vehicles Running Cost":"Running cost for the Hilux (AKL 1918) is acceptable. (PA Report, Pg. 41)",
+                        "Capital Expenditure":"No budget for Capital Expenditure. (PA Report, Pg. 42)",
                         "Immature":"N/A"
                     },
                     "pinfosys": {
@@ -137,7 +149,7 @@
                         "Summary of Oil Palm Expenditure": "N/A"
                     }
                 },
-                "policy":"<div class='policy-item'><p class='font-semibold'>Labour Recruitment & Productivity</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> The estate was short of harvesters and field workers... More efforts to recruit workers to cover the shortage must be endeavoured. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> The estate must endeavour to recruit adequate harvesters and workers for manuring. (Pg. 43)</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> To increase harvesters' productivity, as this estate had high crop potential. To bring down the extended harvesting intervals as soon as possible. (Pg. 43)</p></div><div class='policy-item'><p class='font-semibold'>Field Operations & Upkeep</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> It is imperative that the estate complete the manuring program for this financial year. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> Ensure all field roads are in good condition and complete surfacing with crusher runs before the monsoon season sets in. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> The main issues to be the focus will be on production and well-maintained roads. (Pg. 43)</p></div><div class='policy-item'><p class='font-semibold'>Pest & Disease Control</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> Continue monitoring rat damage and Ganoderma infestations. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> To carry out 2 rounds of rat baiting initially... To commence a census regarding Ganoderma infestations and carry out deboling at the base of fallen palms. (Pg. 43)</p></div>"
+                "policy":"<div class='policy-item'><p class='font-semibold'>Labour Recruitment & Productivity</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> The estate was short of harvesters and field workers... More efforts to recruit workers to cover the shortage must be endeavoured. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> The estate must endeavour to recruit adequate harvesters and workers for manuring. (Pg. 43)</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> To increase harvesters' productivity... To bring down the extended harvesting intervals as soon as possible. (Pg. 43)</p></div><div class='policy-item'><p class='font-semibold'>Field Operations & Upkeep</p><p class='text-sm text-gray-600'><b>Agro Report Remark:</b> Manuring was deviated from the schedule... Do not allow further delay in manuring. (Pg. 4, 7)</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> It is imperative that the estate complete the manuring program for this financial year. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Darabif/Insan Jaya PA Remark:</b> Ensure all field roads are in good condition and complete surfacing with crusher runs before the monsoon season sets in. (D PA Pg. 42; IJ PA Pg. 43)</p></div><div class='policy-item'><p class='font-semibold'>Pest & Disease Control</p><p class='text-sm text-gray-600'><b>Agro Report Remark (Insan Jaya):</b> Rat attack is concerning. Rat Baiting has deviated from the standard... ensure... activities are conducted in accordance with the standard operational guidelines. (Pg. 5, 35)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> To carry out 2 rounds of rat baiting... To commence a census regarding Ganoderma infestations and carry out deboling. (Pg. 43)</p></div>"
             };
 
             let chartInstances = {};
@@ -154,20 +166,53 @@
 
             function createEstateHTML(estate) {
                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
-                    const colorClass = metric.title.includes('Area') ? 'bg-blue-50 text-blue-800' : 
-                                       metric.title.includes('Yield') ? 'bg-green-50 text-green-800' :
-                                       metric.title.includes('Cost') ? 'bg-red-50 text-red-800' :
-                                       metric.title.includes('Weeding') ? 'bg-yellow-50 text-yellow-800' : 'bg-purple-50 text-purple-800';
+                    const titleColor = metric.title.includes('Area') ? 'text-blue-800' : 
+                                       metric.title.includes('Yield') ? 'text-green-800' :
+                                       metric.title.includes('Cost') ? 'text-orange-800' :
+                                       metric.title.includes('Weeding') ? 'text-yellow-800' : 'text-purple-800';
+                    
+                    const bgColor = metric.title.includes('Area') ? 'bg-blue-50' : 
+                                       metric.title.includes('Yield') ? 'bg-green-50' :
+                                       metric.title.includes('Cost') ? 'bg-orange-50' :
+                                       metric.title.includes('Weeding') ? 'bg-yellow-50' : 'bg-purple-50';
+
                     if (metric.lines) {
-                        return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3>${metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('')}</div>`;
+                        // Area card
+                        return `<div class="p-4 rounded-lg ${bgColor} h-full">
+                                    <h3 class="font-semibold ${titleColor}">${metric.title}</h3>
+                                    ${metric.lines.map(line => `<p class="text-sm text-gray-700">${line}</p>`).join('')}
+                                </div>`;
                     }
-                    return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3><p class="text-2xl font-bold">${metric.value}</p><p class="text-xs text-gray-500 mt-1">${metric.note}</p></div>`;
+                    
+                    if (metric.title.includes('Yield') || metric.title.includes('Cost')) {
+                        // Special format for Yield and Cost
+                        const parts = metric.value.split('/');
+                        const actual = parts[0] ? parts[0].trim() : 'N/A';
+                        const budget = parts[1] ? parts[1].trim() : 'N/A';
+                        return `<div class="p-4 rounded-lg ${bgColor} h-full">
+                                    <h3 class="font-semibold ${titleColor}">${metric.title}</h3>
+                                    <p class="text-2xl font-bold text-gray-900 mt-2">${actual} / <span class="text-xl text-gray-600">${budget}</span></p>
+                                    <p class="text-xs text-gray-500 mt-1">${metric.note}</p>
+                                </div>`;
+                    }
+                    
+                    // Default cards for Weeding, Manuring
+                    return `<div class="p-4 rounded-lg ${bgColor} h-full">
+                                <h3 class="font-semibold ${titleColor}">${metric.title}</h3>
+                                <p class="text-2xl font-bold text-gray-900 mt-2">${metric.value}</p>
+                                <p class="text-xs text-gray-500 mt-1">${metric.note}</p>
+                            </div>`;
                 }).join('');
+
 
                 const keyMetricsHTML = estate.keyMetrics.map(metric => `
                     <div class="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg">
-                        <div class="bg-gray-100 p-2 rounded-full">${metric.icon}</div>
-                        <div><p class="text-sm text-gray-500">${metric.label}</p><p class="font-bold text-lg">${metric.value}</p></div>
+                        <div class="flex-shrink-0 bg-gray-100 p-2 rounded-full">${metric.icon}</div>
+                        <div>
+                            <p class="text-sm text-gray-500">${metric.label}</p>
+                            <p class="font-bold text-lg">${metric.value}</p>
+                            ${metric.note ? `<p class="text-xs text-gray-400">${metric.note}</p>` : ''}
+                        </div>
                     </div>`).join('');
 
                 const observationsHTML = estate.observations.map(obs => `<li class="ml-4">${obs}</li>`).join('');
@@ -179,17 +224,17 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
+                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall (2025)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
                         <div class="mb-8 text-center"><button class="policy-modal-btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
-                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
+                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details (Report 2-2025)</button>
                             <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
-                            <button data-dropdown-id="${estate.id}-plantation-darabif" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details (Darabif)</button>
+                            <button data-dropdown-id="${estate.id}-plantation-darabif" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details (Darabif, Report 1-2025)</button>
                             <div id="${estate.id}-plantation-darabif" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
-                            <button data-dropdown-id="${estate.id}-plantation-insanjaya" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details (Insan Jaya)</button>
+                            <button data-dropdown-id="${estate.id}-plantation-insanjaya" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details (Insan Jaya, Report 1-2025)</button>
                             <div id="${estate.id}-plantation-insanjaya" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                             <button data-dropdown-id="${estate.id}-pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Pinfosys Report Details</button>
                             <div id="${estate.id}-pinfosys" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
@@ -238,16 +283,16 @@
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
 
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (plantationDarabifDiv && estateData.reports.plantation_darabif) {
-                    plantationDarabifDiv.innerHTML = Object.entries(estateData.reports.plantation_darabif).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationDarabifDiv.innerHTML = Object.entries(estateData.reports.plantation_darabif).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (plantationInsanJayaDiv && estateData.reports.plantation_insanjaya) {
-                    plantationInsanJayaDiv.innerHTML = Object.entries(estateData.reports.plantation_insanjaya).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationInsanJayaDiv.innerHTML = Object.entries(estateData.reports.plantation_insanjaya).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                  if (pinfosysDiv && estateData.reports.pinfosys) {
-                    pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class"text-sm text-gray-600">${content}</p>`).join('');
                 }
             }
 
@@ -260,20 +305,15 @@
                         event.currentTarget.classList.toggle('active');
                     });
                 });
-                container.querySelector('.policy-modal-btn')?.addEventListener('click', openPolicyModal);
+                container.querySelector('.policy-modal-btn')?.addEventListener('click', () => openPolicyModal(estateData));
             }
 
             renderEstate();
         });
         
-        function openPolicyModal() {
+        function openPolicyModal(estateData) {
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
-            const estateData = {
-                "id":"darabif",
-                "name":"Ladang Darabif & Insan Jaya Estate",
-                "policy":"<div class='policy-item'><p class='font-semibold'>Labour Recruitment & Productivity</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> The estate was short of harvesters and field workers... More efforts to recruit workers to cover the shortage must be endeavoured. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> The estate must endeavour to recruit adequate harvesters and workers for manuring. (Pg. 43)</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> To increase harvesters' productivity, as this estate had high crop potential. To bring down the extended harvesting intervals as soon as possible. (Pg. 43)</p></div><div class='policy-item'><p class='font-semibold'>Field Operations & Upkeep</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> It is imperative that the estate complete the manuring program for this financial year. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> Ensure all field roads are in good condition and complete surfacing with crusher runs before the monsoon season sets in. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> The main issues to be the focus will be on production and well-maintained roads. (Pg. 43)</p></div><div class='policy-item'><p class='font-semibold'>Pest & Disease Control</p><p class='text-sm text-gray-600'><b>Darabif PA Remark:</b> Continue monitoring rat damage and Ganoderma infestations. (Pg. 42)</p><p class='text-sm text-gray-600'><b>Insan Jaya PA Remark:</b> To carry out 2 rounds of rat baiting initially... To commence a census regarding Ganoderma infestations and carry out deboling at the base of fallen palms. (Pg. 43)</p></div>"
-            };
             modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateData.name}`;
             modalContent.innerHTML = estateData.policy;
             document.getElementById('policyModal').classList.add('active');
@@ -285,3 +325,6 @@
     </script>
 </body>
 </html>
+
+
+
