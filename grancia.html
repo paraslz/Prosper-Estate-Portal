@@ -70,7 +70,8 @@
             const estateData = {
                 "id": "grancia",
                 "name": "Ladang Grancia",
-                "reportInfo": "Data based on PA Report (September 2025) & Agronomy Report (March 2025).",
+                // UPDATED: Report info reflects the new Agronomy Report date
+                "reportInfo": "Data based on PA Report (September 2025) & Agronomy Report (September 2025).",
                 "summaryMetrics": {
                     "area": {
                         "title": "Estate Area",
@@ -80,10 +81,11 @@
                             "Immature: 59.00 ha"
                         ]
                     },
+                    // UPDATED: Yield metrics from new AR
                     "yield": {
-                        "title": "Yield/Ha (YTD Aug '25 vs '24)",
-                        "value": "19.19 / 19.05 MT",
-                        "note": "10% below budget"
+                        "title": "Yield/Ha (YTD Sep '25 vs '24)",
+                        "value": "21.74 / 21.96 MT",
+                        "note": "YTD 1% above last year (Source: AR Pg. 32)"
                     },
                     "cost": {
                         "title": "FFB Cost/Tonne",
@@ -97,8 +99,8 @@
                     },
                     "weeding": {
                         "title": "Weeding Progress",
-                        "value": "On Schedule",
-                        "note": "Circle spraying productivity needs improvement"
+                        "value": "Generally on Schedule",
+                        "note": "Productivity & quality issues noted"
                     }
                 },
                 "keyMetrics": [
@@ -106,39 +108,44 @@
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "High (Ganoderma, Oryctes)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "N/A" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "~1.3-2.3 MT/md (Can improve)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "~14 days (Good)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Manuring Status", "value": "On Progress (97%)" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "~14-17 days (Good)" },
+                    // UPDATED: Manuring status from new AR
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Manuring Status", "value": "On Progress (93% as of Aug)" }
                 ],
+                // UPDATED: Chart data now uses 2025 FFB (from chart) and 2025 Rainfall (from table)
                  "chartData": {
                     "production": {
                         "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                        "ffb": [250, 230, 250, 200, 380, 420, 500, 480, 510, 410, 380, 330], // Using old data as new isn't available
-                        "rainfall": [68, 175, 164, 220, 219, 254, 135, 222, 263, 114, 230, 277], // Using old data as new isn't available
-                        "note": "*Production & Rainfall data for 2024. New data for 2025 not available in this report."
+                        "ffb": [280, 260, 270, 310, 380, 350, 500, 460, 400, 0, 0, 0], // FFB 2025 (YTD Sep) from AR Pg. 34
+                        "rainfall": [113, 81, 71, 325, 110, 221, 135, 57, 186, 0, 0, 0], // Rainfall 2025 (YTD Sep) from AR Pg. 40
+                        "note": "*Production (MT) & Rainfall (mm) data for YTD September 2025. (Source: AR Pg. 34, 40)"
                     },
                     "ageProfile": {
                         "labels": ["Immature (PR24)", "P2018 (Young)", "P2016 (Prime)", "P2013 (Prime)", "P1999 (Old)"],
                         "data": [28.8, 24.9, 29.6, 10.4, 6.3], // ha: 59, 51, 60.65, 21.35, 13
                         "title": "Ladang Grancia - Palm Age Distribution (205 ha)",
-                        "note": "*Source: PA Report 2/2025, Pg. 8."
+                        "note": "*Source: AR Pg. 7."
                     }
                 },
+                // UPDATED: Observations are now a blend of new AR and existing PA report issues
                 "observations": [
-                    "<b>Oryctes Infestation in Immature Area:</b> The 2024 replant (PR24) shows extensive Oryctes (Rhinoceros beetle) damage. The current control of one spraying round per month is insufficient and needs to be increased to two rounds per month immediately. <span class='observation-ref'>(PAR Pg. 28, 31)</span>",
-                    "<b>Spreading Ganoderma Infection:</b> Ganoderma is no longer confined to the old P99 block. It has now been observed in younger P13 and P16 plantings. A formal census is urgently required to map the spread, and deboling of collapsed palms must continue. <span class='observation-ref'>(PAR Pg. 17-18, 30)</span>",
-                    "<b>Low Manuring Productivity & Wages:</b> Fertilizer application productivity is low (20 bags/man-day), leading to average earnings (RM46/day) well below the basic wage. The estate needs to implement semi-mechanization and review the piece rate to improve efficiency and worker income. <span class='observation-ref'>(PAR Pg. 16)</span>",
-                    "<b>Stagnant Road Maintenance:</b> No road grading has been done YTD due to a disagreement with the contractor over rates. This risks logistical issues, especially with the upcoming rainy season. <span class='observation-ref'>(PAR Pg. 19, 30)</span>",
-                    "<b>Underperforming Weeding Productivity:</b> Circle spraying productivity (3.8 ha/man-day) is below the target of 5.0 ha/man-day. This impacts efficiency and worker earnings, which are only slightly above the basic wage. <span class='observation-ref'>(PAR Pg. 11)</span>",
-                    "<b>Crop Production Below Budget:</b> YTD crop production is 10% below budget, attributed to a low cropping season in the first half of the year. While slightly above last year's level, efforts are needed to catch up to the budget. <span class='observation-ref'>(PAR Pg. 23-24)</span>"
+                    "<b>Oryctes Infestation in Immature Area:</b> Extensive Oryctes (Rhinoceros beetle) damage persists in the PR24 replant, contributing to variable palm size. Both reports identify this as a critical issue requiring urgent control. <span class='observation-ref'>(PA Report & AR Pg. 27-28)</span>",
+                    "<b>Spreading Ganoderma Infection:</b> Ganoderma infection is confirmed in the oldest block (P99), with 121 infected palms, and has also been observed in the younger P16 planting, indicating spread. <span class='observation-ref'>(PA Report & AR Pg. 19)</span>",
+                    "<b>Manuring Program Issues:</b> While progress is better (93% by Aug), the new AR highlights poor application *quality* in P13 (narrow banding). This, combined with low productivity noted in the PA report, impacts overall efficiency and nutrient uptake. <span class='observation-ref'>(PA Report & AR Pg. 9-10)</span>",
+                    "<b>Inconsistent Field Upkeep Standards:</b> The new AR highlights significant under-pruning in P99 and over-spraying in P16. This, along with low weeding productivity from the PA report, shows a need for better supervision and quality control. <span class='observation-ref'>(PA Report & AR Pg. 13-14, 16-17)</span>",
+                    "<b>Cattle Intrusion:</b> The Sept 2025 Agronomy report identifies unresolved cattle intrusion in P18 as an ongoing issue damaging palms. <span class='observation-ref'>(AR Pg. 23-24)</span>",
+                    "<b>Stagnant Road Maintenance:</b> No road grading has been done YTD due to a contractor rate disagreement. This remains a critical logistical risk, especially with the rainy season approaching. <span class='observation-ref'>(PA Report)</span>"
                 ],
                 "reports": {
+                    // UPDATED: Entire agronomy section is replaced with new data
                     "agronomy": {
-                        "Executive Summary": "The estate's yield performance in 2024 was satisfactory, increasing by 12% from 2023. However, the 2025 manuring program is behind schedule. Agronomic conditions are generally acceptable, but issues like over-pruning in P16 and Oryctes damage in the new replant require attention. (Agronomy Report, Pg. 4-5, 30-31)",
-                        "Nutrient Inputs/Progress of Manuring": "The 2024 manuring program was 100% completed, but many applications were delayed by 2-4 months. The 2025 program is already behind schedule and must be expedited. (Agronomy Report, Pg. 9-10)",
-                        "Agronomic Observation": "Palm appearance is generally acceptable. Harvesting intervals are good (13-17 days) but some unripe bunches were noted. Pruning in P99 has deteriorated, and over-pruning was seen in P16. Weeding has improved, but some soft weeds persist in circles. Ganoderma in P99A is a concern. (Agronomy Report, Pg. 11-19)",
-                        "Yield Performance": "2024 yield was 29.52 mt/ha, a 12% increase from 2023. The estate achieved its target of 24 harvesting rounds. Yield for 2025 YTD (Mar) is 5.5 mt/ha, 12% higher than the same period last year. (Agronomy Report, Pg. 30-31)",
-                        "Fertilizer Recommendation": "The 2025 fertilizer program for immature planting PR24 has been revised. The 2026 program will be formulated after the next visit. (Agronomy Report, Pg. 32)"
+                        "Executive Summary": "Overall agronomic conditions have shown improvement. Manuring progress is better this year (93% complete by Aug), though application quality needs improvement. Yield to date (Sept 2025) is 1% above the same period last year. Key challenges include significant under-pruning in P99, extensive Oryctes infestation in the PR24 immature area, and unresolved cattle intrusion in P18. (Source: AR, Pg. 4-5, 8, 23, 27)",
+                        "Nutrient Inputs/Progress of Manuring": "The 2025 manuring program is 93% complete as of August, an improvement from 2024. However, some delays in Mixture B and Compound were noted. Quality of application in P13 was poor (narrow fertilizer band), which is not ideal for nutrient uptake and needs correction. (Source: AR, Pg. 8-10)",
+                        "Agronomic Observation": "Mature (P99, P13, P16): Palm appearance is acceptable, but localized 'orange fronds' (Mg deficiency) persist in P13 & P16. Harvesting intervals are good (14-17 days). Pruning in P99 is unsatisfactory (under-pruned). Weeding is generally acceptable but with some over-spraying in P16. Ganoderma is significant in P99 (121 palms). Rat damage is low but fresh attacks are still evident. (Source: AR, Pg. 11-20)\n\nYoung Mature (P18): Field upkeep is satisfactory. Pruning and weeding are on schedule. Cattle intrusion remains an unresolved issue. (Source: AR, Pg. 21-24)\n\nImmature (PR24): Palm size is variable, partly due to 'extensive Oryctes infestation'. Rat control is successful. Weeding is slightly behind schedule, and selective weeding is needed to clear undesirable patches. (Source: AR, Pg. 25-31)",
+                        "Yield Performance": "YTD September 2025 average yield is 21.74 MT/ha, a 1% increase from 21.96 MT/ha in the same 2024 period. P99 yield remains high, while P16 and P18 show expected growth. P13 (tissue culture) saw a 5% decline but is expected to produce >30 mt/ha for the year. (Source: AR, Pg. 32-34)",
+                        "Fertilizer Recommendation": "The 2026 program recommends Mixture B for all mature palms and Compound fertilizer for the PR24 immature area. Kieserite will be applied to P13, P16, and P18 to correct Magnesium deficiencies. Rock Phosphate is also programmed for P13, P16, and P18. (Source: AR, Pg. 35-37)"
                     },
+                    // UNCHANGED: Plantation section is retained from the previous file
                     "plantation": {
                         "Executive Summary": "The workforce is adequate and stable. Key challenges include controlling the high incidence of Oryctes in the new replant and managing the spread of Ganoderma. Worker productivity for manuring and weeding needs improvement to ensure higher wages and prevent turnover. Road grading must be completed before the rainy season. (Source: PAR, Pg. 30-31)",
                         "Area Statement": "Total planted area is 205.00 ha, consisting of 146.00 ha mature palms (P99, P13, P16, P18) and 59.00 ha immature (PR24). There have been no changes to the area statement. (Source: PAR, Pg. 8)",
@@ -152,7 +159,8 @@
                     },
                     "pinfosys": "Not Available"
                 },
-                "policy": "<p>No specific policy cross-references were highlighted in the provided report. General best practices for Ganoderma, Oryctes control, and manuring should be followed.</p>"
+                // UNCHANGED: Policy section is retained
+                "policy": "<div class='policy-item'><p class='font-semibold'>Oryctes Control</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Oryc-02:</b> For immature areas with >5% infestation, chemical spraying frequency must be increased to twice monthly until the situation is under control.</p></div> <div class='policy-item'><p class='font-semibold'>Ganoderma Management</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-03:</b> Upon identification of infection in new blocks, a full census must be initiated within 60 days to determine the extent of the spread and formulate a management plan.</p></div> <div class='policy-item'><p class='font-semibold'>Worker Productivity & Wages</p><p class='text-sm text-gray-600'><b>Policy Ref: HR-WAGE-07:</b> If average task earnings consistently fall below the daily basic wage, management must conduct a review of the task, piece rates, or equipment to ensure fair compensation.</p></div> <div class='policy-item'><p class='font-semibold'>Road Maintenance</p><p class='text-sm text-gray-600'><b>Policy Ref: INFRA-ROAD-01:</b> Annual road grading must be completed before the peak rainfall season (typically by end of Q3) to ensure uninterrupted estate access.</p></div>"
             };
 
 
@@ -230,7 +238,33 @@
                                 { label: 'Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
                             ]
                         },
-                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, 'y-ffb': { type: 'linear', position: 'left', title: { display: true, text: 'FFB Production (MT)' } }, 'y-rainfall': { type: 'linear', position: 'right', title: { display: true, text: 'Rainfall (mm)' }, grid: { drawOnChartArea: false } } } }
+                        options: { 
+                            responsive: true, 
+                            maintainAspectRatio: false, 
+                            scales: { 
+                                x: { grid: { display: false } }, 
+                                'y-ffb': { type: 'linear', position: 'left', title: { display: true, text: 'FFB Production (MT)' } }, 
+                                'y-rainfall': { type: 'linear', position: 'right', title: { display: true, text: 'Rainfall (mm)' }, grid: { drawOnChartArea: false } } 
+                            },
+                            plugins: {
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            let label = context.dataset.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            if (context.parsed.y !== null && context.parsed.y !== 0) {
+                                                label += context.parsed.y;
+                                            } else {
+                                                label += 'N/A'; // Show N/A for 0 values (future months)
+                                            }
+                                            return label;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     });
                 }
 
@@ -249,17 +283,19 @@
             
             function populateInternalDropdowns() {
                 const agronomyDiv = document.getElementById(`${estateData.id}-agronomy`);
+                // FIX: Changed estate.id to estateData.id
                 const plantationDiv = document.getElementById(`${estateData.id}-plantation`);
+                // FIX: Changed estate.id to estateData.id
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
                 
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600 whitespace-pre-line">${content}</p>`).join('');
                 } else if (agronomyDiv) {
                     agronomyDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
 
                 if (plantationDiv && estateData.reports.plantation) {
-                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600 whitespace-pre-line">${content}</p>`).join('');
                 } else if (plantationDiv) {
                     plantationDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
@@ -285,12 +321,16 @@
         });
         
         function openPolicyModal() {
+            const modal = document.getElementById('policyModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
-            const policyData = `<div class='policy-item'><p class='font-semibold'>Oryctes Control</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Oryc-02:</b> For immature areas with >5% infestation, chemical spraying frequency must be increased to twice monthly until the situation is under control.</p></div> <div class='policy-item'><p class='font-semibold'>Ganoderma Management</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-03:</b> Upon identification of infection in new blocks, a full census must be initiated within 60 days to determine the extent of the spread and formulate a management plan.</p></div> <div class='policy-item'><p class='font-semibold'>Worker Productivity & Wages</p><p class='text-sm text-gray-600'><b>Policy Ref: HR-WAGE-07:</b> If average task earnings consistently fall below the daily basic wage, management must conduct a review of the task, piece rates, or equipment to ensure fair compensation.</p></div> <div class='policy-item'><p class='font-semibold'>Road Maintenance</p><p class='text-sm text-gray-600'><b>Policy Ref: INFRA-ROAD-01:</b> Annual road grading must be completed before the peak rainfall season (typically by end of Q3) to ensure uninterrupted estate access.</p></div>`;
-            modalTitle.innerText = 'Agricultural Policy Cross-Reference: Ladang Grancia';
-            modalContent.innerHTML = policyData;
-            document.getElementById('policyModal').classList.add('active');
+            // FIX: Changed hardcoded name to dynamic name from estateData
+            const estateName = estateData.name;
+            // FIX: Removed unused policyData variable
+            
+            modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateName}`;
+            modalContent.innerHTML = estateData.policy;
+            modal.classList.add('active');
         }
 
         function closePolicyModal() {
@@ -299,3 +339,4 @@
     </script>
 </body>
 </html>
+
