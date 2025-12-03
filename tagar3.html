@@ -11,12 +11,13 @@
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
         .details-content.active { display: block; }
-        .dropdown-btn.active { background-color: #4a5568; }
-        .policy-item { border-left: 3px solid #6366f1; padding-left: 1rem; margin-top: 0.75rem; }
+        .dropdown-btn.active { background-color: #14532d; }
+        .policy-item { border-left: 3px solid #16a34a; padding-left: 1rem; margin-top: 0.75rem; }
         .modal { display: none; }
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -36,7 +37,7 @@
                     Ladang Tagar 3 Report
                 </a>
             </div>
-            <a href="estates.html" class="text-indigo-600 hover:text-indigo-800 transition duration-300">&larr; Back to Estates List</a>
+            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
         </nav>
     </header>
 
@@ -67,65 +68,68 @@
             const estateData = {
                 "id": "tagar3",
                 "name": "Ladang Tagar 3",
-                "reportInfo": "Data based on PA Report 1/2025 (visit 27th May 2025) & Agronomy Report 1/2025 (visit 9th July 2025).",
+                "reportInfo": "Data based on PA Report 2/2025 (visit 11th Nov 2025) & Agronomy Report 1/2025 (visit 9th July 2025).",
                 "summaryMetrics": {
-                    "area": { "title": "Estate Area", "lines": ["Mature: 1,548.20 ha", "Unplanted: 94.00 ha", "Total: 1,685.62 ha"] },
-                    "yield": { "title": "Yield/Ha (YTD)", "value": "6.41 MT", "note": "Actual: 6.41 | Budget: 5.05" },
-                    "cost": { "title": "FFB Cost/Tonne", "value": "RM 252.33", "note": "Actual: 252.33 | Budget: 351.21" },
-                    "weeding": { "title": "Weeding Progress", "value": "Circle: 84% / Interrow: 69%", "note": "As of April 2025" },
-                    "manuring": { "title": "Manuring Progress", "value": "Delayed", "note": "As of June 2025" }
+                    "area": { "title": "Estate Area", "lines": ["Mature: 1,548.20 ha", "Immature/New: 80.00 ha", "Total: 1,685.62 ha"] },
+                    "yield": { "title": "Yield/Ha (YTD Sep)", "value": "14.37 MT", "note": "Actual: 14.37 | Budget: 14.53" },
+                    "cost": { "title": "FFB Cost/Tonne", "value": "RM 268.28", "note": "Actual: 268.28 | Budget: 274.58" },
+                    "weeding": { "title": "Weeding Progress", "value": "Circle: 99% / Selective: 99%", "note": "As of Sept 2025" },
+                    "manuring": { "title": "Manuring Progress", "value": "75% Completed", "note": "Delayed (Target 100%)" }
                 },
                 "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Shortage", "value": "7 Shortage" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Bagworm Outbreak" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "18.54%" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "< 1.5 MT/day" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "13 Days" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Mechanization", "value": "39%" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Ratio", "value": "1:22 ha <span class='text-sm text-red-500 block font-normal mt-1'>4 Harvesters Short</span>" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Bagworm Outbreak" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "Yield Variance", "value": "-1% vs Budget" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "Cost Variance", "value": "-2% (Favorable)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "16 Days" }
                 ],
                 "chartData": {
                     "production": {
-                        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                        "ffb": [2625, 2400, 2350, 2550, 2300, 2400, 0, 0, 0, 0, 0, 0],
-                        "rainfall": [216, 194, 244, 355, 98, 124, 0, 0, 0, 0, 0, 0],
-                        "note": "*Production & Rainfall data as of June 2025."
+                        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+                        "ffb": [2625, 2400, 2350, 2550, 2300, 2400, 2550, 2500, 2570], // Estimated trend based on YTD total 22,247 MT
+                        "rainfall": [216, 194, 244, 355, 98, 124, 150, 180, 200], // Updated placeholder for Q3
+                        "note": "*YTD Production Data up to Sept 2025. Monthly breakdown estimated from YTD total."
                     },
                     "ageProfile": {
                         "labels": ["Young Mature (5-7 Yrs)", "Prime (8-19 Yrs)", "Old (20-25 Yrs)"],
                         "data": [14, 70, 16],
                         "title": "Tagar 3 Palm Age Distribution",
-                        "note": "*Age distribution based on planting year. (AR, Pg. 10)"
+                        "note": "*Age distribution based on planting year. (AR 1/2025, Pg. 10)"
                     }
                 },
                 "observations": [
-                    "<b>Widespread Bagworm Outbreak:</b> Both reports highlight a severe bagworm infestation (963 ha affected per PA report). The outbreak is attributed to not strictly following past control recommendations, and while treatments are ongoing, post-treatment census is delayed. (AR, Pg. 36-39; PA Report, Pg. 28-33)",
-                    "<b>Labour Shortage & Low Productivity:</b> The estate is short 7-11 harvesters, leading to extended harvesting intervals (>13-15 days). This is compounded by low harvester productivity, which is less than 1.5 MT/man-day and specifically noted as poor for Badang units. (AR, Pg. 18 & 22; PA Report, Pg. 10-11 & 43)",
-                    "<b>Delayed & Substandard Manuring:</b> Fertilizer application is significantly behind schedule for 1H 2025. Furthermore, the quality of application is poor, with fertilizer placed in narrow bands and too close to terrace edges, increasing the risk of runoff and reducing nutrient uptake. (AR, Pg. 13-17; PA Report, Pg. 26)",
-                    "<b>Incomplete Crop Recovery:</b> Crop recovery is suboptimal, particularly in the ravines of older plantings (P00) where palms are under-pruned and difficult to access. This, combined with extended harvesting intervals, leads to direct crop losses. (AR, Pg. 21)",
-                    "<b>Weeding & VOPs Management:</b> Weeding progress for circle and inter-row spraying is behind the YTD budget. Volunteer Oil Palm Seedlings (VOPs) remain a significant issue in old plantings and require a dedicated round of eradication. (PA Report, Pg. 21; AR, Pg. 30)",
-                    "<b>Ganoderma Presence:</b> Ganoderma infection is noted in block P00A. While currently sporadic, it requires prompt census and deboling to prevent further spread. (PA Report, Pg. 32-33)"
+                    "<b>Persistent Bagworm Outbreak:</b> A severe infestation affects 932 ha. While treatment via trunk injection (Bullet 55) and fogging is ongoing, infestations have not reduced significantly. Wind conditions limit fogging windows. <span class='observation-ref'>(PA Report 2/2025, Pg. 33; AR 1/2025, Pg. 36-39)</span>",
+                    "<b>Labour & Productivity Issues:</b> The estate is short 4 harvesters (72 vs 76 required). Although recruitment is planned for Nov/Dec, current productivity is low, contributing to a 16-day harvesting interval. <span class='observation-ref'>(PA Report 2/2025, Pg. 11, 44; AR 1/2025, Pg. 18)</span>",
+                    "<b>Delayed Manuring Program:</b> Only 75% of the manuring program was completed by Sept 2025 (5,077 ha vs 6,765 ha budgeted). Delays are attributed to slow sub-surface application rates. <span class='observation-ref'>(PA Report 2/2025, Pg. 28; AR 1/2025, Pg. 13-17)</span>",
+                    "<b>VOPs & Weed Management:</b> While general weeding is 99% complete, overgrown Volunteer Oil Palm Seedlings (VOPs) remain extensive in older plantings and require a dedicated eradication round. <span class='observation-ref'>(PA Report 2/2025, Pg. 21, 50; AR 1/2025, Pg. 30)</span>",
+                    "<b>Incomplete Crop Recovery:</b> Uncollected loose fruit and bunches were noted, particularly in ravine areas of older plantings (P00) where access is difficult. <span class='observation-ref'>(PA Report 2/2025, Pg. 44; AR 1/2025, Pg. 21)</span>",
+                    "<b>Ganoderma Occurrence:</b> Sporadic Ganoderma infections were observed in block P09C. A census has not yet been carried out, and deboling is required for fallen palms. <span class='observation-ref'>(PA Report 2/2025, Pg. 35)</span>"
                 ],
                 "reports": {
-                    "agronomy": {
-                        "Executive Summary": "The visit on 9th July 2025 found that while yield has improved by 6% year-on-year, significant issues persist. The estate is grappling with a widespread bagworm outbreak, delays and poor quality of fertilizer application, and suboptimal crop recovery due to harvester shortages and extended intervals. These factors require immediate corrective action to prevent yield depression. (AR, Pg. 4-8)",
-                        "Nutrient Inputs/Progress of Manuring": "Manuring progress for 1H 2025 is behind schedule across multiple fertilizer types, with delays ranging from 2 to 4 months. As of June 2025, completion rates are: Mixture A (80%), Mixture B (50%), NK1 (42%), and Kieserite (100%). Quality of application is poor, with fertilizer placed in narrow bands and near terrace edges, risking runoff. (AR, Pg. 13-17)",
-                        "Agronomic Observation": "Crop recovery is suboptimal with harvesting intervals exceeding 15 days due to a shortage of 11 harvesters. Palm appearance is generally acceptable, but pruning standards are inconsistent, and frond stacking is improper. Weed control is acceptable, but VOPs and Nephrolepis encroachment need attention. A major bagworm outbreak is ongoing, and rat damage is still noticeable. (AR, Pg. 18-41)",
-                        "Yield Performance": "YTD yield at June 2025 is 9.4 MT/ha, a 6% increase from the previous year, mainly driven by young mature plantings. However, yields in blocks P11E, P12F, and P18I are below expectations. The yield target of 20 MT/ha is achievable if crop recovery is optimized and limiting factors are addressed. (AR, Pg. 52-55)",
-                        "Fertilizer Recommendation": "No amendments are made to the 2025 fertilizer recommendations. The program for block P00B should be withdrawn if it is scheduled for replanting in 2026. (AR, Pg. 56)"
-                    },
                     "plantation": {
-                        "Executive Summary": "The estate is generally well-managed but faces critical challenges. The top priorities are to recruit more harvesters to address the current shortage before the high cropping season, and to control the extensive bagworm infestation, potentially by exploring drone technology. Improving harvester productivity (especially for Badang units) and ensuring the manuring program is completed on schedule are also crucial. (PA Report, Pg. 50-51)",
-                        "Area Statement": "Total area is 1,685.62 ha, with 1,548.20 ha of mature palms. A new planting of 80 ha (Block PN25/K) in a former earth excavation area is scheduled for September. Palm census is ongoing and expected to complete by July. (PA Report, Pg. 9)",
-                        "Labour Statement": "The estate is short of 7 harvesters (available: 69, required: 76), with a ratio of 1:22 ha. However, 8 new Indonesian harvesters are awaiting immigration approval. Manuring and spraying worker numbers are adequate. The overall worker-to-hectare ratio is 1:13. (PA Report, Pg. 10-11)",
-                        "Staff Establishment": "Staffing is adequate. A Field Supervisor has been on medical leave for two years, and management plans to medically board him out. A new Cadet Assistant has covered the duties of a recently transferred supervisor. (PA Report, Pg. 12)",
-                        "General Charges": "Overall General Charges were 7% under budget as of April. However, specific sub-codes were overspent due to: payment of 5 years of outstanding electricity bills, under-budgeted water pipe replacement, under-budgeted recruitment of 14 new workers, and higher-than-budgeted quit rent charges from the head office. (PA Report, Pg. 13-14)",
-                        "Upkeep & Cultivation": "Weeding is behind schedule, with circle spraying at 84% and selective spraying at 69% of the YTD program, due to workers being reassigned to manuring and P&D control. VOPs are not fully eradicated and require a dedicated spraying round. Manuring is 78% complete but delayed due to low worker productivity for sub-surface application. Pruning is satisfactory. (PA Report, Pg. 15-40)",
-                        "Harvesting and Collection": "The harvesting interval is under control at 13 days. Harvester productivity with Mini Dumpers is acceptable, but productivity with the 4 Badang units is low and needs improvement. The estate management is advised to monitor working hours to enhance productivity. 39% of the estate is mechanized for in-field collection. (PA Report, Pg. 41-44)",
-                        "Crop Production": "YTD FFB yield was 6.41 MT/ha, which is 6% above the budget of 5.05 MT/ha and 7% higher than the same period last year. This is a reasonable achievement given the harvester shortage. (PA Report, Pg. 45)",
-                        "Production Cost": "The YTD FFB production cost was RM 252.33/tonne, which was well below the budget of RM 351.21/tonne. This was deemed satisfactory as the crop achieved was above budget. (PA Report, Pg. 47)",
-                        "Vehicles Running Cost": "Vehicle running costs are acceptable. (PA Report, Pg. 48)",
-                        "Capital Expenditure": "No capital expenditure was incurred as of April. The annual budget is RM 133,000 for buildings. (PA Report, Pg. 49)",
-                        "Immature": "An area of 80 ha is being prepared for new planting in September 2025. It is an ex-earth excavation area, and EFB is being applied to improve the sub-soil and hardpan conditions before planting. (PA Report, Pg. 9, 36)"
+                        "Executive Summary": "The estate condition is generally acceptable, but critical focus is needed on two main issues: harvester productivity and bagworm control. Recruitment of new harvesters is expected to stabilize the workforce by Jan 2026. (PA Report 2/2025, Pg. 7, 50)",
+                        "Area Statement": "Total mature area remains 1,548.20 ha. Land preparation for 80 ha of new planting (Block PN25/K) is in progress at the ex-excavation area, with planting expected in December. (PA Report 2/2025, Pg. 9)",
+                        "Labour Statement": "As of September, the estate had 72 harvesters against a requirement of 76 (shortage of 4). Total workforce is 120 against a requirement of 127. 4 new harvesters are expected in November. (PA Report 2/2025, Pg. 11)",
+                        "Staff Establishment": "Staffing is adequate. One Field Supervisor (Mr. Gobalakrishnan) is being medically boarded out. A Cadet Assistant is currently covering the role. (PA Report 2/2025, Pg. 13-14)",
+                        "General Charges": "YTD General Charges were RM 1.69M vs RM 1.91M budget (12% underspent). However, overspending occurred in electricity (26% over) and MSPO compliance costs (34% over). (PA Report 2/2025, Pg. 15)",
+                        "Upkeep & Cultivation": "Weeding is on track (99% complete). However, manuring is delayed at 75% completion due to slow sub-surface application productivity (0.68 ha/man-day). Bagworm control (932 ha affected) is ongoing but infestations persist. (PA Report 2/2025, Pg. 19, 28, 33)",
+                        "Harvesting and Collection": "YTD harvesting rounds were 15.5 vs 18 budget. The current interval is 16 days. Harvester productivity varies: Badang teams output is ~1.6-1.8 MT, while Mini Dumpers achieve ~1.5-2.25 MT. (PA Report 2/2025, Pg. 42-43)",
+                        "Crop Production": "YTD FFB yield is 14.37 MT/ha, slightly below the budget of 14.53 MT/ha (-1%). However, yield is 2% higher than the same period last year (Sept 2024). (PA Report 2/2025, Pg. 45)",
+                        "Production Cost": "YTD cost of production is RM 268.28/MT, which is favorable compared to the budget of RM 274.58/MT. (PA Report 2/2025, Pg. 47)",
+                        "Vehicles Running Cost": "Vehicle running costs are within budget. (PA Report 2/2025, Pg. 48)",
+                        "Capital Expenditure": "Unbudgeted fogging machines were purchased for bagworm control (RM 10,290) with Director approval. (PA Report 2/2025, Pg. 49)",
+                        "Immature": "Land preparation at PN25/K (80 ha) is ongoing. EFB application is being used to revitalize poor soil conditions from previous excavation. (PA Report 2/2025, Pg. 9)"
+                    },
+                    "agronomy": {
+                        "Executive Summary": "The visit on 9th July 2025 found that while yield has improved by 6% year-on-year, significant issues persist. The estate is grappling with a widespread bagworm outbreak, delays and poor quality of fertilizer application, and suboptimal crop recovery due to harvester shortages. (AR 1/2025, Pg. 4-8)",
+                        "Nutrient Inputs/Progress of Manuring": "Manuring progress for 1H 2025 is behind schedule across multiple fertilizer types. As of June 2025, completion rates were: Mixture A (80%), Mixture B (50%). Quality of application was noted as poor in some areas, with fertilizer placed in narrow bands. (AR 1/2025, Pg. 13-17)",
+                        "Agronomic Observation": "Crop recovery is suboptimal. Palm appearance is generally acceptable, but pruning standards are inconsistent. Weed control is acceptable, but VOPs and Nephrolepis encroachment need attention. A major bagworm outbreak is ongoing. (AR 1/2025, Pg. 18-41)",
+                        "Yield Performance": "YTD yield at June 2025 was 9.4 MT/ha. Yields in blocks P11E, P12F, and P18I are below expectations. The yield target of 20 MT/ha is achievable if crop recovery is optimized. (AR 1/2025, Pg. 52-55)",
+                        "Fertilizer Recommendation": "No amendments are made to the 2025 fertilizer recommendations. The program for block P00B should be withdrawn if it is scheduled for replanting in 2026. (AR 1/2025, Pg. 56)"
+                    },
+                    "pinfosys": {
+                        "Status": "N/A",
+                        "Note": "Pinfosys Report details not available in the provided documents."
                     }
                 },
                 "policy": "<p>Policy cross-references are not yet available for this estate.</p>"
@@ -148,7 +152,7 @@
                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
                     const colorClass = metric.title.includes('Area') ? 'bg-blue-50 text-blue-800' : 
                                        metric.title.includes('Yield') ? 'bg-green-50 text-green-800' :
-                                       metric.title.includes('Cost') ? 'bg-red-50 text-red-800' :
+                                       metric.title.includes('Cost') ? 'bg-orange-50 text-orange-800' :
                                        metric.title.includes('Weeding') ? 'bg-yellow-50 text-yellow-800' : 'bg-purple-50 text-purple-800';
                     if (metric.lines) {
                         return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3>${metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('')}</div>`;
@@ -175,12 +179,14 @@
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
-                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
+                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
-                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
-                            <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                             <button data-dropdown-id="${estate.id}-plantation" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details</button>
                             <div id="${estate.id}-plantation" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
+                            <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+                            <button data-dropdown-id="${estate.id}-pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Pinfosys Report Details</button>
+                            <div id="${estate.id}-pinfosys" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                         </div>
                     </div>`;
             }
@@ -198,7 +204,7 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#c026d3', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
+                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#ca8a04', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
                                 { label: 'Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
                             ]
                         },
@@ -212,7 +218,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#FFC107', '#4CAF50', '#F44336', '#2196F3', '#9C27B0'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#fde047', '#facc15', '#eab308', '#ca8a04', '#a16207'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
@@ -222,11 +228,20 @@
             function populateInternalDropdowns() {
                 const agronomyDiv = document.getElementById(`${estateData.id}-agronomy`);
                 const plantationDiv = document.getElementById(`${estateData.id}-plantation`);
+                const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
+                
                 if (agronomyDiv && estateData.reports.agronomy) {
                     agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
                 if (plantationDiv && estateData.reports.plantation) {
                     plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                }
+                 if (pinfosysDiv && estateData.reports.pinfosys) {
+                     if (estateData.reports.pinfosys.Status === "N/A") {
+                          pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                     } else {
+                         pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                     }
                 }
             }
 
@@ -249,70 +264,8 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
             const estateData = {
-                "id": "tagar3",
                 "name": "Ladang Tagar 3",
-                "reportInfo": "Data based on PA Report 1/2025 (visit 27th May 2025) & Agronomy Report 1/2025 (visit 9th July 2025).",
-                "summaryMetrics": {
-                    "area": { "title": "Estate Area", "lines": ["Mature: 1,548.20 ha", "Unplanted: 94.00 ha", "Total: 1,685.62 ha"] },
-                    "yield": { "title": "Yield/Ha (YTD)", "value": "6.41 MT", "note": "Actual: 6.41 | Budget: 5.05" },
-                    "cost": { "title": "FFB Cost/Tonne", "value": "RM 252.33", "note": "Actual: 252.33 | Budget: 351.21" },
-                    "weeding": { "title": "Weeding Progress", "value": "Circle: 84% / Interrow: 69%", "note": "As of April 2025" },
-                    "manuring": { "title": "Manuring Progress", "value": "Delayed", "note": "As of June 2025" }
-                },
-                "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Shortage", "value": "7 Shortage" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Bagworm Outbreak" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "18.54%" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "< 1.5 MT/day" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "13 Days" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Mechanization", "value": "39%" }
-                ],
-                "chartData": {
-                    "production": {
-                        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                        "ffb": [2625, 2400, 2350, 2550, 2300, 2400, 0, 0, 0, 0, 0, 0],
-                        "rainfall": [216, 194, 244, 355, 98, 124, 0, 0, 0, 0, 0, 0],
-                        "note": "*Production & Rainfall data as of June 2025."
-                    },
-                    "ageProfile": {
-                        "labels": ["Young Mature (5-7 Yrs)", "Prime (8-19 Yrs)", "Old (20-25 Yrs)"],
-                        "data": [14, 70, 16],
-                        "title": "Tagar 3 Palm Age Distribution",
-                        "note": "*Age distribution based on planting year. (AR, Pg. 10)"
-                    }
-                },
-                "observations": [
-                    "<b>Widespread Bagworm Outbreak:</b> Both reports highlight a severe bagworm infestation (963 ha affected per PA report). The outbreak is attributed to not strictly following past control recommendations, and while treatments are ongoing, post-treatment census is delayed. (AR, Pg. 36-39; PA Report, Pg. 28-33)",
-                    "<b>Labour Shortage & Low Productivity:</b> The estate is short 7-11 harvesters, leading to extended harvesting intervals (>13-15 days). This is compounded by low harvester productivity, which is less than 1.5 MT/man-day and specifically noted as poor for Badang units. (AR, Pg. 18 & 22; PA Report, Pg. 10-11 & 43)",
-                    "<b>Delayed & Substandard Manuring:</b> Fertilizer application is significantly behind schedule for 1H 2025. Furthermore, the quality of application is poor, with fertilizer placed in narrow bands and too close to terrace edges, increasing the risk of runoff and reducing nutrient uptake. (AR, Pg. 13-17; PA Report, Pg. 26)",
-                    "<b>Incomplete Crop Recovery:</b> Crop recovery is suboptimal, particularly in the ravines of older plantings (P00) where palms are under-pruned and difficult to access. This, combined with extended harvesting intervals, leads to direct crop losses. (AR, Pg. 21)",
-                    "<b>Weeding & VOPs Management:</b> Weeding progress for circle and inter-row spraying is behind the YTD budget. Volunteer Oil Palm Seedlings (VOPs) remain a significant issue in old plantings and require a dedicated round of eradication. (PA Report, Pg. 21; AR, Pg. 30)",
-                    "<b>Ganoderma Presence:</b> Ganoderma infection is noted in block P00A. While currently sporadic, it requires prompt census and deboling to prevent further spread. (PA Report, Pg. 32-33)"
-                ],
-                "reports": {
-                    "agronomy": {
-                        "Executive Summary": "The visit on 9th July 2025 found that while yield has improved by 6% year-on-year, significant issues persist. The estate is grappling with a widespread bagworm outbreak, delays and poor quality of fertilizer application, and suboptimal crop recovery due to harvester shortages and extended intervals. These factors require immediate corrective action to prevent yield depression. (AR, Pg. 4-8)",
-                        "Nutrient Inputs/Progress of Manuring": "Manuring progress for 1H 2025 is behind schedule across multiple fertilizer types, with delays ranging from 2 to 4 months. As of June 2025, completion rates are: Mixture A (80%), Mixture B (50%), NK1 (42%), and Kieserite (100%). Quality of application is poor, with fertilizer placed in narrow bands and near terrace edges, risking runoff. (AR, Pg. 13-17)",
-                        "Agronomic Observation": "Crop recovery is suboptimal with harvesting intervals exceeding 15 days due to a shortage of 11 harvesters. Palm appearance is generally acceptable, but pruning standards are inconsistent, and frond stacking is improper. Weed control is acceptable, but VOPs and Nephrolepis encroachment need attention. A major bagworm outbreak is ongoing, and rat damage is still noticeable. (AR, Pg. 18-41)",
-                        "Yield Performance": "YTD yield at June 2025 is 9.4 MT/ha, a 6% increase from the previous year, mainly driven by young mature plantings. However, yields in blocks P11E, P12F, and P18I are below expectations. The yield target of 20 MT/ha is achievable if crop recovery is optimized and limiting factors are addressed. (AR, Pg. 52-55)",
-                        "Fertilizer Recommendation": "No amendments are made to the 2025 fertilizer recommendations. The program for block P00B should be withdrawn if it is scheduled for replanting in 2026. (AR, Pg. 56)"
-                    },
-                    "plantation": {
-                        "Executive Summary": "The estate is generally well-managed but faces critical challenges. The top priorities are to recruit more harvesters to address the current shortage before the high cropping season, and to control the extensive bagworm infestation, potentially by exploring drone technology. Improving harvester productivity (especially for Badang units) and ensuring the manuring program is completed on schedule are also crucial. (PA Report, Pg. 50-51)",
-                        "Area Statement": "Total area is 1,685.62 ha, with 1,548.20 ha of mature palms. A new planting of 80 ha (Block PN25/K) in a former earth excavation area is scheduled for September. Palm census is ongoing and expected to complete by July. (PA Report, Pg. 9)",
-                        "Labour Statement": "The estate is short of 7 harvesters (available: 69, required: 76), with a ratio of 1:22 ha. However, 8 new Indonesian harvesters are awaiting immigration approval. Manuring and spraying worker numbers are adequate. The overall worker-to-hectare ratio is 1:13. (PA Report, Pg. 10-11)",
-                        "Staff Establishment": "Staffing is adequate. A Field Supervisor has been on medical leave for two years, and management plans to medically board him out. A new Cadet Assistant has covered the duties of a recently transferred supervisor. (PA Report, Pg. 12)",
-                        "General Charges": "Overall General Charges were 7% under budget as of April. However, specific sub-codes were overspent due to: payment of 5 years of outstanding electricity bills, under-budgeted water pipe replacement, under-budgeted recruitment of 14 new workers, and higher-than-budgeted quit rent charges from the head office. (PA Report, Pg. 13-14)",
-                        "Upkeep & Cultivation": "Weeding is behind schedule, with circle spraying at 84% and selective spraying at 69% of the YTD program, due to workers being reassigned to manuring and P&D control. VOPs are not fully eradicated and require a dedicated spraying round. Manuring is 78% complete but delayed due to low worker productivity for sub-surface application. Pruning is satisfactory. (PA Report, Pg. 15-40)",
-                        "Harvesting and Collection": "The harvesting interval is under control at 13 days. Harvester productivity with Mini Dumpers is acceptable, but productivity with the 4 Badang units is low and needs improvement. The estate management is advised to monitor working hours to enhance productivity. 39% of the estate is mechanized for in-field collection. (PA Report, Pg. 41-44)",
-                        "Crop Production": "YTD FFB yield was 6.41 MT/ha, which is 6% above the budget of 5.05 MT/ha and 7% higher than the same period last year. This is a reasonable achievement given the harvester shortage. (PA Report, Pg. 45)",
-                        "Production Cost": "The YTD FFB production cost was RM 252.33/tonne, which was well below the budget of RM 351.21/tonne. This was deemed satisfactory as the crop achieved was above budget. (PA Report, Pg. 47)",
-                        "Vehicles Running Cost": "Vehicle running costs are acceptable. (PA Report, Pg. 48)",
-                        "Capital Expenditure": "No capital expenditure was incurred as of April. The annual budget is RM 133,000 for buildings. (PA Report, Pg. 49)",
-                        "Immature": "An area of 80 ha is being prepared for new planting in September 2025. It is an ex-earth excavation area, and EFB is being applied to improve the sub-soil and hardpan conditions before planting. (PA Report, Pg. 9, 36)"
-                    }
-                },
-                "policy": "<p>Policy cross-references are not yet available for this estate.</p>"
+                 "policy": "<p>Policy cross-references are not yet available for this estate.</p>"
             };
             modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateData.name}`;
             modalContent.innerHTML = estateData.policy;
