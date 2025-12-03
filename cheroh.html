@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Cheroh Estate - Plantation and Agronomy Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,12 +12,13 @@
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
         .details-content.active { display: block; }
-        .dropdown-btn.active { background-color: #4a5568; }
-        .policy-item { border-left: 3px solid #6366f1; padding-left: 1rem; margin-top: 0.75rem; }
+        .dropdown-btn.active { background-color: #14532d; }
+        .policy-item { border-left: 3px solid #16a34a; padding-left: 1rem; margin-top: 0.75rem; }
         .modal { display: none; }
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -36,7 +38,7 @@
                     Cheroh Estate Report
                 </a>
             </div>
-            <a href="estates.html" class="text-indigo-600 hover:text-indigo-800 transition duration-300">&larr; Back to Estates List</a>
+            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
         </nav>
     </header>
 
@@ -68,65 +70,86 @@
             const estateData = {
                 "id": "cheroh",
                 "name": "Cheroh Estate",
-                "reportInfo": "Data based on Plantation Advisory Report 1/2025 (Visit for Jan-May 2025).",
+                "reportInfo": "Data based on PA Report 1/2025 (Jan-May) & Agronomy Report 2/2025 (Oct 2025).",
                 "summaryMetrics": {
-                    "area": { "title": "Estate Area", "lines": ["Mature: 980.22 ha", "Immature: 106.33 ha", "Replanting: 111.34 ha", "Total: 1,212.22 ha"] },
-                    "yield": { "title": "Yield/Ha (Jan-May 2025)", "value": "5.04 MT", "note": "-33% vs 2024" },
-                    "labour": { "title": "Labour Shortage", "value": "Critical", "note": "Harvesters & Sprayers" },
-                    "weeding": { "title": "Weeding Progress", "value": "Delayed", "note": "Circle: ~59%, Selective: ~49%" },
-                    "manuring": { "title": "Manuring Progress", "value": "33% (Slow)", "note": "As of May 2025" }
+                    "area": { 
+                        "title": "Estate Area", 
+                        "lines": [
+                            "Mature: ~984.72 ha", 
+                            "Immature: 106.33 ha", 
+                            "Replanting: 111.34 ha", 
+                            "Total: 1,226.34 ha"
+                        ] 
+                    },
+                    "yield": { 
+                        "title": "Yield/Ha (Actual vs 2024)", 
+                        "value": "11.16 / 13.26 MT", 
+                        "note": "YTD Sept 2025 (-15.8% vs 2024)" 
+                    },
+                    "labour": { 
+                        "title": "Labour Shortage", 
+                        "value": "Short (6)", 
+                        "note": "Harvesters & Sprayers" 
+                    },
+                    "weeding": { 
+                        "title": "Weeding Progress", 
+                        "value": "Delayed", 
+                        "note": "Inter-row behind schedule" 
+                    },
+                    "manuring": { 
+                        "title": "Manuring Progress", 
+                        "value": "42% (Critical)", 
+                        "note": "As of Sept 2025" 
+                    }
                 },
                 "keyMetrics": [
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Ratio", "value": "1:31 ha (Shortage)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Under Control (Ganoderma seen)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Cattle Intrusion (Replanting)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "N/A" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "Acceptable (some areas low)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "15 days (Target <15)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Roads", "value": "Variable (Maintenance needed)" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "Low (<2 rounds/month)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": ">20 days (Poor)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "N & P Low (Selected Areas)" }
                 ],
                 "chartData": {
                     "production": {
-                        "labels": ["Jan-May 2024", "Jan-May 2025"],
-                        "ffb": [6928.45, 4945.04],
-                        "note": "*Total FFB production comparison. Yield dropped 33% due to harvester shortage. (PA Report, Pg. 31)"
+                        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+                        "ffb2024": [1376, 1222, 1308, 1228, 1794, 1628, 1573, 1530, 1895],
+                        "ffb2025": [662, 658, 991, 1279, 1355, 1388, 1608, 1539, 1463],
+                        "note": "*Monthly FFB Production (MT). 2025 (Yellow) vs 2024 (Grey). (Source: AR 2/2025, Pg. 63)"
                     },
                     "ageProfile": {
-                        "labels": ["7-14 Years", "15-24 Years", ">25 Years"],
-                        "data": [24, 46, 30],
-                        "title": "Cheroh Palm Age Distribution (Mature Area)",
-                        "note": "*Age distribution calculated from area statement. (PA Report, Pg. 8)"
+                        "labels": ["Old (1996-1998)", "Prime (2000-2015)", "Young Mature (2018)", "Immature/Replant (2023-2024)"],
+                        "data": [146, 922, 37, 218],
+                        "title": "Cheroh Palm Age Distribution (Hectares)",
+                        "note": "*Based on Block System. (Source: AR 2/2025, Pg. 9)"
                     }
                 },
                 "observations": [
-                    "<b>Critical Labour Shortage:</b> The estate is acutely short of harvesters (ratio 1:31 ha) and sprayers, which is the primary cause for low crop, delayed weeding, and manuring. (PA Report, Pg. 11-12, 42)",
-                    "<b>Significant Yield Drop:</b> Yield for Jan-May 2025 is 5.04 MT/ha, a 33% drop from the same period in 2024, attributed to extended harvesting intervals and crop losses. (PA Report, Pg. 31)",
-                    "<b>Delayed Weeding & Manuring:</b> All weeding and manuring programs are significantly behind schedule due to sprayer and worker shortages. (PA Report, Pg. 14, 18, 23)",
-                    "<b>Variable Road Conditions:</b> Roads are in variable condition, with some badly rutted and damaged, requiring grading and maintenance. (PA Report, Pg. 25-26)",
-                    "<b>Slow Progress in Immature Areas:</b> Weeding, manuring, and supplying in PR23 are delayed. Palm planting in PR24 is slow and must be completed by July 2025. (PA Report, Pg. 36, 39)",
-                    "<b>High Worker Turnover:</b> High turnover of workers is a noted concern, impacting operational stability. (PA Report, Pg. 6)"
+                    "<b>Yield Decline:</b> Cumulative yield as of Sept 2025 is 11.16 MT/ha, a 15.8% decline compared to 2024. This is largely due to harvesting intervals exceeding 20 days. <span class='observation-ref'>(Source: AR 2/2025, Pg. 4, 56)</span>",
+                    "<b>Critical Manuring Delays:</b> Only 42% of the annual fertilizer program was completed by Sept 2025. Delays are due to labour shortages and weather. <span class='observation-ref'>(Source: AR 2/2025, Pg. 4, 12)</span>",
+                    "<b>Labour Shortage:</b> The estate is short of 6 harvesters and several sprayers. High turnover is impacting all field operations. <span class='observation-ref'>(Source: AR 2/2025, Pg. 38; PA Report, Pg. 11)</span>",
+                    "<b>Cattle Intrusion (Replanting):</b> Severe foliage damage from cattle intrusion was observed in PR25A (Replanting). Perimeter trenches have proven ineffective. <span class='observation-ref'>(Source: AR 2/2025, Pg. 7, 53)</span>",
+                    "<b>Weeding Backlogs:</b> Inter-row weeding is behind schedule, with only 1 round completed in most fields. Ageratum conyzoides infestation noted in P11M/P10L. <span class='observation-ref'>(Source: AR 2/2025, Pg. 29-30)</span>",
+                    "<b>Harvesting Standards:</b> Intervals often exceeded 20 days, resulting in only 1.21 rounds per month on average. This causes crop quality deterioration. <span class='observation-ref'>(Source: AR 2/2025, Pg. 4, 17)</span>"
                 ],
                 "reports": {
                     "agronomy": {
-                        "Executive Summary": "N/A",
-                        "Nutrient inputs/progress of manuring": "N/A",
-                        "Agronomic observation": "N/A",
-                        "Yield performance": "N/A",
-                        "Fertilizer recommendation": "N/A"
+                        "Executive Summary": "Manuring progress is critically slow at 42% as of Sept 2025. Harvesting intervals exceed 20 days due to worker shortages, leading to a 15.8% drop in YTD yield (11.16 MT/ha) compared to 2024. Replanting areas (PR25) suffer from cattle damage. (Source: AR 2/2025, Pg. 4-7)",
+                        "Nutrient Inputs": "Only 42% of total fertilizer requirement applied. Kieserite is 92% complete, but Mixture B (49%) and RP (0%) are significantly delayed. The delay is attributed to labour shortage and rainfall. (Source: AR 2/2025, Pg. 12)",
+                        "Agronomic Observation": "Harvesting intervals are poor (>20 days). Pruning is generally acceptable, though backlogs exist in P06I/P10L2. Weeding is behind schedule. Pest damage (rats) is minimal, but cattle intrusion in replants is severe. (Source: AR 2/2025, Pg. 17-53)",
+                        "Yield Performance": "YTD Sept 2025 yield is 11.16 MT/ha, down 15.8% from 13.26 MT/ha in 2024. Monthly production peaked in July (1,608 MT). (Source: AR 2/2025, Pg. 56)",
+                        "Fertilizer Recommendation": "Due to delays, the last round of 2025 application should be carried forward to early 2026. The 2026 program is detailed in Appendix 1. (Source: AR 2/2025, Pg. 59)"
                     },
                     "plantation": { 
-                        "Executive Summary": "The estate must urgently recruit harvesters and sprayers to address shortages, which are impacting crop targets and operational timelines. Key priorities include completing all weeding, manuring, pruning, and road maintenance backlogs. Immature areas (PR23 and PR24) require immediate attention to complete supplying and planting. An experienced Field Conductor for replanting is highly recommended to oversee these critical areas. (PA Report, Pg. 42-43)",
-                        "Area Statement": "Total estate area is 1,212.22 ha. This includes 980.22 ha of mature oil palm, 106.33 ha of immature palms (PR23), and 111.34 ha under replanting (PR24). An area of 146.1 ha (Blocks P96/C & P97/D) is scheduled for the next replanting phase in 2026. (PA Report, Pg. 8-10)",
-                        "Labour Statement": "There is a critical shortage of 7 harvesters, leading to an unfavorable ratio of 1 harvester to 31 ha (recommended 1:17 ha). The estate is also short of 13 sprayers. A government quota for 150 new workers has been approved and recruitment is expected to commence soon. (PA Report, Pg. 11-12)",
-                        "Staff Establishment": "The management team has seen recent changes, including a new Estate Manager and Assistant Manager. To support the ongoing replanting activities, it is recommended to hire an experienced Field Conductor who has specific expertise in managing immature areas. (PA Report, Pg. 13)",
-                        "General Charges": "N/A",
-                        "Upkeep and Cultivation": "Field upkeep is significantly delayed due to labour shortages. Circle and selective weeding are behind schedule (59% and 49% of 1st round respectively). The manuring program is only 33% complete. While pruning has reached 76% completion, there are still backlog areas needing attention. Road grading has been slow due to heavy rainfall. (PA Report, Pg. 14-30)",
-                        "Harvesting and Collection": "The average harvesting interval is 15 days, missing the target of under 15 days. This is a direct result of the harvester shortage. Harvester productivity is generally acceptable, though improvement is needed in some blocks. Loose fruit collection was satisfactory. (PA Report, Pg. 32-33)",
-                        "Crop Production": "The yield as of May 2025 is 5.04 MT/ha, which is 43% below budget and a 29% decrease from the same period in 2024. This significant shortfall is attributed to the lack of harvesters, leading to extended harvesting rounds and subsequent crop losses. (PA Report, Pg. 31-32)",
-                        "Production Cost": "N/A",
-                        "Vehicles Running Cost": "N/A",
-                        "Capital Expenditure": "N/A",
-                        "Immature": "PR23 (106.33 ha): Progress is slow. Weeding and manuring are delayed, and there are many vacant points that urgently require supplying. PR24 (111.34 ha): Palm planting is behind schedule (only 40 ha planted) with a deadline of July 2025. Interrows are weedy and require selective spraying. No cover crops have been established yet. (PA Report, Pg. 36-41)"
-                    }
+                        "Executive Summary": "The estate must urgently recruit harvesters and sprayers to address shortages. Key priorities include completing weeding, manuring, and pruning backlogs. Immature areas (PR23/PR24) require immediate attention for supplying and planting. (Source: PA Report, Pg. 42-43)",
+                        "Area Statement": "Total estate area is ~1,212 ha (PA Report figure). Mature: 980 ha, Immature: 106 ha, Replanting: 111 ha. (Source: PA Report, Pg. 8-10)",
+                        "Labour Statement": "Critical shortage of harvesters (1:31 ha ratio) and sprayers. Recruitment is ongoing but high turnover persists. (Source: PA Report, Pg. 11-12)",
+                        "Staff Establishment": "Management team changes noted. Recommendation to hire experienced Field Conductor for replanting. (Source: PA Report, Pg. 13)",
+                        "Upkeep and Cultivation": "Field upkeep delayed. Weeding and manuring significantly behind schedule. Road grading slow due to rain. (Source: PA Report, Pg. 14-30)",
+                        "Harvesting and Collection": "Harvesting interval targets missed (>15 days). Productivity acceptable but coverage poor due to shortage. (Source: PA Report, Pg. 32-33)",
+                        "Crop Production": "Yield as of May 2025 was 5.04 MT/ha (43% below budget). (Source: PA Report, Pg. 31-32)"
+                    },
+                    "pinfosys": "Not Available"
                 },
                 "policy": "<p>No specific policy cross-references were available in the provided reports.</p>"
             };
@@ -170,16 +193,20 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">FFB Production (Total MT)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
+                            <div><h3 class="text-xl font-semibold mb-2">FFB Production (Jan-Sep MT)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
-                        <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
-                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
+                        <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues (Plantation & Agronomy)</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
+                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
                             <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
                             <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+
                             <button data-dropdown-id="${estate.id}-plantation" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details</button>
                             <div id="${estate.id}-plantation" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+                            
+                            <button data-dropdown-id="${estate.id}-pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Pinfosys Report Details</button>
+                            <div id="${estate.id}-pinfosys" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                         </div>
                     </div>`;
             }
@@ -193,14 +220,15 @@
                 const prodCtx = document.getElementById(prodCanvasId)?.getContext('2d');
                 if(prodCtx) {
                     chartInstances[prodCanvasId] = new Chart(prodCtx, {
-                        type: 'bar',
+                        type: 'line',
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, backgroundColor: '#3b82f6' }
+                                { label: '2025 Production', data: estateData.chartData.production.ffb2025, borderColor: '#ca8a04', backgroundColor: '#fde047', tension: 0.3 },
+                                { label: '2024 Production', data: estateData.chartData.production.ffb2024, borderColor: '#9ca3af', backgroundColor: 'transparent', borderDash: [5, 5], tension: 0.3 }
                             ]
                         },
-                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, y: { title: { display: true, text: 'FFB Production (Total MT)' } } } }
+                        options: { responsive: true, maintainAspectRatio: false, scales: { x: { grid: { display: false } }, y: { title: { display: true, text: 'FFB Production (MT)' } } } }
                     });
                 }
 
@@ -210,7 +238,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336', '#9C27B0'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#F44336', '#4CAF50', '#FFC107', '#2196F3'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
@@ -220,11 +248,20 @@
             function populateInternalDropdowns() {
                 const agronomyDiv = document.getElementById(`${estateData.id}-agronomy`);
                 const plantationDiv = document.getElementById(`${estateData.id}-plantation`);
-                if (agronomyDiv && estateData.reports.agronomy) {
+                const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
+                
+                if (agronomyDiv && estateData.reports.agronomy !== "Not Available") {
                     agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                } else if (agronomyDiv) {
+                    agronomyDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
+
                 if (plantationDiv && estateData.reports.plantation) {
                     plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                }
+
+                if (pinfosysDiv && estateData.reports.pinfosys === "Not Available") {
+                    pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
             }
 
@@ -246,7 +283,11 @@
         function openPolicyModal() {
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
-            const estateData = {"id":"cheroh","name":"Cheroh Estate","reportInfo":"Data based on Plantation Advisory Report 1/2025 (Visit for Jan-May 2025).","summaryMetrics":{"area":{"title":"Estate Area","lines":["Mature: 980.22 ha","Immature: 106.33 ha","Replanting: 111.34 ha","Total: 1,212.22 ha"]},"yield":{"title":"Yield/Ha (Jan-May 2025)","value":"5.04 MT","note":"-33% vs 2024"},"labour":{"title":"Labour Shortage","value":"Critical","note":"Harvesters & Sprayers"},"weeding":{"title":"Weeding Progress","value":"Delayed","note":"Circle: ~59%, Selective: ~49%"},"manuring":{"title":"Manuring Progress","value":"33% (Slow)","note":"As of May 2025"}},"keyMetrics":[{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Labour Ratio","value":"1:31 ha (Shortage)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>","label":"P&D Status","value":"Under Control (Ganoderma seen)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>","label":"OER %","value":"N/A"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>","label":"Harvester Prod.","value":"Acceptable (some areas low)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>","label":"Harvest Interval","value":"15 days (Target <15)"},{"icon":"<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>","label":"Roads","value":"Variable (Maintenance needed)"}],"chartData":{"production":{"labels":["Jan-May 2024","Jan-May 2025"],"ffb":[6928.45,4945.04],"note":"*Total FFB production comparison. Yield dropped 33% due to harvester shortage. (PA Report, Pg. 31)"},"ageProfile":{"labels":["7-14 Years","15-24 Years",">25 Years"],"data":[24,46,30],"title":"Cheroh Palm Age Distribution (Mature Area)","note":"*Age distribution calculated from area statement. (PA Report, Pg. 8)"}},"observations":["<b>Critical Labour Shortage:</b> The estate is acutely short of harvesters (ratio 1:31 ha) and sprayers, which is the primary cause for low crop, delayed weeding, and manuring. (PA Report, Pg. 11-12, 42)","<b>Significant Yield Drop:</b> Yield for Jan-May 2025 is 5.04 MT/ha, a 33% drop from the same period in 2024, attributed to extended harvesting intervals and crop losses. (PA Report, Pg. 31)","<b>Delayed Weeding & Manuring:</b> All weeding and manuring programs are significantly behind schedule due to sprayer and worker shortages. (PA Report, Pg. 14, 18, 23)","<b>Variable Road Conditions:</b> Roads are in variable condition, with some badly rutted and damaged, requiring grading and maintenance. (PA Report, Pg. 25-26)","<b>Slow Progress in Immature Areas:</b> Weeding, manuring, and supplying in PR23 are delayed. Palm planting in PR24 is slow and must be completed by July 2025. (PA Report, Pg. 36, 39)","<b>High Worker Turnover:</b> High turnover of workers is a noted concern, impacting operational stability. (PA Report, Pg. 6)"],"reports":{"agronomy":{"Executive Summary":"N/A","Nutrient inputs/progress of manuring":"N/A","Agronomic observation":"N/A","Yield performance":"N/A","Fertilizer recommendation":"N/A"},"plantation":{"Executive Summary":"The estate must urgently recruit harvesters and sprayers to address shortages, which are impacting crop targets and operational timelines. Key priorities include completing all weeding, manuring, pruning, and road maintenance backlogs. Immature areas (PR23 and PR24) require immediate attention to complete supplying and planting. An experienced Field Conductor for replanting is highly recommended to oversee these critical areas. (PA Report, Pg. 42-43)","Area Statement":"Total estate area is 1,212.22 ha. This includes 980.22 ha of mature oil palm, 106.33 ha of immature palms (PR23), and 111.34 ha under replanting (PR24). An area of 146.1 ha (Blocks P96/C & P97/D) is scheduled for the next replanting phase in 2026. (PA Report, Pg. 8-10)","Labour Statement":"There is a critical shortage of 7 harvesters, leading to an unfavorable ratio of 1 harvester to 31 ha (recommended 1:17 ha). The estate is also short of 13 sprayers. A government quota for 150 new workers has been approved and recruitment is expected to commence soon. (PA Report, Pg. 11-12)","Staff Establishment":"The management team has seen recent changes, including a new Estate Manager and Assistant Manager. To support the ongoing replanting activities, it is recommended to hire an experienced Field Conductor who has specific expertise in managing immature areas. (PA Report, Pg. 13)","General Charges":"N/A","Upkeep and Cultivation":"Field upkeep is significantly delayed due to labour shortages. Circle and selective weeding are behind schedule (59% and 49% of 1st round respectively). The manuring program is only 33% complete. While pruning has reached 76% completion, there are still backlog areas needing attention. Road grading has been slow due to heavy rainfall. (PA Report, Pg. 14-30)","Harvesting and Collection":"The average harvesting interval is 15 days, missing the target of under 15 days. This is a direct result of the harvester shortage. Harvester productivity is generally acceptable, though improvement is needed in some blocks. Loose fruit collection was satisfactory. (PA Report, Pg. 32-33)","Crop Production":"The yield as of May 2025 is 5.04 MT/ha, which is 43% below budget and a 29% decrease from the same period in 2024. This significant shortfall is attributed to the lack of harvesters, leading to extended harvesting rounds and subsequent crop losses. (PA Report, Pg. 31-32)","Production Cost":"N/A","Vehicles Running Cost":"N/A","Capital Expenditure":"N/A","Immature":"PR23 (106.33 ha): Progress is slow. Weeding and manuring are delayed, and there are many vacant points that urgently require supplying. PR24 (111.34 ha): Palm planting is behind schedule (only 40 ha planted) with a deadline of July 2025. Interrows are weedy and require selective spraying. No cover crops have been established yet. (PA Report, Pg. 36-41)"}},"policy":"<p>No specific policy cross-references were available in the provided reports.</p>"};
+            const estateData = {
+                "id": "cheroh",
+                "name": "Cheroh Estate",
+                "policy": "<p>No specific policy cross-references were available in the provided reports.</p>"
+            };
             modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateData.name}`;
             modalContent.innerHTML = estateData.policy;
             document.getElementById('policyModal').classList.add('active');
