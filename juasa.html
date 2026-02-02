@@ -9,8 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* No longer need tailwind.config here. We use standard classes. */
-        
         /* General Styles */
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
@@ -42,11 +40,11 @@
     <header class="bg-white shadow-md">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="text-xl font-bold text-gray-900">
-                <a href="index.html" class="flex items-center">
+                <a href="#" class="flex items-center">
                     Juasa A & B Estate Report
                 </a>
             </div>
-            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
+            <a href="#" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
         </nav>
     </header>
 
@@ -74,11 +72,11 @@
     <!-- Main script for application logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- DATA STORE (Using STANDARD Tailwind classes) ---
+            // --- DATA STORE (UPDATED with Detailed PA Report 1-2026) ---
             const estateData = {
                 "id": "juasa",
                 "name": "Juasa A & B Estate",
-                "reportInfo": "Data based on Agronomy Report (September 2025), PA Report (Visit: August 2025), and Pinfosys Report (April 2025).",
+                "reportInfo": "Data updated based on Plantation Advisory Reports 1/2026 (Visit: Jan 2026, Review Year: 2025).",
                 "summaryMetrics": {
                     "area": {
                         "title": "Estate Area",
@@ -93,43 +91,43 @@
                     "yield": {
                         "title": "Yield/Ha (Actual vs Budget)",
                         "value": "5.74 MT / 7.43 MT",
-                        "note": "YTD as of May 2025 (PA Report)",
-                        "bg": "bg-green-50", // Screenshot color
-                        "text": "text-green-800", 
-                        "value_color": "text-green-800" 
+                        "note": "YTD Data (Ref: May '25). 2025 Full Year pending PAR Pg 37/41.",
+                        "bg": "bg-gray-50",
+                        "text": "text-gray-800", 
+                        "value_color": "text-gray-900" 
                     },
                     "cost": {
-                        "title": "FFB Cost/Tonne (Actual vs Budget)",
+                        "title": "Cost/Tonne (Actual vs Budget)",
                         "value": "RM 283.06 / RM 330.28",
-                        "note": "Ex-Estate, YTD as of May 2025 (PA Report)",
-                        "bg": "bg-orange-50", // Screenshot color
-                        "text": "text-orange-800", 
-                        "value_color": "text-orange-800" 
+                        "note": "YTD Data (Ref: May '25). 2025 Full Year pending PAR Pg 39/45.",
+                        "bg": "bg-green-50",
+                        "text": "text-green-800", 
+                        "value_color": "text-green-900" 
                     },
                     "labour": {
                         "title": "Labour Status",
-                        "value": "Critical Shortage",
-                        "note": "Short 15 Harvesters & 17 Sprayers (PA Report)",
-                        "bg": "bg-red-50", // Screenshot color
-                        "text": "text-red-800", 
-                        "value_color": "text-red-800"
+                        "value": "Mixed Status",
+                        "note": "Juasa A: Adequate Harvesters. Juasa B: Shortage.",
+                        "bg": "bg-yellow-50", 
+                        "text": "text-yellow-800", 
+                        "value_color": "text-yellow-800"
                     },
                     "upkeep": {
                         "title": "Upkeep Progress",
-                        "value": "Severely Delayed",
-                        "note": "Weeding & Manuring programs behind schedule (AR & PA Report)",
-                        "bg": "bg-yellow-50", // Screenshot color (matching Pest & Disease)
-                        "text": "text-yellow-800", 
-                        "value_color": "text-yellow-800"
+                        "value": "Satisfactory (Mature)",
+                        "note": "Immature areas in Juasa B need improvement. (PAR 1-2026)",
+                        "bg": "bg-blue-50", 
+                        "text": "text-blue-800", 
+                        "value_color": "text-blue-800"
                     }
                 },
                 "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Ratio", "value": "1:25 ha (Poor)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "High Rat Damage / No Barn Owls" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER % (YTD May '25)", "value": "16.84%" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "1.41 MT/md (Unacceptable)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "Up to 46 Days (Critical)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Suboptimal / Manuring 28-57% complete" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour (Juasa A)", "value": "Short: 10 Sprayers (Urgent)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "Labour (Juasa B)", "value": "Short: 15 Harvesters (Critical)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "Labour Ratio", "value": "1:25 ha (Severe Shortage)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Sprayer Productivity", "value": "Unacceptable (Juasa A)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Environmental", "value": "Prolonged Flooding (Juasa B)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Upkeep Status", "value": "Mature: Satisfactory / Immature: Poor" }
                 ],
                 "chartData": {
                     "production": {
@@ -137,49 +135,45 @@
                         "ffb_a": [17.58, 11.15, 12.72, 17.01],
                         "ffb_b": [13.12, 13.37, 11.96, 14.48],
                         "rainfall": [2143, 2469, 3630, 3150],
-                        "note": "*FFB Yield (MT/Ha) and Total Rainfall (mm). Source: AR, Pg. 45, 70."
+                        "note": "*Historical FFB Yield (MT/Ha). 2025 Data pending full compilation."
                     },
                     "ageProfile": {
                         "labels": ["0-3 Yrs (Immature)", "4-7 Yrs (Young Mature)", "8-19 Yrs (Prime)", "20-25 Yrs (Old)", ">26 Yrs (Old)"],
                         "data": [24.09, 15.91, 9.92, 9.67, 40.42],
                         "title": "Juasa Estate - Combined Palm Age Profile (%)",
-                        "note": "*Source: Agronomy Report 1/2025, Pg. 11."
+                        "note": "*Source: Agronomy Report 1/2025 (Reference maintained)."
                     }
                 },
                 "observations": [
-                    "<b>Critical Harvesting Failure:</b> The severe labour shortage (1:25 ha) has caused unacceptably long harvesting intervals (up to **46 days**), directly resulting in 5-15% overripe bunches and poor crop recovery. Harvester productivity is unviable at **1.41 MT/md** (PA Report). <span class='observation-ref'>(AR Pg. 24, 74; PAR A Pg. 39; PAR B Pg. 36)</span>",
-                    "<b>Severe Upkeep Delays:</b> Manuring progress is critically slow (Juasa A: 57%, Juasa B: **28%**) due to rain and labour shortage, leading to suboptimal palm nutrient levels (AR Pg. 4). Weeding is also behind schedule, exacerbated by a shortage of **17 sprayers** (PA Report). <span class='observation-ref'>(AR Pg. 19, 75; PAR A Pg. 14; PAR B Pg. 11)</span>",
-                    "<b>Infrastructure & Drainage Neglect:</b> Key upkeep tasks like **drain de-silting** and road maintenance are severely delayed in both estates (PA Report). This is crucial as prolonged flooding (Nov 2024 - Jun 2025) already suppressed yield in Juasa B (AR Pg. 70-75). <span class='observation-ref'>(PAR A Pg. 18-38; PAR B Pg. 15-35)</span>",
-                    "<b>Pest Management Gap:</b> Rat damage remains high in several blocks (AR Pg. 54). Critically, there are **no barn owl boxes installed** across the estates, representing a major lapse in the recommended Integrated Pest Management (IPM) strategy. <span class='observation-ref'>(AR Pg. 54; PAR Ref)</span>",
-                    "<b>Pruning Backlog:</b> Corrective pruning is required in Juasa B, and general pruning is behind schedule, which further impedes the already difficult harvesting process in the old and challenging terrain. <span class='observation-ref'>(AR Pg. 35, 44, 75)</span>",
-                    "<b>High Proportion of Old Palms:</b> Over **40%** of the combined planted area is aged over 26 years, requiring intensive upkeep to maintain production and indicating an urgent need for large-scale replanting programs. <span class='observation-ref'>(AR Pg. 11, 70)</span>"
+                    "<b>Labour Divergence (A vs B):</b> A significant split in labour status has emerged. Juasa A reports <b>adequate harvesters</b> (though retaining them is key), whereas Juasa B still faces a <b>critical shortage (~15 harvesters) and high turnover</b> due to low earnings from low productivity. <span class='observation-ref'>(PAR A 14.2; PAR B 13.1)</span>",
+                    "<b>Sprayer Crisis in Juasa A:</b> While harvesters are sufficient, there is an <b>urgent need to recruit sprayers (Short ~10)</b> in Juasa A. Additionally, current sprayer productivity using Inter Pumps and Mist Blowers is deemed 'unacceptable'. <span class='observation-ref'>(PAR A 14.1, 14.3)</span>",
+                    "<b>Flooding Impact (Juasa B):</b> Low-lying areas have been inundated for prolonged periods (Nov 2025 - Jan 2026), affecting palm growth, yield potential, and harvesting operations. A comprehensive drainage plan is required. <span class='observation-ref'>(PAR B 13.2)</span>",
+                    "<b>Field Upkeep Status:</b> Field conditions in mature areas of both estates are generally satisfactory. However, upkeep in the <b>immature areas of Juasa B</b> is not yet satisfactory. <span class='observation-ref'>(PAR A 14.3; PAR B 13.3)</span>",
+                    "<b>Pest Management:</b> Rat damage monitoring is specifically required at blocks P19, P20, and P21 in Juasa A. Census must be conducted quarterly. <span class='observation-ref'>(PAR A 14.5)</span>",
+                    "<b>Pruning Requirements:</b> Corrective pruning is urgent in Juasa B (to be completed by Feb 2026) due to excessive hanging fronds. Juasa A pruning standards are satisfactory. <span class='observation-ref'>(PAR B 13.6; PAR A 14.4)</span>"
                 ],
                 "reports": {
                     "agronomy": {
-                        "Executive Summary": "Palm nutrient status is suboptimal due to critically slow manuring progress (Juasa B only 28% complete). Crop recovery requires significant improvement due to extended harvesting intervals (up to 46 days), which leads to high overripe bunch levels. Pruning in Juasa B is delayed. The major concern in pest control is the complete absence of barn owl boxes. <span class='observation-ref'>(AR, Pg. 4-7)</span>",
-                        "Nutrient Inputs/Progress of Manuring": "Manuring progress is critically slow (Juasa A: 57%, Juasa B: 28% as of Aug 2025). The delay is due to heavy rains. Application must be expedited, focusing on young-mature and prime palms. EFB application is ongoing but non-uniform in distribution. <span class='observation-ref'>(AR, Pg. 19-23)</span>",
-                        "Agronomic Observation": "Harvesting intervals are critically long, causing 5-15% crop loss from overripe bunches. Pruning in Juasa B is delayed. Ground vegetation control is generally acceptable but needs focus in peat areas. **No barn owl boxes** are installed for rat control. <span class='observation-ref'>(AR, Pg. 24-54)</span>",
-                        "Yield Performance": "The combined palm age profile is heavily skewed towards old palms (>40% over 26 years). The 2024 yield was acceptable, but prolonged flooding (Nov '24 to Jun '25) significantly reduced yield in affected areas of Juasa B. <span class='observation-ref'>(AR, Pg. 70-75)</span>",
-                        "Fertilizer Recommendation (2025)": "No changes are proposed for the 2025 fertilizer program. The estate must focus solely on minimizing the time gap between the planned schedule and actual field application. <span class='observation-ref'>(AR, Pg. 76)</span>"
+                        "Executive Summary": "Palm nutrient status is suboptimal due to critically slow manuring progress (Juasa B only 28% complete). Crop recovery requires significant improvement due to extended harvesting intervals (up to 46 days), which leads to high overripe bunch levels. Pruning in Juasa B is delayed. The major concern in pest control is the complete absence of barn owl boxes. <span class='observation-ref'>(AR 2025, Pg. 4-7)</span>",
+                        "Nutrient Inputs": "Manuring progress was critically slow in previous reports. For the 2026 outlook, Juasa B is advised to strive to complete the manuring program. <span class='observation-ref'>(AR 2025 / PAR B 13.5)</span>",
+                        "Agronomic Observation": "Previous reports highlighted critically long harvesting intervals and crop loss. Current PA reports suggest improvement in Juasa A harvester numbers, but productivity issues remain in tall palms. <span class='observation-ref'>(AR 2025 / PAR A 14.6)</span>",
+                        "Yield Performance": "The combined palm age profile is heavily skewed towards old palms (>40% over 26 years). Prolonged flooding continues to suppress yield in Juasa B. <span class='observation-ref'>(AR 2025 / PAR B 13.2)</span>"
                     },
                     "plantation": {
-                        "Executive Summary": "Both estates suffer from a critical worker shortage, particularly for spraying and harvesting, causing major delays in weeding and production (yield 23% below budget). Harvester productivity is very low, requiring top-up wages. Key field operations like drain de-silting and road maintenance are behind schedule. <span class='observation-ref'>(PAR A, Pg. 60-61; PAR B, Pg. 53-54)</span>",
-                        "Area Statement": "Total Planted 3,069.54 ha (Mature 2,172.54 ha; Immature 739.45 ha). Juasa B has a slightly larger mature area. <span class='observation-ref'>(PAR A, Pg. 10; PAR B, Pg. 10)</span>",
-                        "Labour Statement": "Overall ratio of **1:25 ha** indicates a severe shortage. Juasa A needs 10 sprayers; Juasa B needs 15 harvesters and 7 sprayers. Low productivity is causing low harvester earnings. <span class='observation-ref'>(PAR A, Pg. 14; PAR B, Pg. 11)</span>",
-                        "Staff Establishment": "High staff turnover in Juasa A is a major concern, impacting supervision and operational efficiency. Staffing in Juasa B is adequate. <span class='observation-ref'>(PAR A, Pg. 15-16; PAR B, Pg. 12-13)</span>",
-                        "General Charges": "Combined expenditure was underspent by 30% YTD May 2025, which is generally under control. <span class='observation-ref'>(PAR A, Pg. 17; PAR B, Pg. 14)</span>",
-                        "Upkeep & Cultivation": "Weeding in both estates is behind schedule due to the sprayer shortage and flooding. Manuring in Juasa B is severely delayed. Drain de-silting and road works are backlogged in both estates. <span class='observation-ref'>(PAR A, Pg. 18-38; PAR B, Pg. 15-35)</span>",
-                        "Harvesting and Collection": "Harvesting intervals are unacceptable (A: up to 46 days, B: up to 41 days). Harvester productivity is very low at **1.41 MT/md**. <span class='observation-ref'>(PAR A, Pg. 39-42; PAR B, Pg. 36-38)</span>",
-                        "Crop Production": "YTD May 2025 yield for the combined estates (5.74 t/ha) is **23% below budget** due to operational and weather constraints. <span class='observation-ref'>(PAR A, Pg. 43; PAR B, Pg. 39)</span>",
-                        "Production Cost": "Combined FFB cost per tonne (RM 283.06) is favorable against budget, mainly due to underspending on manuring and weeding (which is a delayed operation, not a saving). <span class='observation-ref'>(PAR A, Pg. 45; PAR B, Pg. 41)</span>",
-                        "Vehicles Running Cost": "Vehicle running costs were satisfactory for both estates. <span class='observation-ref'>(PAR A, Pg. 58; PAR B, Pg. 51)</span>",
-                        "Capital Expenditure": "Combined Capital Expenditure was **overspent by 41%** YTD May 2025. <span class='observation-ref'>(PAR A, Pg. 59; PAR B, Pg. 52)</span>",
-                        "Immature": "Both estates have upkeep needs in immature areas, including better VOP control and ensuring circle weeding is completed in PR22 and PR23 areas. <span class='observation-ref'>(PAR A, Pg. 46-54; PAR B, Pg. 42-50)</span>"
+                        "Executive Overview (2026)": "<b>Juasa A:</b> Generally satisfactory field conditions, but facing a specific crisis in sprayer recruitment and productivity. Harvester numbers are currently adequate. <br><br><b>Juasa B:</b> Facing a 'critical' situation with harvester shortage and high turnover. Environmental challenges (prolonged flooding) in low-lying areas are severely impacting operations.",
+                        "Labour Status & Productivity": "<ul class='list-disc pl-5 space-y-2 mt-1'><li><b>Juasa A:</b> Harvester force is adequate. The urgent priority is recruiting <b>sprayers</b>. Existing sprayer productivity (using Inter Pumps/Mist Blowers) is deemed 'unacceptable'.</li><li><b>Juasa B:</b> The <b>shortage of harvesters</b> is the estate's most critical issue. High turnover is driven by low wages, which stem from low productivity.</li></ul>",
+                        "Field Upkeep & Condition": "<ul class='list-disc pl-5 space-y-2 mt-1'><li><b>Mature Areas:</b> Satisfactory in both estates.</li><li><b>Immature Areas:</b> Unsatisfactory in Juasa B; requires immediate attention.</li><li><b>Weeding/Spraying:</b> Juasa B reports unsatisfactory circle and selective spraying. Juasa A must monitor chemical usage and application techniques more closely.</li></ul>",
+                        "Harvesting Operations": "<ul class='list-disc pl-5 space-y-2 mt-1'><li><b>Juasa A:</b> Productivity is notably low in <b>tall palm areas</b>. Management advised to monitor actual vs potential bunches based on bunch weight.</li><li><b>Juasa B:</b> Harvesting performance is unsatisfactory, exacerbated by the labor shortage and flooded field conditions.</li></ul>",
+                        "Water Management (Flooding)": "<b>Juasa B Critical Issue:</b> Low-lying areas have suffered <b>prolonged inundation</b>. This has suppressed palm growth and yield potential. A comprehensive plan to correct high water tables is required immediately.",
+                        "Pruning Status": "<b>Juasa A:</b> Pruning standards are satisfactory. <br><b>Juasa B:</b> <b>Excessive hanging fronds</b> observed. Corrective pruning must be completed by <b>February 2026</b>.",
+                        "Pest & Disease (Rats)": "<b>Juasa A Specific:</b> Rat damage monitoring is required for blocks <b>P19, P20, and P21</b>. Census must be conducted quarterly, with baiting programs initiated if damage exceeds the <b>10% threshold</b>.",
+                        "Manuring Program": "<b>Juasa B:</b> The estate must strive to fully complete the 2026 manuring program to recover nutrient status.",
+                        "Capital Expenditure": "Capital Expenditure was underspent for both Juasa A and B for the review period."
                     },
                     "pinfosys": {
-                        "juasa_a_summary": "<h4>CEO Financial Summary - Juasa A (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>The Pinfosys report does not provide a high-level CEO financial summary. The detailed expenditure breakdown below highlights where costs are concentrated. **Note: High manuring cost (RM 82.60/Tonne) despite low completion rate suggests bulk purchases or upfront costs.** <span class='observation-ref'>(Pinfosys Juasa A, Pg. 23)</span></p>",
+                        "juasa_a_summary": "<h4>CEO Financial Summary - Juasa A (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>Historical data from April 2025. <b>Note: High manuring cost (RM 82.60/Tonne) despite low completion rate suggests bulk purchases or upfront costs.</b> <span class='observation-ref'>(Pinfosys Juasa A, Pg. 23)</span></p>",
                         "juasa_a_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa A</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>91.34</td><td class='py-1 px-4 border-b text-right'>15.66</td></tr><tr><td class='py-1 px-4 border-b pl-8 font-bold text-red-700'>Manuring</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>481.93</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>82.60</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>21.13</td><td classD='py-1 px-4 border-b text-right'>3.62</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>4.82</td><td class='py-1 px-4 border-b text-right'>0.83</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>41.36</td><td class='py-1 px-4 border-b text-right'>7.09</td></tr><tr><td classs='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>45.27</td><td class='py-1 px-4 border-b text-right'>7.76</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>39.67</td><td class='py-1 px-4 border-b text-right'>6.80</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>716.31</td><td class='py-2 px-4 text-right font-bold'>122.86</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>64.37</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>16.98</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.61</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>550.96</td><td class='py-2 px-4 text-right font-bold'>90.85</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.17</td><td class='py-1 px-4 border-b text-right'>92.80</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1851.12</td><td class='py-2 px-4 text-right font-extrabold'>307.18</td></tr></tbody></table></div>`,
-                        "juasa_b_summary": "<h4 class='font-semibold text-lg mt-8'>CEO Financial Summary - Juasa B (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>The Pinfosys report does not provide a high-level CEO financial summary. The detailed expenditure breakdown below shows low manuring cost, consistent with the low completion rate noted in the Agronomy Report.</p>",
+                        "juasa_b_summary": "<h4 class='font-semibold text-lg mt-8'>CEO Financial Summary - Juasa B (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>Historical data from April 2025.</p>",
                         "juasa_b_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa B</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>82.68</td><td class='py-1 px-4 border-b text-right'>14.09</td></tr><tr><td class='py-1 px-4 border-b pl-8 font-bold text-red-700'>Manuring</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>208.74</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>35.61</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>22.81</td><td class='py-1 px-4 border-b text-right'>3.89</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>0.88</td><td class='py-1 px-4 border-b text-right'>0.15</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>104.93</td><td classD='py-1 px-4 border-b text-right'>17.90</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>69.66</td><td class='py-1 px-4 border-b text-right'>11.88</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>45.01</td><td class='py-1 px-4 border-b text-right'>7.68</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>739.80</td><td class='py-2 px-4 text-right font-bold'>127.04</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>53.57</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>17.79</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td classss='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.26</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>473.21</td><td class='py-2 px-4 text-right font-bold'>81.26</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.04</td><td class='py-1 px-4 border-b text-right'>92.92</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1902.30</td><td class='py-2 px-4 text-right font-extrabold'>301.22</td></tr></tbody></table></div>`
                     }
                 },
