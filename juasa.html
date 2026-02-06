@@ -23,7 +23,7 @@
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
-        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; display: inline-block; margin-left: 4px; }
         
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
@@ -37,14 +37,22 @@
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white shadow-md">
+    <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="text-xl font-bold text-gray-900">
-                <a href="#" class="flex items-center">
+                <a href="index.html" class="flex items-center gap-2">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
                     Juasa A & B Estate Report
                 </a>
             </div>
-            <a href="#" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
+            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back to Estates List
+            </a>
         </nav>
     </header>
 
@@ -57,11 +65,11 @@
     </div>
     
     <!-- Modal for displaying policy details -->
-    <div id="policyModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4">
+    <div id="policyModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 backdrop-blur-sm">
         <div class="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
-            <div class="flex justify-between items-center mb-4">
-                <h3 id="modalTitle" class="text-2xl font-bold">Agricultural Policy Cross-Reference</h3>
-                <button onclick="closePolicyModal()" class="text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
+            <div class="flex justify-between items-center mb-4 border-b pb-2">
+                <h3 id="modalTitle" class="text-2xl font-bold text-green-900">Agricultural Policy Cross-Reference</h3>
+                <button onclick="closePolicyModal()" class="text-gray-400 hover:text-red-600 text-3xl font-bold transition">&times;</button>
             </div>
             <div id="modalContent" class="space-y-4 overflow-y-auto pr-4 flex-grow">
                 <!-- Modal content will be populated by JavaScript -->
@@ -76,7 +84,7 @@
             const estateData = {
                 "id": "juasa",
                 "name": "Juasa A & B Estate",
-                "reportInfo": "Data updated based on Plantation Advisory Reports 1/2026 (Visit: Jan 2026, Review Year: 2025).",
+                "reportInfo": "Data based on Plantation Advisory Reports 1/2026 (Visit: Jan 2026) & Agronomy Report 1/2025 (Visit: Feb 2025).",
                 "summaryMetrics": {
                     "area": {
                         "title": "Estate Area",
@@ -92,17 +100,17 @@
                         "title": "Yield/Ha (Actual vs Budget)",
                         "value": "5.74 MT / 7.43 MT",
                         "note": "YTD Data (Ref: May '25). 2025 Full Year pending PAR Pg 37/41.",
-                        "bg": "bg-gray-50",
-                        "text": "text-gray-800", 
-                        "value_color": "text-gray-900" 
+                        "bg": "bg-green-50",
+                        "text": "text-green-800", 
+                        "value_color": "text-green-900" 
                     },
                     "cost": {
                         "title": "Cost/Tonne (Actual vs Budget)",
                         "value": "RM 283.06 / RM 330.28",
                         "note": "YTD Data (Ref: May '25). 2025 Full Year pending PAR Pg 39/45.",
-                        "bg": "bg-green-50",
-                        "text": "text-green-800", 
-                        "value_color": "text-green-900" 
+                        "bg": "bg-orange-50",
+                        "text": "text-orange-800", 
+                        "value_color": "text-orange-900" 
                     },
                     "labour": {
                         "title": "Labour Status",
@@ -149,7 +157,7 @@
                     "<b>Sprayer Crisis in Juasa A:</b> While harvesters are sufficient, there is an <b>urgent need to recruit sprayers (Short ~10)</b> in Juasa A. Additionally, current sprayer productivity using Inter Pumps and Mist Blowers is deemed 'unacceptable'. <span class='observation-ref'>(PAR A 14.1, 14.3)</span>",
                     "<b>Flooding Impact (Juasa B):</b> Low-lying areas have been inundated for prolonged periods (Nov 2025 - Jan 2026), affecting palm growth, yield potential, and harvesting operations. A comprehensive drainage plan is required. <span class='observation-ref'>(PAR B 13.2)</span>",
                     "<b>Field Upkeep Status:</b> Field conditions in mature areas of both estates are generally satisfactory. However, upkeep in the <b>immature areas of Juasa B</b> is not yet satisfactory. <span class='observation-ref'>(PAR A 14.3; PAR B 13.3)</span>",
-                    "<b>Pest Management:</b> Rat damage monitoring is specifically required at blocks P19, P20, and P21 in Juasa A. Census must be conducted quarterly. <span class='observation-ref'>(PAR A 14.5)</span>",
+                    "<b>Pest Management:</b> Rat damage monitoring is specifically required at blocks P19, P20, and P21 in Juasa A. Census must be conducted quarterly. The absence of barn owl boxes in the estate is a compliance concern (Agronomy). <span class='observation-ref'>(PAR A 14.5; AR Pg. 7)</span>",
                     "<b>Pruning Requirements:</b> Corrective pruning is urgent in Juasa B (to be completed by Feb 2026) due to excessive hanging fronds. Juasa A pruning standards are satisfactory. <span class='observation-ref'>(PAR B 13.6; PAR A 14.4)</span>"
                 ],
                 "reports": {
@@ -160,24 +168,27 @@
                         "Yield Performance": "The combined palm age profile is heavily skewed towards old palms (>40% over 26 years). Prolonged flooding continues to suppress yield in Juasa B. <span class='observation-ref'>(AR 2025 / PAR B 13.2)</span>"
                     },
                     "plantation": {
-                        "Executive Overview (2026)": "<b>Juasa A:</b> Generally satisfactory field conditions, but facing a specific crisis in sprayer recruitment and productivity. Harvester numbers are currently adequate. <br><br><b>Juasa B:</b> Facing a 'critical' situation with harvester shortage and high turnover. Environmental challenges (prolonged flooding) in low-lying areas are severely impacting operations.",
-                        "Labour Status & Productivity": "<ul class='list-disc pl-5 space-y-2 mt-1'><li><b>Juasa A:</b> Harvester force is adequate. The urgent priority is recruiting <b>sprayers</b>. Existing sprayer productivity (using Inter Pumps/Mist Blowers) is deemed 'unacceptable'.</li><li><b>Juasa B:</b> The <b>shortage of harvesters</b> is the estate's most critical issue. High turnover is driven by low wages, which stem from low productivity.</li></ul>",
-                        "Field Upkeep & Condition": "<ul class='list-disc pl-5 space-y-2 mt-1'><li><b>Mature Areas:</b> Satisfactory in both estates.</li><li><b>Immature Areas:</b> Unsatisfactory in Juasa B; requires immediate attention.</li><li><b>Weeding/Spraying:</b> Juasa B reports unsatisfactory circle and selective spraying. Juasa A must monitor chemical usage and application techniques more closely.</li></ul>",
-                        "Harvesting Operations": "<ul class='list-disc pl-5 space-y-2 mt-1'><li><b>Juasa A:</b> Productivity is notably low in <b>tall palm areas</b>. Management advised to monitor actual vs potential bunches based on bunch weight.</li><li><b>Juasa B:</b> Harvesting performance is unsatisfactory, exacerbated by the labor shortage and flooded field conditions.</li></ul>",
-                        "Water Management (Flooding)": "<b>Juasa B Critical Issue:</b> Low-lying areas have suffered <b>prolonged inundation</b>. This has suppressed palm growth and yield potential. A comprehensive plan to correct high water tables is required immediately.",
-                        "Pruning Status": "<b>Juasa A:</b> Pruning standards are satisfactory. <br><b>Juasa B:</b> <b>Excessive hanging fronds</b> observed. Corrective pruning must be completed by <b>February 2026</b>.",
-                        "Pest & Disease (Rats)": "<b>Juasa A Specific:</b> Rat damage monitoring is required for blocks <b>P19, P20, and P21</b>. Census must be conducted quarterly, with baiting programs initiated if damage exceeds the <b>10% threshold</b>.",
-                        "Manuring Program": "<b>Juasa B:</b> The estate must strive to fully complete the 2026 manuring program to recover nutrient status.",
-                        "Capital Expenditure": "Capital Expenditure was underspent for both Juasa A and B for the review period."
+                         "Executive Overview (2026)": "The estates face diverging challenges in 2026. <b>Juasa A</b> maintains generally satisfactory field conditions and adequate harvester strength, though it faces a specific crisis in sprayer recruitment and productivity. Conversely, <b>Juasa B</b> is in a critical state due to a severe shortage of harvesters (high turnover driven by low productivity/wages) and significant environmental stress from prolonged flooding in low-lying areas. (Source: PAR A, Pg. 59; PAR B, Pg. 56)",
+                        "Area Statement": "<b>Juasa A:</b> Total planted area includes mature and immature sectors. (Source: PAR A, Pg. 10)<br><b>Juasa B:</b> Includes significant low-lying areas currently affecting operations. (Source: PAR B, Pg. 9)",
+                        "Labour Statement": "<b>Juasa A:</b> Harvester force is adequate. The primary deficit is in <b>sprayers</b>, where urgent recruitment is needed to avoid compromising field upkeep. (Source: PAR A, Pg. 59)<br><b>Juasa B:</b> Critical shortage of <b>harvesters</b>. The estate faces high turnover due to low earnings resulting from low productivity. (Source: PAR B, Pg. 56)",
+                        "Staff Establishment": "Management teams for 2026: Mr. Lee Chong Yew (GM), En. Mohd Shafirun (Senior Manager). Juasa A Manager: En. Nor Zabidin. Juasa B Manager: En. Shamsul. (Source: PAR A, Pg. 2; PAR B, Pg. 2)",
+                        "General Charges": "Capital Expenditure was underspent for both estates (Accounts are combined). (Source: PAR A, Pg. 58; PAR B, Pg. 55)",
+                        "Upkeep & Cultivation": "<b>Mature Areas:</b> Generally satisfactory in both estates.<br><b>Immature Areas:</b> Juasa B immature areas are <b>not yet satisfactory</b>.<br><b>Spraying:</b> Juasa A sprayer productivity (Inter Pump/Mist Blower) is 'unacceptable'. Juasa B circle/selective spraying is unsatisfactory. (Source: PAR A, Pg. 59; PAR B, Pg. 56)",
+                        "Harvesting & Collection": "<b>Juasa A:</b> Productivity is low in <b>tall palm areas</b>. Management must monitor potential vs actual bunches based on bunch weight and hours worked.<br><b>Juasa B:</b> Harvesting is unsatisfactory, severely hampered by labor shortages and high water tables in flood-prone zones. (Source: PAR A, Pg. 59; PAR B, Pg. 56)",
+                        "Crop Production": "Production data pending full compilation. However, prolonged flooding in Juasa B is noted to have suppressed yield potential significantly. (Source: PAR B, Pg. 56)",
+                        "Water Management (Flooding)": "<b>Juasa B Critical Issue:</b> Low-lying areas have suffered <b>prolonged inundation</b> (Nov 2025 - Jan 2026). This has suppressed palm growth and yield potential. A comprehensive plan to correct high water tables is required immediately. (Source: PAR B, Pg. 56)",
+                        "Pruning Status": "<b>Juasa A:</b> Standards are satisfactory. <br><b>Juasa B:</b> Excessive hanging fronds observed. Corrective pruning must be completed by <b>February 2026</b>. (Source: PAR A, Pg. 59; PAR B, Pg. 56)",
+                        "Pest & Disease": "<b>Juasa A:</b> Rat damage monitoring is required for blocks <b>P19, P20, and P21</b>. Census must be conducted quarterly, with baiting initiated if damage exceeds the 10% threshold. (Source: PAR A, Pg. 59)",
+                        "Manuring Program": "<b>Juasa B:</b> The estate is advised to strive to fully complete the manuring program for 2026. (Source: PAR B, Pg. 56)"
                     },
                     "pinfosys": {
                         "juasa_a_summary": "<h4>CEO Financial Summary - Juasa A (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>Historical data from April 2025. <b>Note: High manuring cost (RM 82.60/Tonne) despite low completion rate suggests bulk purchases or upfront costs.</b> <span class='observation-ref'>(Pinfosys Juasa A, Pg. 23)</span></p>",
-                        "juasa_a_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa A</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>91.34</td><td class='py-1 px-4 border-b text-right'>15.66</td></tr><tr><td class='py-1 px-4 border-b pl-8 font-bold text-red-700'>Manuring</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>481.93</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>82.60</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>21.13</td><td classD='py-1 px-4 border-b text-right'>3.62</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>4.82</td><td class='py-1 px-4 border-b text-right'>0.83</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>41.36</td><td class='py-1 px-4 border-b text-right'>7.09</td></tr><tr><td classs='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>45.27</td><td class='py-1 px-4 border-b text-right'>7.76</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>39.67</td><td class='py-1 px-4 border-b text-right'>6.80</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>716.31</td><td class='py-2 px-4 text-right font-bold'>122.86</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>64.37</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>16.98</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.61</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>550.96</td><td class='py-2 px-4 text-right font-bold'>90.85</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.17</td><td class='py-1 px-4 border-b text-right'>92.80</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1851.12</td><td class='py-2 px-4 text-right font-extrabold'>307.18</td></tr></tbody></table></div>`,
+                        "juasa_a_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa A</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>91.34</td><td class='py-1 px-4 border-b text-right'>15.66</td></tr><tr><td class='py-1 px-4 border-b pl-8 font-bold text-red-700'>Manuring</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>481.93</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>82.60</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>21.13</td><td class='py-1 px-4 border-b text-right'>3.62</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>4.82</td><td class='py-1 px-4 border-b text-right'>0.83</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>41.36</td><td class='py-1 px-4 border-b text-right'>7.09</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>45.27</td><td class='py-1 px-4 border-b text-right'>7.76</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>39.67</td><td class='py-1 px-4 border-b text-right'>6.80</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>716.31</td><td class='py-2 px-4 text-right font-bold'>122.86</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>64.37</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>16.98</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.61</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>550.96</td><td class='py-2 px-4 text-right font-bold'>90.85</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.17</td><td class='py-1 px-4 border-b text-right'>92.80</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1851.12</td><td class='py-2 px-4 text-right font-extrabold'>307.18</td></tr></tbody></table></div>`,
                         "juasa_b_summary": "<h4 class='font-semibold text-lg mt-8'>CEO Financial Summary - Juasa B (April 2025)</h4><p class='text-sm text-gray-600 mb-4'>Historical data from April 2025.</p>",
-                        "juasa_b_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa B</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>82.68</td><td class='py-1 px-4 border-b text-right'>14.09</td></tr><tr><td class='py-1 px-4 border-b pl-8 font-bold text-red-700'>Manuring</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>208.74</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>35.61</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>22.81</td><td class='py-1 px-4 border-b text-right'>3.89</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>0.88</td><td class='py-1 px-4 border-b text-right'>0.15</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>104.93</td><td classD='py-1 px-4 border-b text-right'>17.90</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>69.66</td><td class='py-1 px-4 border-b text-right'>11.88</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>45.01</td><td class='py-1 px-4 border-b text-right'>7.68</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>739.80</td><td class='py-2 px-4 text-right font-bold'>127.04</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>53.57</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>17.79</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td classss='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.26</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>473.21</td><td class='py-2 px-4 text-right font-bold'>81.26</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.04</td><td class='py-1 px-4 border-b text-right'>92.92</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1902.30</td><td class='py-2 px-4 text-right font-extrabold'>301.22</td></tr></tbody></table></div>`
+                        "juasa_b_table": `<h4 class='font-semibold text-lg mb-2'>Summary of Oil Palm Expenditure (YTD April 2025) - Juasa B</h4><div class='overflow-x-auto'><table class='min-w-full bg-white border border-gray-200'><thead class='bg-gray-200'><tr><th class='py-2 px-4 border-b text-left'>Expenditure Item</th><th class='py-2 px-4 border-b text-right'>Cost / Hectare (RM)</th><th class='py-2 px-4 border-b text-right'>Cost / Tonne (RM)</th></tr></thead><tbody><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Upkeep & Cultivation</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Weeding</td><td class='py-1 px-4 border-b text-right'>82.68</td><td class='py-1 px-4 border-b text-right'>14.09</td></tr><tr><td class='py-1 px-4 border-b pl-8 font-bold text-red-700'>Manuring</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>208.74</td><td class='py-1 px-4 border-b text-right font-bold text-red-700'>35.61</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pest & Disease</td><td class='py-1 px-4 border-b text-right'>22.81</td><td class='py-1 px-4 border-b text-right'>3.89</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Census & Thinning Out</td><td class='py-1 px-4 border-b text-right'>0.88</td><td class='py-1 px-4 border-b text-right'>0.15</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Drains</td><td class='py-1 px-4 border-b text-right'>104.93</td><td class='py-1 px-4 border-b text-right'>17.90</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Roads & Bridges</td><td class='py-1 px-4 border-b text-right'>69.66</td><td class='py-1 px-4 border-b text-right'>11.88</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Pruning</td><td class='py-1 px-4 border-b text-right'>45.01</td><td class='py-1 px-4 border-b text-right'>7.68</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Upkeep & Cultivation</td><td class='py-2 px-4 text-right font-bold'>739.80</td><td class='py-2 px-4 text-right font-bold'>127.04</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>Harvesting & Collection</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Labour</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>53.57</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Internal Transport</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>17.79</td></tr><tr><td class='py-1 px-4 border-b pl-8'>Harvesting Incentive</td><td class='py-1 px-4 border-b text-right'>N/A</td><td class='py-1 px-4 border-b text-right'>8.26</td></tr><tr class='bg-gray-100'><td class='py-2 px-4 font-bold'>Total Harvesting & Collection</td><td class='py-2 px-4 text-right font-bold'>473.21</td><td class='py-2 px-4 text-right font-bold'>81.26</td></tr><tr class='bg-gray-50'><td colspan='3' class='py-1 px-4 font-bold'>General Charges (Prop.)</td></tr><tr><td class='py-1 px-4 border-b pl-8'>General Charges</td><td class='py-1 px-4 border-b text-right'>541.04</td><td class='py-1 px-4 border-b text-right'>92.92</td></tr><tr class='bg-gray-200'><td class='py-2 px-4 font-extrabold'>Total Estate Expenditure</td><td class='py-2 px-4 text-right font-extrabold'>1902.30</td><td class='py-2 px-4 text-right font-extrabold'>301.22</td></tr></tbody></table></div>`
                     }
                 },
-                "policy": "<p><b>Policy Cross-Reference based on Key Issues:</b></p> <div class='policy-item'><p class='font-semibold'>Manuring & Fertilizing Delays</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> All fertilizer applications must be completed according to the schedule. Any delays beyond 15 days must be reported with a mitigation plan.</p></div> <div class='policy-item'><p class='font-semibold'>Pest Control (Rats & Barn Owls)</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Rat-04:</b> Estates are encouraged to install barn owl boxes at a density of 1 unit per 15-20 ha to promote natural predation of rodents. The complete absence of boxes in Juasa is a compliance failure.</p></div> <div class='policy-item'><p class='font-semibold'>Harvesting Interval Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Standard harvesting interval should be maintained between 10-15 days to minimize crop loss from overripe bunches. The current interval (up to 46 days) requires immediate action.</p></div> <div class='policy-item'><p class='font-semibold'>Pruning Program</p><p class='text-sm text-gray-600'><b>Policy Ref: PRUN-SCHED-02:</b> Pruning programs must adhere to the established schedule. Any backlogs (e.g., in Juasa B) must be cleared within the same quarter to ensure unhindered harvesting.</p></div>"
+                "policy": "<div class='policy-item'><p class='font-semibold'>Manuring & Fertilizing Delays</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> All fertilizer applications must be completed according to the schedule. Any delays beyond 15 days must be reported with a mitigation plan.</p></div> <div class='policy-item'><p class='font-semibold'>Pest Control (Rats & Barn Owls)</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Rat-04:</b> Estates are encouraged to install barn owl boxes at a density of 1 unit per 15-20 ha to promote natural predation of rodents. The complete absence of boxes in Juasa is a compliance failure.</p></div> <div class='policy-item'><p class='font-semibold'>Harvesting Interval Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Standard harvesting interval should be maintained between 10-15 days to minimize crop loss from overripe bunches. The current interval (up to 46 days) requires immediate action.</p></div> <div class='policy-item'><p class='font-semibold'>Pruning Program</p><p class='text-sm text-gray-600'><b>Policy Ref: PRUN-SCHED-02:</b> Pruning programs must adhere to the established schedule. Any backlogs (e.g., in Juasa B) must be cleared within the same quarter to ensure unhindered harvesting.</p></div>"
             };
 
             // --- JAVASCRIPT FUNCTIONS ---
@@ -195,7 +206,6 @@
 
             function createEstateHTML(estate) {
                  const summaryMetricsHTML = Object.entries(estate.summaryMetrics).map(([key, metric]) => {
-                    // Pull color classes directly from the metric object properties (bg, text, value_color)
                     const colorClasses = {
                         bg: metric.bg,
                         text: metric.text,
@@ -203,49 +213,95 @@
                     };
 
                     if (metric.lines) {
-                        // Card for Area (multi-line)
-                        return `<div class="p-4 rounded-lg shadow-lg ${colorClasses.bg}">
-                                    <h3 class="font-semibold ${colorClasses.text}">${metric.title}</h3>
-                                    <div class="mt-2 space-y-1 text-sm text-gray-800">
+                        return `<div class="p-4 rounded-lg shadow-md ${colorClasses.bg}">
+                                    <h3 class="font-semibold text-lg mb-2 ${colorClasses.text}">${metric.title}</h3>
+                                    <div class="mt-2 space-y-1 text-sm font-medium opacity-90 ${colorClasses.text}">
                                         ${metric.lines.map(line => `<p>${line}</p>`).join('')}
                                     </div>
                                 </div>`;
                     }
-                    // Card for metrics (single value)
-                    return `<div class="p-4 rounded-lg shadow-lg ${colorClasses.bg}">
-                                <h3 class="font-semibold ${colorClasses.text}">${metric.title}</h3>
+                    return `<div class="p-4 rounded-lg shadow-md ${colorClasses.bg}">
+                                <h3 class="font-semibold text-lg mb-1 ${colorClasses.text}">${metric.title}</h3>
                                 <p class="text-2xl font-bold mt-1 ${colorClasses.value_color}">${metric.value}</p>
-                                <p class="text-xs text-gray-500 mt-1">${metric.note}</p>
+                                <p class="text-xs ${colorClasses.text} opacity-75 mt-1 font-medium">${metric.note}</p>
                             </div>`;
                 }).join('');
 
                 const keyMetricsHTML = estate.keyMetrics.map(metric => `
-                    <div class="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg">
-                        <div class="bg-gray-100 p-2 rounded-full">${metric.icon}</div>
-                        <div><p class="text-sm text-gray-500">${metric.label}</p><p class="font-bold text-lg">${metric.value}</p></div>
+                    <div class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+                        <div class="bg-gray-50 p-2 rounded-full">${metric.icon}</div>
+                        <div><p class="text-xs uppercase tracking-wide text-gray-500 font-semibold">${metric.label}</p><p class="font-bold text-gray-900">${metric.value}</p></div>
                     </div>`).join('');
 
-                const observationsHTML = estate.observations.map(obs => `<li class="ml-4">${obs}</li>`).join('');
+                const observationsHTML = estate.observations.map(obs => `<li class="ml-4 pl-2 border-l-2 border-gray-300">${obs}</li>`).join('');
 
                 return `
-                    <div class="bg-white p-6 rounded-lg shadow-lg animate-fade-in">
-                        <h2 class="text-3xl font-bold mb-1 text-gray-900">${estate.name}</h2>
-                        <p class="text-sm text-gray-500 mb-6 italic">${estate.reportInfo}</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
-                        <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">FFB Yield (MT/Ha) & Rainfall (mm)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
-                            <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg animate-fade-in border border-gray-200">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 border-b pb-4">
+                            <div>
+                                <h2 class="text-3xl font-bold text-gray-900">${estate.name}</h2>
+                                <p class="text-sm text-gray-500 italic mt-1">${estate.reportInfo}</p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-green-400">Status: Active</span>
+                            </div>
                         </div>
-                        <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
-                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
-                        <div class="space-y-2">
-                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
-                            <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
-                            <button data-dropdown-id="${estate.id}-plantation" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details</button>
-                            <div id="${estate.id}-plantation" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
-                            <button data-dropdown-id="${estate.id}-pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Pinfosys Report Details</button>
-                            <div id="${estate.id}-pinfosys" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
+                        
+                        <div class="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Key Metrics & Agronomic Status
+                            </h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                                <h3 class="text-lg font-semibold mb-4 text-center">FFB Yield (MT/Ha) & Rainfall (mm)</h3>
+                                <div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div>
+                                <p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+                                <h3 class="text-lg font-semibold mb-4 text-center">Palm Age Profile</h3>
+                                <div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div>
+                                <p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p>
+                            </div>
+                        </div>
+
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800 border-b pb-2">Key Observations & Issues</h3>
+                            <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
+                                <ul class="space-y-4 text-gray-700 mt-2">${observationsHTML}</ul>
+                            </div>
+                        </div>
+
+                        <div class="mb-10 text-center">
+                            <button class="policy-modal-btn bg-green-800 text-white px-8 py-3 rounded-full hover:bg-green-900 transition shadow-lg transform hover:-translate-y-0.5 font-semibold flex items-center mx-auto">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                View Agricultural Policy Cross-Reference
+                            </button>
+                        </div>
+
+                        <div class="space-y-3">
+                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-4 rounded-lg hover:bg-gray-700 transition flex justify-between items-center group shadow-md">
+                                <span class="font-semibold">Agronomy Report Details</span>
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-inner"></div>
+                            
+                            <button data-dropdown-id="${estate.id}-plantation" class="dropdown-btn w-full text-left bg-gray-800 text-white p-4 rounded-lg hover:bg-gray-700 transition flex justify-between items-center group shadow-md">
+                                <span class="font-semibold">Plantation Advisory Report Details</span>
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="${estate.id}-plantation" class="details-content bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-inner"></div>
+                            
+                            <button data-dropdown-id="${estate.id}-pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-4 rounded-lg hover:bg-gray-700 transition flex justify-between items-center group shadow-md">
+                                <span class="font-semibold">Pinfosys Report Details</span>
+                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div id="${estate.id}-pinfosys" class="details-content bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-inner"></div>
                         </div>
                     </div>`;
             }
@@ -263,23 +319,25 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'Juasa A FFB (MT/Ha)', data: estateData.chartData.production.ffb_a, type: 'line', borderColor: '#16a34a', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
-                                { label: 'Juasa B FFB (MT/Ha)', data: estateData.chartData.production.ffb_b, type: 'line', borderColor: '#f97316', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
-                                { label: 'Total Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
+                                { label: 'Juasa A FFB (MT/Ha)', data: estateData.chartData.production.ffb_a, type: 'line', borderColor: '#16a34a', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4, borderWidth: 2, pointRadius: 3 },
+                                { label: 'Juasa B FFB (MT/Ha)', data: estateData.chartData.production.ffb_b, type: 'line', borderColor: '#f97316', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4, borderWidth: 2, pointRadius: 3 },
+                                { label: 'Total Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: 'rgba(59, 130, 246, 0.7)', yAxisID: 'y-rainfall', borderRadius: 4 }
                             ]
                         },
                         options: { 
                             responsive: true, 
                             maintainAspectRatio: false, 
+                            interaction: { mode: 'index', intersect: false },
+                            plugins: { legend: { position: 'top' } },
                             scales: { 
                                 x: { grid: { display: false } }, 
                                 'y-ffb': { 
-                                    type: 'linear', // <-- Retained Chart.js fix
+                                    type: 'linear', 
                                     position: 'left', 
                                     title: { display: true, text: 'FFB Yield (MT/Ha)' } 
                                 }, 
                                 'y-rainfall': { 
-                                    type: 'linear', // <-- Retained Chart.js fix
+                                    type: 'linear', 
                                     position: 'right', 
                                     title: { display: true, text: 'Rainfall (mm)' }, 
                                     grid: { drawOnChartArea: false } 
@@ -295,9 +353,22 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#fde047', '#facc15', '#eab308', '#ca8a04', '#a16207'], hoverOffset: 4 }]
+                            datasets: [{ 
+                                data: estateData.chartData.ageProfile.data, 
+                                backgroundColor: ['#fde047', '#facc15', '#eab308', '#ca8a04', '#a16207'], 
+                                borderColor: '#ffffff',
+                                borderWidth: 2,
+                                hoverOffset: 4 
+                            }]
                         },
-                        options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
+                        options: { 
+                            responsive: true, 
+                            maintainAspectRatio: false, 
+                            plugins: { 
+                                title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 14, weight: 'bold' } }, 
+                                legend: { position: 'right', labels: { boxWidth: 15 } } 
+                            } 
+                        }
                     });
                 }
             }
@@ -309,16 +380,16 @@
 
                 // Agronomy Report Details
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<div class="mb-4 last:mb-0"><h4 class="font-bold text-gray-800 text-lg mb-1">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600 leading-relaxed">${content}</p></div>`).join('');
                 } else if (agronomyDiv) {
-                    agronomyDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                    agronomyDiv.innerHTML = `<p class="text-sm text-gray-500 italic">Not Available</p>`;
                 }
                 
                 // Plantation Advisory Report Details
                 if (plantationDiv && estateData.reports.plantation) {
-                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<div class="mb-4 last:mb-0"><h4 class="font-bold text-gray-800 text-lg mb-1">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600 leading-relaxed">${content}</p></div>`).join('');
                 } else if (plantationDiv) {
-                    plantationDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                    plantationDiv.innerHTML = `<p class="text-sm text-gray-500 italic">Not Available</p>`;
                 }
 
                 // Pinfosys Report Details
@@ -326,7 +397,7 @@
                     // Custom rendering for Pinfosys since it combines two estate summaries/tables
                     pinfosysDiv.innerHTML = estateData.reports.pinfosys.juasa_a_summary + estateData.reports.pinfosys.juasa_a_table + estateData.reports.pinfosys.juasa_b_summary + estateData.reports.pinfosys.juasa_b_table;
                 } else if (pinfosysDiv) {
-                    pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                    pinfosysDiv.innerHTML = `<p class="text-sm text-gray-500 italic">Not Available</p>`;
                 }
             }
 
@@ -335,8 +406,17 @@
                     button.addEventListener('click', (event) => {
                         const id = event.currentTarget.dataset.dropdownId;
                         const content = document.getElementById(id);
-                        content.classList.toggle('active');
-                        event.currentTarget.classList.toggle('active');
+                        const icon = event.currentTarget.querySelector('svg');
+                        
+                        if (content.classList.contains('active')) {
+                             content.classList.remove('active');
+                             event.currentTarget.classList.remove('active');
+                             icon.style.transform = 'rotate(0deg)';
+                        } else {
+                             content.classList.add('active');
+                             event.currentTarget.classList.add('active');
+                             icon.style.transform = 'rotate(180deg)';
+                        }
                     });
                 });
                 container.querySelector('.policy-modal-btn')?.addEventListener('click', openPolicyModal);
@@ -349,7 +429,6 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
             const policyData = `
-                <p class='font-semibold'><b>Policy Cross-Reference based on Key Issues:</b></p> 
                 <div class='policy-item'><p class='font-semibold'>Manuring & Fertilizing Delays</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> All fertilizer applications must be completed according to the schedule. Any delays beyond 15 days must be reported with a mitigation plan.</p></div> 
                 <div class='policy-item'><p class='font-semibold'>Pest Control (Rats & Barn Owls)</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Rat-04:</b> Estates are encouraged to install barn owl boxes at a density of 1 unit per 15-20 ha to promote natural predation of rodents. The complete absence of boxes in Juasa is a compliance failure.</p></div> 
                 <div class='policy-item'><p class='font-semibold'>Harvesting Interval Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Standard harvesting interval should be maintained between 10-15 days to minimize crop loss from overripe bunches. The current interval (up to 46 days) requires immediate action.</p></div> 
