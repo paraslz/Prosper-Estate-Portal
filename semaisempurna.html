@@ -11,12 +11,13 @@
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
         .details-content.active { display: block; }
-        .dropdown-btn.active { background-color: #4a5568; }
-        .policy-item { border-left: 3px solid #6366f1; padding-left: 1rem; margin-top: 0.75rem; }
+        .dropdown-btn.active { background-color: #14532d; } /* Green-900 to match idealestate */
+        .policy-item { border-left: 3px solid #16a34a; padding-left: 1rem; margin-top: 0.75rem; }
         .modal { display: none; }
         .modal.active { display: flex; }
         .chart-container { position: relative; height: 300px; width: 100%; margin: auto; }
         .pie-chart-container { position: relative; height: 350px; width: 100%; margin: auto; }
+        .observation-ref { font-size: 0.75rem; color: #57534e; font-style: italic; }
         @keyframes fade-in {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -36,7 +37,7 @@
                     Semai Sempurna Estate Report
                 </a>
             </div>
-            <a href="estates.html" class="text-indigo-600 hover:text-indigo-800 transition duration-300">&larr; Back to Estates List</a>
+            <a href="estates.html" class="text-green-800 hover:text-green-900 transition duration-300">&larr; Back to Estates List</a>
         </nav>
     </header>
 
@@ -67,71 +68,91 @@
             const estateData = {
                 "id": "semaisempurna",
                 "name": "Semai Sempurna Estate",
-                "reportInfo": "Data based on Agronomy Report (Visit Date: 10th July 2025) & Plantation Advisory Report 1-2025 (Visit Date: 29th July 2025).",
+                "reportInfo": "Data based on Plantation Advisory Report 1-2025 (Visit Date: 29th July 2025) & Agronomy Report 1-2026 (Visit Date: 13th January 2026).",
                 "summaryMetrics": {
-                    "area": { "title": "Estate Area", "lines": ["Mature: 668.40 ha", "Immature: 0.00 ha", "Total: 668.40 ha"], "source": "PA Report, Pg. 9" },
-                    "yield": { "title": "Yield/Ha (YTD vs Prev. Year)", "value": "10.22 / 10.44 MT", "note": "As at June 2025 (2% decline)", "source": "PA Report, Pg. 30" },
-                    "cost": { "title": "FFB Cost/Tonne (Actual vs Budget)", "value": "RM 223.75 / 269.32", "note": "17% below budget", "source": "PA Report, Pg. 32" },
-                    "weeding": { "title": "Weeding Progress", "value": "On Schedule", "note": "2 rounds inter-row, 1 round circle completed", "source": "Agronomy Report, Pg. 5" },
-                    "manuring": { "title": "Manuring Progress (2025)", "value": "94% Completed", "note": "17 of 18 rounds applied", "source": "PA Report, Pg. 18" }
+                    "area": { 
+                        "title": "Estate Area", 
+                        "lines": ["Mature: 668.40 ha", "Immature: 0.00 ha", "Total: 668.40 ha"], 
+                        "source": "AR 1/2026, Pg. 8" 
+                    },
+                    "yield": { 
+                        "title": "Yield/Ha (2025 Actual)", 
+                        "value": "22.18 MT", 
+                        "note": "12.5% decline from 2024", 
+                        "source": "AR 1/2026, Pg. 36" 
+                    },
+                    "cost": { 
+                        "title": "FFB Cost/Tonne (Jun 2025)", 
+                        "value": "RM 223.75 / 269.32", 
+                        "note": "Actual vs Budget (17% below)", 
+                        "source": "PA 1/2025, Pg. 32" 
+                    },
+                    "ganoderma": {
+                        "title": "Ganoderma Status",
+                        "value": "Critical (P06A)",
+                        "note": "22.33% infection in P06A",
+                        "source": "AR 1/2026, Pg. 33"
+                    },
+                    "manuring": { 
+                        "title": "Manuring Progress", 
+                        "value": "100% (2025)", 
+                        "note": "2026 Program pending delivery", 
+                        "source": "AR 1/2026, Pg. 10" 
+                    }
                 },
                 "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Shortage", "value": "2 workers (-7%)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Insignificant (Ganoderma/Rat)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "Harvester Earnings", "value": "Below Basic Wage" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "YTD Yield Decline", "value": "-2.0%" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "11 days (Good)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "N, Mg, K below optimum" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Shortage", "value": "3 workers (25/28)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "High (Ganoderma/Rat)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "Harvest Interval", "value": "15-20 days (Extended)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "2025 Yield", "value": "-12.5% vs 2024" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Mild K Def / Waterlog" }
                 ],
                 "chartData": {
                     "production": {
-                        "labels": ["Jan-25", "Feb-25", "Mar-25", "Apr-25", "May-25", "Jun-25"],
-                        "ffb": [942.15, 976.52, 1053.95, 1058.41, 1572.44, 1394.14],
-                        "rainfall": [222.5, 143.0, 265.5, 396.0, 206.0, 48.0],
-                        "note": "*FFB production and rainfall data for 2025 (YTD June)."
+                        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        "ffb": [964.70, 977.56, 961.51, 1306.02, 1277.45, 1345.27, 1204.33, 1256.87, 1418.40, 1436.73, 1383.57, 1291.11],
+                        "rainfall": [222.5, 143.0, 265.5, 396.0, 206.0, 48.0, 29.5, 61.5, 170.0, 103.5, 149.5, 401.0],
+                        "note": "*FFB production and rainfall data for 2025 (Full Year). Source: AR 1/2026 Appendix 2b & 3."
                     },
                     "ageProfile": {
-                        "labels": ["14-19 Years"],
-                        "data": [100],
+                        "labels": ["Prime (8-19 Years)", "Old (20+ Years)"],
+                        "data": [74, 26],
                         "title": "Semai Sempurna Estate Palm Age Distribution",
-                        "note": "*Palm age distribution based on planting years 2006-2011."
+                        "note": "*Source: Agronomy Report 1/2026, Pg. 9."
                     }
                 },
                 "observations": [
-                    "<b>Harvester Shortage & Low Productivity:</b> The estate is short of 2 harvesters. Harvester productivity is low, with average earnings below the daily basic wage, contributing to high turnover. (PA Report, Pg. 10, 29, 35)",
-                    "<b>Decline in Bunch Weight:</b> Bunch weights have declined sharply in 2025 compared to 2024, suggesting potential issues with bunch counting or extended harvesting intervals affecting weight. (PA Report, Pg. 31)",
-                    "<b>Yield Decline:</b> Cumulative yield as at June 2025 is 2% lower than the same period last year. (PA Report, Pg. 30). Agronomy report noted a 9.5% decline compared to its own baseline. (Agronomy Report, Pg. 6, 34)",
-                    "<b>Ganoderma Infection & SPH Reduction:</b> Ganoderma is present sporadically. It is recommended to commence census and deboling. (PA Report, Pg. 23, 35). This has led to a 5% overall reduction in palm density (SPH). (Agronomy Report, Pg. 4, 9, 32, 36)",
-                    "<b>Nutrient Level Decline:</b> Leaf analysis shows a decline in Nitrogen (N), Magnesium (Mg), and Potassium (K) levels in several sub-blocks. (Agronomy Report, Pg. 5, 20)",
-                    "<b>Rat Activity:</b> Rat damage was observed sporadically across all blocks. It is recommended to conduct a damage census and apply baiting where damage exceeds 10%. (PA Report, Pg. 22, 35)"
+                    "<b>Critical Ganoderma Infection (P06A):</b> Infection incidence in Field P06A has reached 22.33%, with 2,189 palms collapsed. Overall estate infection is 6.04%. Sanitation via deboling and mounding is recommended. <span class='observation-ref'>(AR 1/2026, Pg. 33, 34)</span>",
+                    "<b>Yield Decline & Harvest Rounds:</b> 2025 yield (22.18 MT/ha) dropped 12.5% compared to 2024. Most fields achieved only ~18 harvesting rounds vs target of 24, contributing to the decline. <span class='observation-ref'>(AR 1/2026, Pg. 36-37)</span>",
+                    "<b>Harvester Shortage & Extended Intervals:</b> Harvesting intervals extended to 20 days in July/Aug 2025. Current harvester strength is 25 vs 28 required. <span class='observation-ref'>(AR 1/2026, Pg. 12, 16)</span>",
+                    "<b>Rat Infestation:</b> Two quarters in 2025 recorded damage >10%, triggering baiting campaigns. Fresh damage is still visible on bunches. <span class='observation-ref'>(AR 1/2026, Pg. 31)</span>",
+                    "<b>Waterlogging & Nutrient Issues:</b> Waterlogging in P09B1 is causing yellowish foliage and impaired nutrient uptake. Mild Potassium (K) deficiency noted in P09B and P10C. <span class='observation-ref'>(AR 1/2026, Pg. 23)</span>",
+                    "<b>Weeding & Field Hygiene:</b> While generally satisfactory, localized patches of <i>Clidemia hirta</i> and debris in circles (frond butts) were observed in blocks A2/A3, affecting loose fruit collection. <span class='observation-ref'>(AR 1/2026, Pg. 26, 30)</span>",
+                    "<b>Low Harvester Earnings (from PA):</b> Harvester earnings were noted to be below the basic wage, contributing to high turnover and shortages. <span class='observation-ref'>(PA 1/2025, Pg. 29)</span>"
                 ],
                 "reports": {
                     "agronomy": {
-                        "Executive Summary": "As of the visit on July 10, 2025, the estate's yield had declined by 9.5% year-to-date compared to 2024. This is primarily linked to underperforming fields P09B, P10C, and P11D. A key concern is the 5% reduction in palm stand per hectare (SPH) due to Ganoderma infection. The 2025 manuring program is 59% complete and considered acceptable. Canopy management and pruning are satisfactory, though nutrient analysis reveals a decline in N, Mg, and K levels in certain areas. Weeding is on schedule, but some noxious weeds persist. Rat activity requires continued monitoring despite being below the damage threshold. (Agronomy Report, Pg. 4-6)",
-                        "Nutrient Inputs/Progress of Manuring": "The 2025 manuring program is 59% complete as of mid-year, which is satisfactory. The first round of Mixture B and Rock Phosphate was applied successfully. For the second half, Mixture B has been substituted with Compact B, which has a similar nutrient composition. The estate is awaiting the next consignment of fertilizer. (Agronomy Report, Pg. 10)",
-                        "Agronomic Observation": "Harvesting intervals are acceptable (15-19 days) with 26 harvesters on site. Crop recovery and loose fruit collection are satisfactory, though some bunches have long stalks needing a 'V-cut'. Pruning is 50% complete and quality is acceptable. Palm vigor is generally good, but leaf analysis from May 2025 indicates declining N, Mg, and K levels in specific blocks. Weeding is on schedule, with two inter-row and one circle round completed. However, spots of Clidemia hirta were found in B3 and D3. Rat damage is below threshold, but fresh activity is present. Ganoderma infection is termed 'insignificant' but has caused a 5% overall SPH loss, requiring deboling to manage spread. (Agronomy Report, Pg. 12-33)",
-                        "Yield Performance": "The cumulative yield as at June 2025 is 10.22 mt/ha, a 9.48% decrease from 11.29 mt/ha in the same period of 2024. Fields P09B, P10C, and P11D showed notable declines, while P06A and P11E saw slight improvements. Despite the lower yield, crop recovery is considered acceptable based on harvesting rounds completed. (Agronomy Report, Pg. 34-35)",
-                        "Fertilizer Recommendation": "The 2026 fertilizer program has been formulated based on foliar analysis, yield data, and field observations. It includes mixture fertilizers (Mix A & Mix B) and Rock Phosphate to address nutrient requirements for N, K, Mg, B, and P. The program will be reviewed during the next visit in the first half of 2026. (Agronomy Report, Pg. 37)"
+                        "Executive Summary": "The estate recorded an average yield of 22.18 mt/ha in 2025, a 12.5% decline from 2024. The primary yield-limiting factors are the high Ganoderma infection rate in P06A (22.33%), waterlogging in P09B1, and extended harvesting intervals due to labour shortages. The 2025 manuring program was successfully completed. (Source: AR 1/2026, Pg. 5)",
+                        "Nutrient Inputs/Progress of Manuring": "The 2025 manuring programme was 100% completed without significant delays. For 2026, no fertilizers have been received or applied yet; delivery is expected shortly. (Source: AR 1/2026, Pg. 10)",
+                        "Agronomic Observation": "Harvesting intervals fluctuated between 15-20 days, often exceeding the target due to harvester turnover. Pruning is generally acceptable, though some under-pruning was seen in P09B5. Waterlogging in P09B1 requires drainage improvement. Weeding is on schedule, but Clidemia hirta spots require attention. (Source: AR 1/2026, Pg. 12-26)",
+                        "Yield Performance": "Cumulative yield for 2025 was 22.18 mt/ha, down from 25.36 mt/ha in 2024. P06A saw the sharpest decline (-16.7%). The average number of harvesting rounds was 18.3, well below the benchmark of 24. (Source: AR 1/2026, Pg. 36-37)",
+                        "Fertilizer Recommendation (2026)": "No amendments made to the 2026 recommendation. The 2027 program will be drawn up after the next visit in July 2026. (Source: AR 1/2026, Pg. 39)",
+                        "Pest & Disease": "Rat damage exceeded 10% in two quarters of 2025; baiting was conducted. Barn owl occupancy is healthy at 89%. Ganoderma census shows 2,703 infected palms total, with P06A critically affected. (Source: AR 1/2026, Pg. 31-33)"
                     },
                     "plantation": {
-                        "Executive Summary": "The high turnover and shortage of harvesters are of concern, as their earnings are below the minimum wage and lower than weeders. There is room for a higher rate to be paid while emphasizing productivity. Field conditions are well under control and should be maintained. It is recommended to apply EFB at block A, be alert for rat damage (baiting if >10%), and commence Ganoderma census and deboling. Vigilance is required for bunch counting to address weight discrepancies. (PA Report, Pg. 35-36)",
-                        "Area Statement": "There was no change in the area statement. Total mature area is 668.40 ha. (PA Report, Pg. 9)",
-                        "Labour Statement": "The estate requires 28 harvesters (1:24 ha ratio) but has only 26, resulting in a shortage of 2. A temporary contractor was engaged as an interim measure, but a permanent solution is needed. Workers for spraying and manuring were adequate. (PA Report, Pg. 10)",
-                        "Staff Establishment": "The Manager resigned in March 2025 and was replaced by an Assistant-in-Charge from Grancia Estate. The current staff complement is considered acceptable and capable of managing the estate. (PA Report, Pg. 11)",
-                        "General Charges": "As of June 2025, General Charges were 40% underspent compared to the budget and were considered under control, with an actual cost of RM 554.68/ha. (PA Report, Pg. 12)",
-                        "Upkeep & Cultivation": "The cost of upkeep for mature areas was RM 1071.85/ha as of June 2025. Circle spraying covered 100% (1 round) and was satisfactory. Selective spraying also covered 100% (2 rounds) with good quality. Pruning was on schedule and satisfactory. (PA Report, Pg. 13-20)",
-                        "Harvesting and Collection": "The harvesting and collection cost was RM 64.64/tonne, which is acceptable. Harvesting rounds averaged 11 days. However, harvester productivity was slightly low, with average earnings (RM 56.10 - RM 59.70/day) falling below the basic wage of RM 65.38/day. (PA Report, Pg. 27-29)",
-                        "Crop Production": "Yield as of June 2025 was 10.22 mt/ha, which is 4% below budget (10.66 mt/ha) and 2% below the same period in 2024 (10.44 mt/ha). A sharp decline in bunch weights was noted in 2025 compared to 2024, indicating potential issues with bunch counting or harvesting intervals. (PA Report, Pg. 30-31)",
-                        "Production Cost": "The total cost of production as of June 2025 was RM 223.75 per tonne of FFB, which was deemed satisfactory. This was 17% below the budgeted cost of RM 269.32/tonne. (PA Report, Pg. 32)",
-                        "Vehicles Running Cost": "The running cost for the Eurostar tractor was high due to low utilization, as it was solely used for pushing FFB at the loading ramp. It is advised to budget for lower running hours in the future. (PA Report, Pg. 33)",
-                        "Capital Expenditure": "There was no capital expenditure spent as of June 2025. The budget includes RM 310,000 for new labour quarters and RM 4,000 for a new computer and printer. (PA Report, Pg. 34)",
-                        "Immature": "N/A"
+                        "Executive Summary": "The high turnover and shortage of harvesters are of concern, as their earnings are below the minimum wage and lower than weeders. Field conditions are well under control. Recommended to apply EFB at block A and be alert for rat damage. (Source: PA 1/2025, Pg. 35-36)",
+                        "Area Statement": "Total mature area is 668.40 ha. No immature area. (Source: PA 1/2025, Pg. 9)",
+                        "Labour Statement": "Shortage of 2 harvesters noted during visit (26 vs 28). Interim contractors engaged. (Source: PA 1/2025, Pg. 10)",
+                        "Upkeep & Cultivation": "Cost of upkeep was RM 1071.85/ha (June 2025). Circle and selective spraying 100% completed. Pruning on schedule. (Source: PA 1/2025, Pg. 13-20)",
+                        "Harvesting and Collection": "Cost was RM 64.64/tonne. Harvester productivity slightly low, with earnings RM 56.10-59.70/day (below basic wage). (Source: PA 1/2025, Pg. 27-29)",
+                        "Crop Production": "Yield as of June 2025 was 10.22 mt/ha, 4% below budget. Sharp decline in bunch weights noted. (Source: PA 1/2025, Pg. 30-31)",
+                        "Production Cost": "Total cost RM 223.75/tonne (June 2025), 17% below budget of RM 269.32/tonne. (Source: PA 1/2025, Pg. 32)"
                     },
                     "pinfosys": {
                         "Report Status": "The Pinfosys Report for Semai Sempurna Estate is not yet available. Please check back later for updates."
                     }
                 },
-                "policy": " <div class='policy-item'><p class='font-semibold'>Palm Density Reduction / Ganoderma</p><p class='text-sm text-gray-600'><b>Policy 1.0:</b> Agree palm census be conducted yearly for the blocks detected with Ganoderma infection. (Pg. 4)</p><p class='text-sm text-gray-600'><b>Policy 9.3:</b> Basal Stem Rot (BSR) caused by Ganoderma spp. has been a serious problem. (Pg. 115)</p><p class='text-sm text-gray-600'><b>Policy 9.3.2.2 b:</b> In low-risk areas, the economic life of such palms can be prolonged by mounding the palm base with soil. (Pg. 120)</p></div> <div class='policy-item'><p class='font-semibold'>Harvesting Interval / Crop Recovery</p><p class='text-sm text-gray-600'><b>Policy 12.3:</b> Ideal harvesting interval 10-12 days. (Pg. 127)</p><p class='text-sm text-gray-600'><b>Policy 12.4.1:</b> Maintain high harvesting standards; collect all loose fruits. (Pg. 127)</p><p class='text-sm text-gray-600'><b>Policy 12.6:</b> For better crop recovery, it must be shortened to around 15 days. (Pg. 4)</p></div> <div class='policy-item'><p class='font-semibold'>Harvester Shortage</p><p class='text-sm text-gray-600'><b>Policy 12.5.2:</b> A gang should be given areas with mixture of different age group and reasonable number of tasks to sustain their income. (Pg. 127)</p></div> <div class='policy-item'><p class='font-semibold'>Nutrient Deficiencies</p><p class='text-sm text-gray-600'><b>Policy 8.3.1:</b> Please make sure manuring is timely carried out with good standards to ensure the palms receive sufficient amount of fertilizers for optimum growth. (Pg. 5)</p></div> <div class='policy-item'><p class='text-sm text-gray-600'><b>Policy 6.01:</b> Maintain favorable ground conditions at minimum cost. (Pg. 61)</p><p class='text-sm text-gray-600'><b>Table 6.1:</b> Clidemia hirta, Ageratum conyzoides are listed as noxious weeds. (Pg. 64)</p></div> <div class='policy-item'><p class='font-semibold'>Rat Infestation</p><p class='text-sm text-gray-600'><b>Policy 9.1.3 iii:</b> Conduct regular rat baiting if damage >5%. (Pg. 118)</p><p class='text-sm text-gray-600'><b>Appendix 9.6:</b> Biological control of rat population using barn owls. (Pg. 178)</p></div> <div class='policy-item'><p class='font-semibold'>Pruning / Frond Snapping</p><p class='text-sm text-gray-600'><b>Policy 11.01:</b> Pruning is for practical purposes; avoid over-pruning. (Pg. 124)</p><p class='text-sm text-gray-600'><b>Policy 11.1.2:</b> Retain two fronds below lowest bunches. (Pg. 124)</p></div> <div class='policy-item'><p class='font-semibold'>Debris in Palm Circles</p><p class='text-sm text-gray-600'><b>Policy 12.6:</b> Collect all loose fruits. (Pg. 128)</p></div>"
+                "policy": " <div class='policy-item'><p class='font-semibold'>Ganoderma Sanitation</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-01:</b> For infection levels >15% (e.g., P06A), strict sanitation via deboling (1.5m x 1.5m pit) is mandatory to check spread.</p></div> <div class='policy-item'><p class='font-semibold'>Harvesting Intervals</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Harvesting intervals must be maintained at 10-12 days. Intervals >15 days negatively impact crop recovery and loose fruit collection.</p></div> <div class='policy-item'><p class='font-semibold'>Rat Control</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Rat-02b:</b> Damage census >10% triggers immediate baiting campaigns (Storm/flocoumafen) until damage drops below 5%.</p></div> <div class='policy-item'><p class='font-semibold'>Water Management</p><p class='text-sm text-gray-600'><b>Policy Ref: SOIL-DRAIN-02:</b> Waterlogged areas (e.g., P09B1) must be drained to prevent anaerobic conditions and nutrient lock-up (yellow palms).</p></div>"
             };
 
 
@@ -151,13 +172,12 @@
                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
                     const colorClass = metric.title.includes('Area') ? 'bg-blue-50 text-blue-800' : 
                                        metric.title.includes('Yield') ? 'bg-green-50 text-green-800' :
-                                       metric.title.includes('Cost') ? 'bg-red-50 text-red-800' :
-                                       metric.title.includes('Weeding') ? 'bg-yellow-50 text-yellow-800' : 'bg-purple-50 text-purple-800';
-                    let sourceHTML = metric.source ? `<p class="text-xs text-gray-400 mt-1">${metric.source}</p>` : '';
+                                       metric.title.includes('Cost') ? 'bg-orange-50 text-orange-800' :
+                                       metric.title.includes('Ganoderma') ? 'bg-red-50 text-red-800' : 'bg-yellow-50 text-yellow-800';
                     if (metric.lines) {
-                        return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3>${metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('')}${sourceHTML}</div>`;
+                        return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3>${metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('')}</div>`;
                     }
-                    return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3><p class="text-2xl font-bold">${metric.value}</p><p class="text-xs text-gray-500 mt-1">${metric.note}</p>${sourceHTML}</div>`;
+                    return `<div class="p-4 rounded-lg ${colorClass}"><h3 class="font-semibold">${metric.title}</h3><p class="text-2xl font-bold">${metric.value}</p><p class="text-xs text-gray-500 mt-1">${metric.note}</p><p class="text-[10px] text-gray-400 mt-1 italic">${metric.source || ''}</p></div>`;
                 }).join('');
 
                 const keyMetricsHTML = estate.keyMetrics.map(metric => `
@@ -175,11 +195,11 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall (YTD)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
+                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall (2025)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
-                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
+                        <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
                             <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
                             <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
@@ -204,7 +224,7 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#c026d3', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
+                                { label: 'FFB Production (MT)', data: estateData.chartData.production.ffb, type: 'line', borderColor: '#ca8a04', backgroundColor: 'transparent', yAxisID: 'y-ffb', tension: 0.4 },
                                 { label: 'Rainfall (mm)', data: estateData.chartData.production.rainfall, backgroundColor: '#3b82f6', yAxisID: 'y-rainfall' }
                             ]
                         },
@@ -218,7 +238,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#4CAF50', '#2196F3', '#FFC107', '#F44336', '#9C27B0'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#eab308', '#a16207'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
