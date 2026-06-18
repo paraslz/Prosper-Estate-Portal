@@ -69,20 +69,20 @@
             const estateData = {
                 "id": "simpai1",
                 "name": "Ladang Simpai 1",
-                "reportInfo": "Data based on Plantation Advisory Report 2/2025 (Visit: 15 Dec 2025) & Agronomy Report 1/2025 (Visit: June 2025).",
+                "reportInfo": "Data based on Plantation Advisory Report 2/2025 (Visit: 15 Dec 2025) & Agronomy Report 1/2026 (Visit: 22nd April 2026).",
                 "summaryMetrics": {
                     "area": { 
                         "title": "Estate Area", 
                         "lines": [
-                            "Total Plantable: 1,249.22 ha", 
-                            "Mature: 948.74 ha", 
-                            "Immature: 300.48 ha"
+                            "Total Planted: 1,249.22 ha", 
+                            "Mature: 1,141.37 ha (91%)", 
+                            "Immature: 107.85 ha (9%)"
                         ] 
                     },
                     "yield": { 
-                        "title": "Yield/Ha (Actual vs Budget)", 
-                        "value": "18.43 / 16.98 MT", 
-                        "note": "YTD Oct 2025 (+9%)" 
+                        "title": "Yield/Ha", 
+                        "value": "22.34 MT", 
+                        "note": "Full Year 2025 (+34.3%)" 
                     },
                     "cost": { 
                         "title": "FFB Cost/Tonne (Actual vs Budget)", 
@@ -92,43 +92,43 @@
                     "weeding": { 
                         "title": "Weeding Progress", 
                         "value": "Behind Schedule", 
-                        "note": "Circle Spraying 65% Completed" 
+                        "note": "Delayed by sprayer shortage" 
                     },
                     "manuring": { 
                         "title": "Manuring Progress", 
-                        "value": "83% Completed", 
-                        "note": "100/120 rounds applied" 
+                        "value": "Delayed", 
+                        "note": "2026 Kieserite at 0%" 
                     }
                 },
                 "keyMetrics": [
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Status", "value": "Shortage: 10 Sprayers" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "YTD FFB Prod.", "value": "17,507 MT (+9%)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "FY 2025 FFB Yield", "value": "22.34 MT/ha (+34%)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "16.04% (CPO)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "General Charges", "value": "Overspent (41%)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "19 days (Weather)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "83% Program Done" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "Pest Status", "value": "Rat Damage >20%" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "2026 Deliveries Delayed" }
                 ],
                 "chartData": {
                     "production": { 
                         "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 
-                        "ffb": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Monthly breakdown not in extract
-                        "rainfall": [238, 98, 224, 548, 217, 0, 0, 0, 0, 0, 0, 0], // Previous data retained
-                        "note": "*YTD FFB: 17,507 MT vs Budget 16,131 MT. Monthly breakdown not detailed in PA Report 2." 
+                        "ffb": [1383, 871, 1392, 1746, 1607, 1780, 2091, 2222, 2121, 2499, 2143, 1692], 
+                        "rainfall": [238, 98, 224, 548, 217, 249.5, 36, 265, 196, 122, 320, 656], 
+                        "note": "*FFB production and rainfall data for the full year of 2025." 
                     },
                     "ageProfile": { 
-                        "labels": ["Immature (24%)", "Young Mature (25%)", "Prime Mature (48%)", "Old Mature (3%)"], 
-                        "data": [24, 25, 48, 3], 
-                        "title": "Simpai 1 Palm Age Distribution", 
-                        "note": "*Age distribution based on planting year. (Source: AR, Pg. 10)" 
+                        "labels": ["0-3 Years (9%)", "4-7 Years (41%)", "8-19 Years (50%)", "20-25 Years (0%)", ">26 Years (0%)"], 
+                        "data": [9, 41, 50, 0, 0], 
+                        "title": "Simpai 1 Palm Age Distribution (2026)", 
+                        "note": "*Age distribution based on planting year. (Source: AR 1/2026, Pg. 11)" 
                     }
                 },
                 "observations": [
-                    "<b>Critical Sprayer Shortage:</b> Shortage of 10 sprayers is critical. Recruitment from Nepal is planned for Jan 2026. This has caused weeding programs to fall behind schedule (Circle Spraying 65% completed). <span class='observation-ref'>(PAR 2/2025, Pg. 10, 16)</span>",
-                    "<b>General Charges Overspending:</b> General charges overspent by 41% due to unbudgeted incentives and Head Office allocations. <span class='observation-ref'>(PAR 2/2025, Pg. 13)</span>",
-                    "<b>Pruning Quality Issues:</b> Under-pruned palms were observed at blocks P19 and P20. Corrective action is required to ensure standards are met. <span class='observation-ref'>(PAR 2/2025, Pg. 31, 49)</span>",
-                    "<b>Manuring Delays (Agronomy):</b> 2025 program is progressing but still 83% complete vs 100% target. Delays in 2024 program continue to impact yield potential. <span class='observation-ref'>(AR Pg. 11; PAR 2/2025 Pg. 24)</span>",
-                    "<b>Rat Damage:</b> Sporadic rat damage noted at P19, P20, and P21. Census required quarterly; baiting needed if fresh damage >10%. <span class='observation-ref'>(PAR 2/2025, Pg. 26, 49)</span>",
-                    "<b>Immature Area Status:</b> Supplying at PR23/H is in progress and expected to be completed by December. Basal pruning at PR22/G needs repairs. <span class='observation-ref'>(PAR 2/2025, Pg. 44, 48)</span>"
+                    "<b>Critical Sprayer Shortage & Weeding Delays:</b> A shortage of 10 sprayers has severely delayed both circle and inter-row weeding programs across the estate, with circle spraying in some mature blocks (e.g., PM15A) only at 55% completion. <span class='observation-ref'>(PAR 2/2025, Pg. 10, 16; AR 1/2026, Pg. 22, 31, 35)</span>",
+                    "<b>High Rat Infestation:</b> Rat damage census in mature blocks (PM15A, PM16B, PM17C) recorded high infestation levels of 20-25%, notably exceeding the 10% threshold. Immediate and continuous baiting campaigns are required. <span class='observation-ref'>(AR 1/2026, Pg. 26-27, 33)</span>",
+                    "<b>Yield Improvement & Crop Recovery:</b> The estate recorded a substantial yield increase, reaching 22.34 MT/ha for 2025 (+34.3% YoY). The momentum continues into early 2026 with a 9.2% increase in Q1, though crop recovery standards must be monitored to avoid uncollected loose fruits and VOPs. <span class='observation-ref'>(AR 1/2026, Pg. 15-16, 38-40)</span>",
+                    "<b>General Charges Overspending:</b> General charges overspent significantly (by 41%) mainly due to unbudgeted worker incentives and high Head Office allocations. <span class='observation-ref'>(PAR 2/2025, Pg. 13-14)</span>",
+                    "<b>Manuring Deliveries & Quality:</b> While the 2025 manuring program was successfully completed, progress in 2026 is hindered by late deliveries (Kieserite at 0%). Application quality needs monitoring due to lumpy distribution observed in P19D-2. <span class='observation-ref'>(AR 1/2026, Pg. 12-14)</span>",
+                    "<b>Palm Etiolation & Pruning Standards:</b> Etiolation due to close planting in hilly areas (PM16B) requires selective thinning to remove unproductive palms. Pruning is 100% complete, but frond stacking practices remain inconsistent. <span class='observation-ref'>(AR 1/2026, Pg. 18-21; PAR 2/2025, Pg. 31)</span>"
                 ],
                 "reports": {
                     "plantation": {
@@ -146,16 +146,13 @@
                         "Immature": "<ul class='list-disc ml-4'><li><b>PR22/G (192.63 ha):</b> Weeding 87% complete. Manuring 5/6 rounds done. Basal pruning completed in Aug but needs repairs. Scout harvesting 0.6 ton/ha.</li><li><b>PR23/H (107.85 ha):</b> Weeding 80% complete. Manuring 4/5 rounds done. Oryctes control sprayed 18 rounds (infestation sporadic). Supplying: 388 palms done; to complete by Dec.</li></ul><span class='observation-ref'>(PAR 2/2025, Pg. 42-48)</span>"
                     },
                     "agronomy": {
-                        "Executive Summary": "The first agronomy visit for 2025 was conducted on June 11, 2025. The key concerns are the slow progress of manuring from 2024 carrying into 2025, which is depressing yield potential. Weeding programs are also behind schedule. While overall palm appearance is acceptable, nutrient deficiencies and pest damage (rats, rhinoceros beetles) require immediate attention. Yield has improved but is still below expectations. <span class='observation-ref'>(AR Pg. 4-7)</span>",
-                        "Nutrient Inputs/Progress of Manuring": "The estate failed to complete the 2024 manuring program. The 2025 program is progressing slower than expected, with only 23% of Mix B applied by May due to storage and delivery issues. <span class='observation-ref'>(AR Pg. 11-12)</span>",
-                        "Agronomic Observation": "Mature palm appearance is generally acceptable, but some areas show nutrient deficiencies. Harvesting intervals are satisfactory (<15 days), but unripe bunches were noted. Pruning is timely, but frond heap management is inconsistent. Weeding is behind schedule. Rat and bagworm damage were observed. <span class='observation-ref'>(AR Pg. 15-29)</span>",
-                        "Yield Performance": "As of May 2025, YTD yield is 5.94 mt/ha, a 6% increase from the same period last year. The most significant gains were in young mature blocks PM20E and PM21F. However, overall yield is below potential. <span class='observation-ref'>(AR Pg. 47-49)</span>",
-                        "Fertilizer Recommendation": "The 2025 fertilizer program remains unchanged. The 2026 program will be formulated in the next report. Critical to adhere to the current schedule to avoid further yield depression. <span class='observation-ref'>(AR Pg. 50)</span>"
+                        "Executive Summary": "The agronomy visit was conducted on 22nd April 2026. The estate's yield performance showed a significant improvement of 34.3% in 2025, reaching 22.34 MT/ha. However, severe delays in weeding programs (due to a limited number of sprayers) and high rat infestation levels (>20% damage in mature blocks) threaten optimal crop recovery. Manuring for 2025 was fully completed, but 2026 progress is currently hindered by late fertilizer deliveries. <span class='observation-ref'>(AR 1/2026, Pg. 8, 12, 22, 26, 38)</span>",
+                        "Nutrient Inputs / Progress of Manuring": "The 2025 fertilizer program was successfully completed. For the 2026 program as of March, Mixture B is 94% complete and Compound B is 100% complete. However, Kieserite application is severely delayed (0% applied) due to late deliveries. Application quality was mostly acceptable, though instances of lumpy distribution and missed palms were noted in PM19D-2. <span class='observation-ref'>(AR 1/2026, Pg. 12-14)</span>",
+                        "Agronomic Observation": "<ul class='list-disc ml-4'><li><b>Crop Recovery:</b> Generally acceptable with minimal overripe bunches, but loose fruits left at the ramp and collection spots require better management to prevent the spread of VOPs.</li><li><b>Vegetation/Weeding:</b> Both circle and inter-row spraying are delayed across the estate (e.g., PM15A circle spray at 55%) due to limited sprayers, leading to VOPs and Mucuna encroachment.</li><li><b>Pest & Disease:</b> Rat infestation is a major concern, with damage censuses in PM15A, PM16B, and PM17C reading between 20-25% (well above the 10% threshold). Baiting campaigns have commenced. Rhinoceros beetle damage in immature areas remains under control (4-5%).</li><li><b>Canopy & Thinning:</b> Pruning is 100% complete in mature blocks with acceptable quality, though frond stacking in hilly areas is inconsistent. Etiolation from close planting is visible in PM16B, which requires selective thinning.</li></ul><span class='observation-ref'>(AR 1/2026, Pg. 15-27, 36)</span>",
+                        "Yield Performance": "Overall estate yield improved drastically from 16.64 MT/ha in 2024 to 22.34 MT/ha in 2025 (+34.3%). PM17C was the highest-yielding mature block at 28.66 MT/ha. For the first quarter of 2026, production sits at 3.60 MT/ha, marking a 9.2% increase from the exact same period in 2025. <span class='observation-ref'>(AR 1/2026, Pg. 38-40)</span>",
+                        "Fertilizer Recommendation": "The second half of the 2026 manuring program has been revised. Adjustments include reduced dosages for certain fields in response to current fertilizer prices and stock availability. Strict adherence to this revised schedule is mandatory. <span class='observation-ref'>(AR 1/2026, Pg. 45-48)</span>"
                     },
-                    "pinfosys": {
-                        "CEO Financial Summary": "Not Available",
-                        "Summary of Oil Palm Expenditure": "Not Available"
-                    }
+                    "pinfosys": "Not Available"
                 },
                 "policy": "<p>Policy cross-references are not yet available for this estate.</p>"
             };
@@ -256,20 +253,23 @@
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
                 
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                } else if (agronomyDiv) {
+                    agronomyDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
 
                 if (plantationDiv && estateData.reports.plantation) {
-                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                } else if (plantationDiv) {
+                    plantationDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
 
-                if (pinfosysDiv && estateData.reports.pinfosys) {
-                     // Check if pinfosys is an object or string
-                    if (typeof estateData.reports.pinfosys === 'string') {
-                         pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">${estateData.reports.pinfosys}</p>`;
-                    } else {
-                        pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section.replace(/([A-Z])/g, ' $1').trim()}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
-                    }
+                if (pinfosysDiv && estateData.reports.pinfosys === "Not Available") {
+                    pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                } else if (pinfosysDiv && typeof estateData.reports.pinfosys === 'string') {
+                     pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">${estateData.reports.pinfosys}</p>`;
+                } else if (pinfosysDiv) {
+                    pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
                 }
             }
 
