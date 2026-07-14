@@ -63,11 +63,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             
             // Central Data Store for Ladang Simpai 2
-            // Combines new Agronomy Report 1/2026 and existing PA Report 2/2025
+            // Synthesized from Agronomy Report 1/2026 and Planting Advisory Report 1/2026
             const estateData = {
                 "id": "simpai2",
                 "name": "Ladang Simpai 2",
-                "reportInfo": "Data based on PA Report 2/2025 (Visit: 16th Dec 2025) & Agronomy Report 1/2026 (Visit: 21st April 2026).",
+                "reportInfo": "Data based on PA Report 1/2026 (Visit: 16th June 2026) & Agronomy Report 1/2026 (Visit: 21st April 2026).",
                 
                 "summaryMetrics": {
                     "area": { 
@@ -80,99 +80,116 @@
                         ] 
                     },
                     "yield": { 
-                        "title": "Yield/Ha (Actual)", 
-                        "value": "2.58 MT", 
-                        "note": "YTD Mar 2026 (-15.5% vs 2025)" 
+                        "title": "Yield/Ha (Actual vs Budget)", 
+                        "value": "5.10 / 5.54 MT", 
+                        "note": "YTD May 2026 (FFB Yield, PA Report 1/2026)" 
                     },
                     "cost": { 
-                        "title": "FFB Cost/Tonne (Actual / Budget)", 
-                        "value": "RM 425.23 / RM 424.49", 
-                        "note": "YTD Oct 2025 (PA Report)" 
+                        "title": "FFB Cost/Tonne (Actual vs Budget)", 
+                        "value": "RM 422.10 / RM 392.62", 
+                        "note": "YTD May 2026 (Production Cost, PA Report 1/2026)" 
                     },
                     "weeding": { 
                         "title": "Weeding Progress", 
-                        "value": "Ongoing / Delayed", 
-                        "note": "Inter-row delayed; Mucuna in PR24" 
+                        "value": "Lagging / Delayed", 
+                        "note": "Sprayer shortage; PR24 creepers" 
                     },
                     "manuring": { 
                         "title": "Manuring Progress", 
-                        "value": "In Progress", 
-                        "note": "44% Mix B, 100% Comp B (Mar '26)" 
+                        "value": "Behind Schedule", 
+                        "note": "Kieserite delayed (June delivery)" 
                     }
                 },
 
                 "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Status", "value": "Critical Shortage", "note": "Impacts field upkeep" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-500' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' /></svg>", "label": "P&D Status", "value": "Concern", "note": "Rats & Rhino Beetles" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "15.66%", "note": "YTD Oct 2025" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' /></svg>", "label": "Harvest Interval", "value": "5-15 Days", "note": "Acceptable range" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Pruning", "value": "100% Done", "note": "Stacking needs work" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Mg Deficiency", "note": "PM18A-1 (Low-lying)" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Status", "value": "Critically Low", "note": "Shortage of weeders/manurers" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-500' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' /></svg>", "label": "Rat Damage", "value": "24% - 55%", "note": "High in immature sectors" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "15.30%", "note": "YTD May 2026 vs 15.04% Budget" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z' /></svg>", "label": "Harvest Interval", "value": "13 Days", "note": "Acceptable range" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Pruning Progress", "value": "100% Completed", "note": "Minor under-pruning at PM18" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Mg Deficiency", "note": "Low-lying blocks (PM18A-1)" }
                 ],
 
                 "chartData": {
                     "production": {
-                        "labels": ["YTD Mar 2025", "YTD Mar 2026"],
-                        "data": [2.98, 2.58],
-                        "note": "*YTD Yield (MT/Ha). 2026 Performance dropped 15.5% vs 2025. (Source: AR 1/2026)"
+                        "labels": ["YTD May 2025", "YTD May 2026"],
+                        "data": [4.70, 5.10],
+                        "note": "*YTD FFB Yield (MT/Ha). 2026 Performance improved 9% vs same period 2025, but lagged 8% behind the budget of 5.54 MT/ha. (Source: PA Report 1/2026, Pg. 37)"
                     },
                     "ageProfile": {
-                        "labels": ["0-3 Yrs (Immature)", "4-7 Yrs (Young Mature)", "8-19 Yrs (Prime)", ">26 Yrs (Old)"],
+                        "labels": ["PR23-25 (Immature)", "PM20-22 (Young Mature)", "PM18A (Prime)", "PM971 (Old Mature)"],
                         "data": [542.10, 551.73, 89.43, 53.76],
                         "title": "Ladang Simpai 2 Palm Age Distribution",
-                        "note": "*Based on Agronomy Report 1/2026, Pg. 8."
+                        "note": "*Based on Planted Area Statement as of May 2026 (PA Report 1/2026, Pg. 10)."
                     }
                 },
 
                 "observations": [
-                    "<b>Yield Decline (Agronomy):</b> YTD March 2026 yield is 2.58 MT/ha, a 15.5% decrease compared to the same period in 2025, heavily impacted by poor yields in PM971 (-41%) and PM18A (-29%). Low early-year rainfall may cause moisture stress. <span class='observation-ref'>(AR 1/2026, Pg. 33-34)</span>",
-                    "<b>Labor Shortage (PA & Agro):</b> A critical shortage of weeders and manurers continues to delay field upkeep (inter-row spraying) and resulted in incomplete 2025 RP/CPD manuring programs. Overall ratio was 1:23 ha. <span class='observation-ref'>(PA 2/2025, Pg. 12; AR 1/2026, Pg. 9, 19)</span>",
-                    "<b>Pest Issues - Rats & Rhino Beetles (Agronomy):</b> Rat damage symptoms remain a concern despite ongoing baiting campaigns. Rhinoceros beetle attacks are high (9-14% damage) in immature areas PR24F and PR25G, requiring sustained chemical treatments. <span class='observation-ref'>(AR 1/2026, Pg. 25, 31)</span>",
-                    "<b>Ground Upkeep & Weeds (Agronomy):</b> Weeding progress is lagging in specific blocks. Mucuna is creeping onto palms in PR24F, Stenochlaena in PM18A, and Clidemia/VOPs persist in PM21C-1. <span class='observation-ref'>(AR 1/2026, Pg. 20-21, 27-29)</span>",
-                    "<b>Frond Stacking & Quality (Agronomy):</b> Canopy management is acceptable, but frond stacking is unsatisfactory, particularly in lowland/previously flooded areas (PM971) and young mature blocks. Unripe and long-stalk bunches are still observed at ramps. <span class='observation-ref'>(AR 1/2026, Pg. 12, 15-18)</span>",
-                    "<b>Nutrient Deficiency (Agronomy):</b> Magnesium deficiency (yellowing lower fronds) persists, notably in block PM18A-1 in low-lying, flood-prone areas. <span class='observation-ref'>(AR 1/2026, Pg. 22)</span>"
+                    "<b>Yield Deficit vs Budget (PA & Agro):</b> YTD May 2026 crop yield is 5.10 MT/ha, which is 8% below the budgeted target of 5.54 MT/ha. Extreme dry weather has delayed bunch ripening, keeping FFB volume under budget despite completing 10.3 harvesting rounds. <span class='observation-ref'>(PA Report 1/2026, Pg. 6, 34, 37)</span>",
+                    "<b>Severe Labour Shortages (PA):</b> Workforce availability is critically low (overall ratio of 1:21 ha vs ideal 1:15 ha). Specific shortages include sprayers (-2) and manurers (-4), directly causing delayed weeding, circle spraying backlogs, and late fertilizer applications. <span class='observation-ref'>(PA Report 1/2026, Pg. 11, 53)</span>",
+                    "<b>Critical Rat Damage (PA & Agro):</b> Extreme rat damage was detected during census surveys at immature sectors: PR23 E3 (24%), PR23 E4 (30%), and PR24 F2 (55%). Barn owl box occupancy remains low at 16%, requiring intensive box cleaning and repairs. <span class='observation-ref'>(PA Report 1/2026, Pg. 25-27)</span>",
+                    "<b>Severe Weed & Creeper Encroachment (PA & Agro):</b> Upkeep weeding is severely lagging. PR23 immature rows contain widespread Asystasia, Lalang, and VOPs. PR24 fields are heavily encroached by Passiflora creepers climbing up palms, while harvesters' paths are excessively grassy, blocking field access. <span class='observation-ref'>(PA Report 1/2026, Pg. 44, 47-49)</span>",
+                    "<b>Manuring Schedule Delays (PA):</b> Late supplier deliveries of Mixture B and a complete lack of Kieserite stock (only delivered in stages during June instead of scheduled March) resulted in only 66% (25 out of 38 rounds) of the budgeted fertilizer programs being completed till May. <span class='observation-ref'>(PA Report 1/2026, Pg. 24)</span>",
+                    "<b>Infield Transport Mechanization (PA):</b> Only 2 manual Badang units are active (3 cutters and 1 collector combination); the rest of the estate relies on inefficient manual wheelbarrows. Expanding electric Badang versions is highly recommended to increase cutter outturns. <span class='observation-ref'>(PA Report 1/2026, Pg. 35, 53)</span>",
+                    "<b>Flood Management Needs (PA):</b> PR25G low-lying replanting block (82.70 ha), planted in December 2025, requires the desilting of 1,393 meters of boundary drain near the local village to reduce critical seasonal flood hazards. <span class='observation-ref'>(PA Report 1/2026, Pg. 52)</span>"
                 ],
 
                 "reports": {
                     "agronomy": {
                         "Executive Summary": "The overall palm condition is acceptable. 2025 yield improved significantly to 17.59 MT/ha (+37%), but YTD March 2026 dropped 15.5% vs 2025. Pest issues (Rats & Rhino Beetle) and delayed ground upkeep due to labor shortages are the main yield-limiting factors. The 2026 fertilizer program has been revised down due to high prices. <span class='observation-ref'>(AR 1/2026, Pg. 6, 32-36)</span>",
-                        
-                        "Area Statement": "As of April 2026, the total planted area is <b>1,237.02 ha</b>. This comprises:<br>&bull; <b>Mature:</b> 694.92 ha (56%).<br>&bull; <b>Immature:</b> 542.10 ha (44%).<br>&bull; <b>Unplanted:</b> 29.70 ha.<br>&bull; <b>Replanting:</b> PR25 (82.7 ha) completed in Dec 2025 with SPH 145. <span class='observation-ref'>(AR 1/2026, Pg. 7-8)</span>",
-                        
-                        "Nutrient Inputs & Progress of Manuring": "<br>&bull; <b>2025 Progress:</b> Mix B, Kies, and CRF achieved 100%. RP (87%) and CPD (60%) incomplete due to delivery and labor constraints.<br>&bull; <b>2026 Progress (Mar):</b> Mix B (44%) and Compound B (100%) applied. Others commence in April. Overall progress acceptable. <span class='observation-ref'>(AR 1/2026, Pg. 9-10)</span>",
-                        
-                        "Agronomic Observation": "<br>&bull; <b>Harvesting:</b> Intervals are acceptable (5-15 days). Minor issues with unripe and long-stalk bunches observed at ramp.<br>&bull; <b>Pruning:</b> 100% completed, but frond stacking is messy in flooded lowland areas (PM971, PM21C).<br>&bull; <b>Weeding:</b> Circle spraying mostly done (66-100%). Inter-row delayed in several blocks. Stenochlaena, Clidemia, VOPs, and Mucuna (PR24) present.<br>&bull; <b>Pest & Disease:</b> Rat damage remains a concern; baiting ongoing. Rhinoceros beetle attacks high (9-14%) in PR24/PR25; chemical treatments ongoing. Mg deficiency in PM18A-1. <span class='observation-ref'>(AR 1/2026, Pg. 11-31)</span>",
-                        
-                        "Yield Performance": "<br>&bull; <b>2025 Full Year:</b> 17.59 MT/Ha (+37.3% vs 2024), driven by young mature blocks (PM21C up 172%). Old mature PM971 dropped 48%.<br>&bull; <b>2026 YTD (Mar):</b> 2.58 MT/Ha (-15.5% vs 2025). PM971 (-41%) and PM18A (-29%) performed poorly. Dry start to 2026 (low Jan-Mar rainfall) may cause moisture stress. <span class='observation-ref'>(AR 1/2026, Pg. 32-34)</span>",
-                        
-                        "Fertilizer Recommendation": "<br>&bull; <b>2026 Program:</b> Revised for 2nd half of 2026. One application round withdrawn in old mature areas, and dosage reduced for young mature/immature areas due to high fertilizer prices and stock limits. <span class='observation-ref'>(AR 1/2026, Pg. 36)</span>"
+                        "Nutrient Inputs/Progress of Manuring": "<b>&bull; 2025 Progress:</b> Mix B, Kies, and CRF achieved 100%. RP (87%) and CPD (60%) incomplete due to delivery and labor constraints.<br><b>&bull; 2026 Progress (Mar):</b> Mix B (44%) and Compound B (100%) applied. Others commence in April. Overall progress acceptable. <span class='observation-ref'>(AR 1/2026, Pg. 9-10)</span>",
+                        "Agronomic Observation": "<b>&bull; Harvesting:</b> Intervals are acceptable (5-15 days). Minor issues with unripe and long-stalk bunches observed at ramp.<br><b>&bull; Pruning:</b> 100% completed, but frond stacking is messy in flooded lowland areas (PM971, PM21C).<br><b>&bull; Weeding:</b> Circle spraying mostly done (66-100%). Inter-row delayed in several blocks. Stenochlaena, Clidemia, VOPs, and Mucuna (PR24) present.<br><b>&bull; Pest & Disease:</b> Rat damage remains a concern; baiting ongoing. Rhinoceros beetle attacks high (9-14%) in PR24/PR25; chemical treatments ongoing. Mg deficiency in PM18A-1. <span class='observation-ref'>(AR 1/2026, Pg. 11-31)</span>",
+                        "Yield Performance": "<b>&bull; 2025 Full Year:</b> 17.59 MT/Ha (+37.3% vs 2024), driven by young mature blocks (PM21C up 172%). Old mature PM971 dropped 48%.<br><b>&bull; 2026 YTD (Mar):</b> 2.58 MT/Ha (-15.5% vs 2025). PM971 (-41%) and PM18A (-29%) performed poorly. Dry start to 2026 (low Jan-Mar rainfall) may cause moisture stress. <span class='observation-ref'>(AR 1/2026, Pg. 32-34)</span>",
+                        "Fertilizer Recommendation": "<b>&bull; 2026 Program:</b> Revised for 2nd half of 2026. One application round withdrawn in old mature areas, and dosage reduced for young mature/immature areas due to high fertilizer prices and stock limits. <span class='observation-ref'>(AR 1/2026, Pg. 36)</span>"
                     },
                     "plantation": {
-                        "Executive Summary": "Crop production as of Oct 2025 was robust at 14.67 MT/ha (+46% above budget). However, management of immature areas is compromised by a severe labor shortage. Recommendations include: 1) Urgent recruitment of sprayers, 2) Adoption of CDA or Inter Pump spraying to boost productivity, 3) Specific eradication of Lalang/VOPs, and 4) Immediate drainage works to resolve flooding at PR25. <span class='observation-ref'>(PA Report 2/2025, Pg. 51-52)</span>",
+                        "Executive Summary": "The estate's performance as of May 2026 is satisfactory, though mature FFB yield is 8% below the budgeted target due to slow bunch ripening under dry weather. However, management of extensive immature areas is heavily compromised by a critical shortage of field workers. Key recommendations include: 1) Urgent recruitment of sprayers and manurers to address acute workforce shortages; 2) Switching from high-volume CKS nozzles to Inter Pump or CDA spraying to boost daily worker productivity; 3) Systematic eradication of aggressive weeds (Lalang, VOPs, Asystasia) climbing on young palms; and 4) Executing immediate drainage desilting (1,393m) at the PR25G village boundary to mitigate flood hazards. <span class='observation-ref'>(PA Report 1/2026, Pg. 4-8, 53)</span>",
                         
-                        "Area Statement": "<b>Total Planted (Dec 2025):</b> 1,237.02 ha.<br>&bull; <b>Mature:</b> 497.50 ha (25.23%).<br>&bull; <b>Immature:</b> 656.82 ha (33.31%).<br>&bull; <b>Replanting (PR25):</b> 82.70 ha (6.53%).<br>&bull; No replanting is planned for 2026 or 2027. <span class='observation-ref'>(PA Report 2/2025, Pg. 11)</span>",
+                        "Area Statement": "As of May 2026, the total planted area remains unchanged at <b>1,237.02 ha</b>. This comprises:<br>&bull; <b>Mature Oil Palms:</b> increased to 694.92 ha (35.24%) because PR22/D1 to D3 (197.42 ha) was declared mature in 2026.<br>&bull; <b>Immature Oil Palms:</b> decreased to 542.10 ha (composed of PR23: 229.70 ha, PR24: 229.70 ha, and PR25G replanting: 82.70 ha).<br>&bull; <b>Other Areas:</b> Office/Housing Complex takes up 29.70 ha, making the total estate hectarage 1,266.72 ha.<br>&bull; No replanting is planned for 2026 or 2027. <span class='observation-ref'>(PA Report 1/2026, Pg. 10)</span>",
                         
-                        "Labour Statement": "Current workforce is inadequate (Ratio 1:23 ha).<br>&bull; <b>Harvesters:</b> 31 (Adequate, Ratio 1:16).<br>&bull; <b>Weeders:</b> 12 (Shortage 10).<br>&bull; <b>Manurers:</b> 4 (Shortage 4). <span class='observation-ref'>(PA Report 2/2025, Pg. 12)</span>",
+                        "Labour Statement": "The active workforce is critically inadequate (Ratio 1:21 ha vs ideal ratio 1:15 ha):<br>&bull; <b>Harvesters:</b> 34 active (satisfactory, matches requirement of 34; ratio 1:20 ha).<br>&bull; <b>Weeders/Sprayers:</b> 15 active (shortage of 2 vs requirement of 17).<br>&bull; <b>Manurers:</b> 4 active (critical shortage of 4 vs requirement of 8).<br>&bull; <b>Drivers/Loaders/General Workers:</b> 11 active. Total active workers are 60 vs 61 required. More manurers must be recruited immediately. <span class='observation-ref'>(PA Report 1/2026, Pg. 11)</span>",
                         
-                        "Staff Establishment": "Staffing is satisfactory despite recent turnover. New joiners in Aug/Sept 2025 include En. Aminuddin (Asst In-Charge) and two Asst Managers. <span class='observation-ref'>(PA Report 2/2025, Pg. 13-14)</span>",
+                        "Staff Establishment": "Staffing is adequate with satisfactory supervision, despite ongoing transfers. En. Mohd Aminuddin Bin Abdul Mubin serves as Assistant in Charge. Asst Managers include En. Ahmad Izzudin, En. Suhairi Bin Sabar (joined April 2026), and En. Shahrolnizam. Transfers include En. Muhd Faiz and Field Conductor En. Nasrul to Sg. Sisik Estate, and En. Radhi (Field Conductor) joining from Sg. Sisik. <span class='observation-ref'>(PA Report 1/2026, Pg. 12-13)</span>",
                         
-                        "General Charges": "<b>Expenditure:</b> RM 1,302.81/ha vs Budget RM 1,555.98/ha (16% Underspent).<br>&bull; Management & Supervision cost is RM 583.18/ha.<br>&bull; Labour & Amenities cost is RM 233.69/ha. <span class='observation-ref'>(PA Report 2/2025, Pg. 15)</span>",
+                        "General Charges": "Total YTD General Charges stand at <b>RM 704,084.68</b> against a budget of RM 937,880.00 (25% underspent). Actual cost is RM 569.18/ha vs budgeted RM 758.18/ha. Costs are well under control:<br>&bull; <b>Management & Supervision:</b> RM 402,102.89 actual (RM 325.06/ha).<br>&bull; <b>Labour & Amenities:</b> RM 145,273.94 actual (RM 117.44/ha).<br>&bull; <b>Other Expenditures:</b> RM 156,707.85 actual (RM 126.68/ha). <span class='observation-ref'>(PA Report 1/2026, Pg. 14)</span>",
                         
-                        "Upkeep & Cultivation": "<br>&bull; <b>Weeding:</b> Circle spraying 88% done. Selective spraying 76% done.<br>&bull; <b>Manuring:</b> Cost is 7% above budget due to price increases.<br>&bull; <b>Roads:</b> Grading done. Hilly roads are slippery; crusher run recommended.<br>&bull; <b>Pruning:</b> 100% completed; appearance satisfactory. <span class='observation-ref'>(PA Report 2/2025, Pg. 16-28)</span>",
+                        "Upkeep & Cultivation": "Cost of Upkeep (Mature) stands at <b>RM 537,671.00</b> against a budget of RM 671,100.00 (20% underspent):<br>&bull; <b>Circle Weeding:</b> 1109.57 ha (1.6 rounds) completed till May (160% of budget). Circles are generally clean, except block PM22 where circles are due for spraying. CKS high-volume nozzle output is 4 ha/man-day; recommended to shift to Inter Pump/CDA to boost output to 5-6 ha/man-day. Glyphosate use was high at 0.63 lit/ha.<br>&bull; <b>Selective Weeding:</b> 846.92 ha completed (73% of budget). Spot woodies remain, with Lalang and VOPs in block PM22. Mist blower output was extremely low at 2.6 ha/man-day, leading to low worker piece-rate earnings of RM 44.20/day (below daily basic wage of RM 65.38). Sprayer training is required.<br>&bull; <b>Manuring:</b> Delays occurred due to late Mixture B deliveries and zero Kieserite stock (delivered late in June instead of March). Wheeler-barrow output was 30 bags/man-day at a piece rate of RM 2.50/bag.<br>&bull; <b>Pest & Disease:</b> Spent RM 10,182.00 vs RM 18,030.00 budget. Rat damage census is required once every 3 months. Barn owl box occupancy is low at 16%.<br>&bull; <b>Roads & Drains:</b> Spent RM 35,461.00 (over budget) on roads. 3,825 chains were graded with compaction till June. Desilting of sandy drains is severely lagging (only 86.48 chains completed vs 1,140 chains budgeted).<br>&bull; <b>Pruning:</b> 2,487.50 ha done (100%). Palms are satisfactory, though under-pruning was noted at block PM18. <span class='observation-ref'>(PA Report 1/2026, Pg. 15-33)</span>",
                         
-                        "Harvesting and Collection": "<b>Cost:</b> RM 105.37/MT (High due to incentives).<br>&bull; <b>Performance:</b> 17.4 rounds completed (Budget 20). Interval ~12 days.<br>&bull; <b>Productivity:</b> Harvester outturn 68% (Unsatisfactory). Loose fruit collection at P21 needs improvement. <span class='observation-ref'>(PA Report 2/2025, Pg. 29-31)</span>",
+                        "Harvesting and Collection": "Total harvesting and transport cost stands at <b>RM 455,486.00</b> against a budget of RM 561,705.00 (under budget):<br>&bull; <b>Rounds & Intervals:</b> Completed 10.3 rounds vs 10 budgeted. Average interval is 13 days.<br>&bull; <b>Output:</b> Harvester outturn was poorly recorded and must be corrected. Badang infield mechanical collection is limited to 2 units (combining 3 cutters & 1 collector); manual wheelbarrows are used elsewhere. Suggest expanding EV Badang.<br>&bull; <b>Rates & Earnings:</b> PM97: RM27/t, PM18: RM65/t, PM20: RM78/t, PM21: RM83/t, PM22: RM88/t, PR23: RM89/t. Harvester earnings are high but wide gaps cause friction. <span class='observation-ref'>(PA Report 1/2026, Pg. 34-36)</span>",
                         
-                        "Crop Production": "<b>Yield (YTD Oct 2025):</b> 14.67 MT/ha vs Budget 10.02 MT/ha (+46%).<br>&bull; 5% higher than last year.<br>&bull; Bunch Weights improved across all plantings. <span class='observation-ref'>(PA Report 2/2025, Pg. 32-33)</span>",
+                        "Crop Production": "Mature FFB production stands at <b>4,021.26 MT</b> vs a budget of 4,367.00 MT (8% below budget) due to slow fruit ripening during dry weather:<br>&bull; <b>Yield:</b> 5.10 MT/ha actual vs 5.54 MT/ha budget. Yield is 9% higher than 2025 same-period yield (4.70 MT/ha).<br>&bull; <b>Extraction:</b> Actual CPO extraction rate is 15.30% vs 15.04% budgeted. P.Kernel extraction actual is 5.00%.<br>&bull; <b>Bunch Weights:</b> Improved across all plantings. PM97: 24kg (vs 21kg in 2025); PM18: 10kg (vs 8.4kg); PM20: 5kg (vs 3.6kg); PM21: 4kg (vs 1.6kg). Good fruit sets at PM21 and PM22. <span class='observation-ref'>(PA Report 1/2026, Pg. 37-39)</span>",
                         
-                        "Production Cost": "<b>Total Cost:</b> RM 425.23/MT (Budget RM 424.49/MT).<br>&bull; <b>Breakdown:</b> General Charges (RM 205.72/MT), Upkeep (RM 114.15/MT), Harvesting (RM 105.37/MT). <span class='observation-ref'>(PA Report 2/2025, Pg. 34)</span>",
+                        "Production Cost": "FFB Production cost is high at <b>RM 422.10/MT FFB</b> actual vs RM 392.62/MT FFB budgeted, as yield fell below the budgeted crop target:<br>&bull; <b>General Charges:</b> RM 175.10/MT FFB actual vs RM 110.00/MT FFB budgeted.<br>&bull; <b>Upkeep & Cultivation:</b> RM 133.72/MT FFB actual vs RM 154.00/MT FFB budgeted.<br>&bull; <b>Harvesting & Collection:</b> RM 113.28/MT FFB actual vs RM 128.62/MT FFB budgeted. <span class='observation-ref'>(PA Report 1/2026, Pg. 40)</span>",
                         
-                        "Vehicles Running Cost": "<br>&bull; <b>Mitsubishi Triton:</b> RM 0.48/km.<br>&bull; <b>Toyota Hilux:</b> RM 0.26/km.<br>Costs are generally satisfactory. <span class='observation-ref'>(PA Report 2/2025, Pg. 35)</span>",
+                        "Vehicles Running Cost": "Vehicle costs are generally satisfactory with an average monthly running cost of RM 0.96/km overall:<br>&bull; <b>Mitsubishi Triton (BRH 2615):</b> RM 0.29/km actual monthly running cost.<br>&bull; <b>Toyota Fortuner (VBH 9181):</b> RM 0.36/km actual monthly running cost.<br>&bull; <b>Toyota Hilux (BKH 7529):</b> RM 0.31/km actual monthly running cost.<br>&bull; <b>Discrepancy:</b> There was no budget allocated for Hilux running costs. Assistant in Charge and Chief Clerk must coordinate with Head Office to rectify. <span class='observation-ref'>(PA Report 1/2026, Pg. 41)</span>",
                         
-                        "Immature": "<br>&bull; <b>PR22 (197 ha):</b> Scout harvesting 2.7 MT/ha. Weeding 92% done but Lalang present.<br>&bull; <b>PR23 (230 ha):</b> Manuring completed. Patches of Asystasia/VOPs remain.<br>&bull; <b>PR24 (230 ha):</b> Weeding unsatisfactory; prevalent Woodies, VOPs, and Lalang.<br>&bull; <b>PR25 (83 ha):</b> Severe flooding in low-lying area requires drain desilting. <span class='observation-ref'>(PA Report 2/2025, Pg. 37-50)</span>"
+                        "Capital Expenditure": "N/A. There were no actual expenditures recorded for Capital Expenditure against the annual budgeted amount of <b>RM 300,000.00</b> (intended for buildings, utilities, welfare, plant, and machinery). <span class='observation-ref'>(PA Report 1/2026, Pg. 42)</span>",
+                        
+                        "Immature": "Total Upkeep of Immature Areas is satisfactory but facing weeding and supplying delays:<br>&bull; <b>PR23 (229.70 ha):</b> Weeding actual cost is RM 120.47/ha (RM 27.5k total). Completed 367.80 ha of selective spraying (80% of budget). Eradication of VOPs, Asystasia, and Lalang is needed. Supplying of dead palms is not yet done; must be completed as field matures in 2027. Scout harvesting achieved 0.5 MT/ha. actual.<br>&bull; <b>PR24 (229.70 ha):</b> Weeding cost is RM 105.62/ha (RM 24.2k total). Completed 425.08 ha of circle-spraying. Circles are heavily encroached by Passiflora creepers climbing up palms. Harvesters' paths are extremely grassy. Oryctes beetle chemical treatment (Russel spraying) is under control.<br>&bull; <b>PR25G (82.70 ha):</b> Replanting completed in Dec 2025. Palms are satisfactory. 125.10 ha of circle-spraying completed. Weeding is satisfactory, but desilting of 1,393m boundary drain near village must be carried out immediately to mitigate flood risks. <span class='observation-ref'>(PA Report 1/2026, Pg. 43-52)</span>"
                     },
                     "pinfosys": "Not Available"
                 },
-                "policy": "<p>Policy cross-references are not yet available for this estate.</p>"
+                
+                "policy": `
+                    <div class='policy-item'>
+                        <p class='font-semibold'>Pest Management (Rhino Beetles & Rats)</p>
+                        <p class='text-sm text-gray-600'><b>Ref: P&D-RHINO-01:</b> Chemical treatments must be sustained in immature areas (PR24, PR25) until damage falls below threshold.</p>
+                        <p class='text-sm text-gray-600'><b>Ref: P&D-RAT-02:</b> Continue rat damage census every 3 months. When fresh damage exceeds 10%, execute immediate systemic baiting rounds.</p>
+                    </div>
+                    <div class='policy-item'>
+                        <p class='font-semibold'>Sprayer Productivity and Technology</p>
+                        <p class='text-sm text-gray-600'><b>Ref: UPKEEP-SPRAY-02:</b> Switch circle spraying from conventional CKS high-volume nozzles to Inter Pump or CDA spraying to target circle outputs of 5 to 6 ha per man-day.</p>
+                    </div>
+                    <div class='policy-item'>
+                        <p class='font-semibold'>Immature Vegetation Standards</p>
+                        <p class='text-sm text-gray-600'><b>Ref: UPKEEP-WEED-01:</b> Circle weeding must remain clean of creepers. Spray Passiflora or Mucuna climbing young palms with mist blowers using Ally at 40g/pump.</p>
+                        <p class='text-sm text-gray-600'><b>Ref: UPKEEP-PATH-03:</b> Harvesters' paths must be regularly sprayed to ensure safe and unimpeded access for spraying and manuring work.</p>
+                    </div>
+                    <div class='policy-item'>
+                        <p class='font-semibold'>Flood Prevention & Infrastructure</p>
+                        <p class='text-sm text-gray-600'><b>Ref: INFRA-DRAIN-04:</b> Execute desilting programs in drains with heavy sand build-ups. Prioritize village boundary drains (1,393m at PR25G) to alleviate local flooding risks.</p>
+                    </div>
+                `
             };
 
             let chartInstances = {};
@@ -245,7 +262,7 @@
                             datasets: [{
                                 label: 'Yield (MT/Ha)',
                                 data: estateData.chartData.production.data,
-                                backgroundColor: ['#9ca3af', '#f87171'] // Grey for older, Red for new (lower yield)
+                                backgroundColor: ['#9ca3af', '#f87171'] 
                             }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } }
@@ -258,7 +275,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#4ade80', '#a3e635', '#facc15', '#fb923c'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#3b82f6', '#4ade80', '#fb923c', '#ef4444'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
@@ -270,24 +287,26 @@
                 const plantationDiv = document.getElementById(`${estateData.id}-plantation`);
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
 
-                // Insert directly as innerHTML so the nested <br> and <b> tags format properly
+                // Populating Agronomy dropdown details (strictly preserved from AR 1/2026)
                 if (agronomyDiv && estateData.reports.agronomy) {
                     agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<div class="mb-4"><h4 class="font-bold text-gray-900">${section}:</h4><p class="text-sm text-gray-700 leading-relaxed">${content}</p></div>`).join('');
                 } else if (agronomyDiv) {
                     agronomyDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
 
+                // Populating Plantation Advisory details (strictly mapped from new PA 1/2026 and structured based on Plantation Advisory report detail section template.jpg)
                 if (plantationDiv && estateData.reports.plantation) {
                     plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<div class="mb-4"><h4 class="font-bold text-gray-900">${section}:</h4><p class="text-sm text-gray-700 leading-relaxed">${content}</p></div>`).join('');
                 } else if (plantationDiv) {
                     plantationDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
                 }
 
+                // Populating Pinfosys dropdown
                 if (pinfosysDiv) {
                     if (estateData.reports.pinfosys && estateData.reports.pinfosys !== "Not Available") {
                         pinfosysDiv.innerHTML = Object.entries(estateData.reports.pinfosys).map(([section, content]) => `<div class="mb-4"><h4 class="font-bold text-gray-900">${section}:</h4><p class="text-sm text-gray-700 leading-relaxed">${content}</p></div>`).join('');
                     } else {
-                         pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                         pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600 font-semibold italic">Not Available (N/A)</p>`;
                     }
                 }
             }
@@ -314,24 +333,26 @@
             const estateData = { "id": "simpai2", "name": "Ladang Simpai 2" }; 
             modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateData.name}`;
             
-            const policyData = `
+            const policyData = estateData.id === "simpai2" ? `
                 <div class='policy-item'>
-                    <p class='font-semibold'>Pest Management (Rhino Beetles)</p>
+                    <p class='font-semibold'>Pest Management (Rhino Beetles & Rats)</p>
                     <p class='text-sm text-gray-600'><b>Ref: P&D-RHINO-01:</b> Chemical treatments must be sustained in immature areas (PR24, PR25) until damage falls below threshold.</p>
+                    <p class='text-sm text-gray-600'><b>Ref: P&D-RAT-02:</b> Continue rat damage census every 3 months. When fresh damage exceeds 10%, execute immediate systemic baiting rounds.</p>
                 </div>
                 <div class='policy-item'>
-                    <p class='font-semibold'>Harvesting Standards</p>
-                    <p class='text-sm text-gray-600'><b>Ref: HARV-RIPENESS-02:</b> Harvesters must ensure minimum ripeness standards. Unripe bunches/long stalks affect OER and must be penalized.</p>
+                    <p class='font-semibold'>Sprayer Productivity and Technology</p>
+                    <p class='text-sm text-gray-600'><b>Ref: UPKEEP-SPRAY-02:</b> Switch circle spraying from conventional CKS high-volume nozzles to Inter Pump or CDA spraying to target circle outputs of 5 to 6 ha per man-day.</p>
                 </div>
                 <div class='policy-item'>
-                    <p class='font-semibold'>Weeding Schedule</p>
-                    <p class='text-sm text-gray-600'><b>Ref: UPKEEP-WEED-01:</b> Circles and inter-rows must be kept weed-free to prevent encroachment of Mucuna onto palms.</p>
+                    <p class='font-semibold'>Immature Vegetation Standards</p>
+                    <p class='text-sm text-gray-600'><b>Ref: UPKEEP-WEED-01:</b> Circle weeding must remain clean of creepers. Spray Passiflora or Mucuna climbing young palms with mist blowers using Ally at 40g/pump.</p>
+                    <p class='text-sm text-gray-600'><b>Ref: UPKEEP-PATH-03:</b> Harvesters' paths must be regularly sprayed to ensure safe and unimpeded access for spraying and manuring work.</p>
                 </div>
                 <div class='policy-item'>
-                    <p class='font-semibold'>Canopy Management</p>
-                    <p class='text-sm text-gray-600'><b>Ref: UPKEEP-PRUNE-03:</b> Fronds must be neatly stacked to avoid blocking paths and creating habitats for pests, especially in lowland areas.</p>
+                    <p class='font-semibold'>Flood Prevention & Infrastructure</p>
+                    <p class='text-sm text-gray-600'><b>Ref: INFRA-DRAIN-04:</b> Execute desilting programs in drains with heavy sand build-ups. Prioritize village boundary drains (1,393m at PR25G) to alleviate local flooding risks.</p>
                 </div>
-            `;
+            ` : estateData.policy;
             
             modalContent.innerHTML = policyData;
             modal.classList.add('active');
