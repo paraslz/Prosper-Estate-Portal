@@ -29,7 +29,6 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <!-- Header -->
     <header class="bg-white shadow-md">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="text-xl font-bold text-gray-900">
@@ -61,96 +60,95 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- DATA STORE ---
             const estateData = {
                 "id": "sungaiberanang",
                 "name": "Ladang Sungai Beranang",
-                "reportInfo": "Data based on Agronomy Report 2/2025 (Visit: Dec 2025) & Plantation Advisory Report 1/2026 (Visit: 20th Feb 2026).",
+                "reportInfo": "Data based on Agronomy Report 1/2026 (Visit: 25th June 2026) & Plantation Advisory Report 1/2026 (Visit: 20th Feb 2026).",
                 "summaryMetrics": {
                     "area": {
                         "title": "Estate Area",
                         "lines": [
-                            "Total Estate: 517.02 ha",
-                            "Oil Palm (Mature): 270.53 ha",
-                            "Oil Palm (Immature): 54.35 ha",
-                            "Rubber: 104.15 ha"
+                            "Total Estate: 442.72 ha",
+                            "Oil Palm (Total): 324.88 ha",
+                            "Rubber (Total): 104.15 ha",
+                            "Empty/Phase 3: 13.69 ha"
                         ]
                     },
                     "yield": {
-                        "title": "Yield/Ha (Actual vs Budget)",
-                        "value": "18.07 MT/Ha vs 18.61 MT/Ha",
-                        "note": "Full Year 2025 (-3% vs Budget)"
+                        "title": "Yield/Ha (1H 2026 vs 1H 2025)",
+                        "value": "8.20 MT/Ha vs 7.97 MT/Ha",
+                        "note": "First Half 2026 (-2.8% vs 2025)"
                     },
                     "cost": {
                         "title": "Manual Loading",
                         "value": "RM 8.00/t",
-                        "note": "Avg Earning RM 80/day"
+                        "note": "Avg Earning RM 80/day (PA)"
                     },
                     "weeding": {
-                        "title": "Circle Spraying",
-                        "value": "53% Complete",
-                        "note": "Rounds delayed; shortage of sprayers"
+                        "title": "Weeding Progress",
+                        "value": "Behind Schedule",
+                        "note": "Only 1 round inter-row in P01, P04, P05"
                     },
                     "manuring": {
-                        "title": "Manuring Status (2025)",
-                        "value": "100% Completed",
-                        "note": "Output at 20 bags/md (Needs improvement)"
+                        "title": "Manuring Status (2026)",
+                        "value": "15% OP / 0% Rubber",
+                        "note": "Delayed due to labour shortage"
                     }
                 },
                 "keyMetrics": [
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Strength", "value": "10 Available (-9)", "note": "Ratio 1:27 ha (Target 1:14)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Ganoderma Active", "note": "Deboling ongoing in P01, P05, P18" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "23 Days", "note": "Extreme delay due to labor" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' /></svg>", "label": "Rubber Status", "value": "611 Kg/Ha", "note": "-34% Decline vs 2024" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' /></svg>", "label": "Replanting 2026", "value": "78.51 Ha", "note": "P97/A & P99/B scheduled" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Ganoderma Active, Rats", "note": "Deboling ongoing; Mild rat damage" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": ">20 Days in P97/P99", "note": "Extreme delay, severe crop loss in ravines" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' /></svg>", "label": "Rubber Status", "value": "591 Kg/Ha", "note": "Latex overflow due to biweekly collection" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' /></svg>", "label": "Replanting 2026", "value": "P97 & P99", "note": "On hold due to diesel price hike" }
                 ],
                 "chartData": {
                     "production": {
-                        "labels": ["P97", "P99", "P01", "P04", "P05", "P13", "P18"],
-                        "yield2025": [14.91, 10.37, 27.32, 22.77, 21.65, 12.37, 26.33],
-                        "yield2024": [10.61, 14.61, 23.13, 24.70, 25.49, 11.49, 20.85],
-                        "note": "*FFB Yield (t/ha) Comparison 2024 vs 2025. Significant drop in P99B due to labor."
+                        "labels": ["P97", "P99", "P01", "P04", "P05", "P13", "P18 (Avg)"],
+                        "yield2025": [2.95, 3.04, 11.73, 10.14, 10.84, 5.26, 11.41],
+                        "yield2024": [6.08, 5.89, 9.12, 9.55, 8.87, 6.74, 11.11], // 2024 represents the comparison period 2025 in the new report
+                        "note": "*FFB Yield (t/ha) Comparison Jan-Jun 2026 vs Jan-Jun 2025. Severe drop in P97 & P99."
                     },
                     "ageProfile": {
-                        "labels": ["Immature (0-3)", "Young Mature (4-7)", "Prime (8-19)", "Old (>20)"],
-                        "data": [54.35, 72.55, 14.42, 183.56],
-                        "title": "Oil Palm Age Profile (Ha)",
-                        "note": "*High percentage of old palms (>20 years)."
+                        "labels": ["Immature (0-3)", "Young Mature (4-7)", "Prime (8-19)", "Old (20-25)", "Very Old (>26)"],
+                        "data": [8.5, 8.3, 26.8, 32.3, 24.2],
+                        "title": "Oil Palm Age Profile (%)",
+                        "note": "*High percentage of old palms (>20 years) due for replanting."
                     }
                 },
                 "observations": [
-                    "<b>Chronic Labour Shortage & Turnover:</b> The estate faces a critical shortage of 14 workers in Oil Palm and 5 in Rubber. High worker turnover is a long-standing issue disrupting schedules. <span class='observation-ref'>(PA Report 1/2026, Pg. 11-15, 48)</span>",
-                    "<b>Extreme Harvesting Intervals:</b> Harvesting intervals have averaged 23 days (against a 15-day target), leading to overripe bunches and potential direct crop loss. <span class='observation-ref'>(PA Report 1/2026, Pg. 35)</span>",
-                    "<b>Ganoderma Infection:</b> Active Ganoderma detected in P01, P05, and P18. Deboling of fallen palms is ongoing, and a full census is recommended. <span class='observation-ref'>(PA Report 1/2026, Pg. 6, 28)</span>",
-                    "<b>Rubber Yield Decline:</b> Rubber yield achieved was only 611 kg/ha, 38% below budget and 34% below 2024, driven by tapper shortage and lack of stimulants. <span class='observation-ref'>(PA Report 1/2026, Pg. 37)</span>",
-                    "<b>Lagging Field Upkeep:</b> Circle spraying (53%) and pruning (54%) are significantly behind schedule due to harvester shortage. Progressive pruning is recommended every 3 months. <span class='observation-ref'>(PA Report 1/2026, Pg. 14, 31)</span>",
-                    "<b>Manuring Productivity Issues:</b> While 100% of the program was completed, application output using wheelbarrows (20 bags/md) is below the 25-30 bags/md target. <span class='observation-ref'>(PA Report 1/2026, Pg. 24-25, 48)</span>"
+                    "<b>Chronic Labour Shortage & Turnover:</b> The estate faces a critical shortage of 14 workers in Oil Palm (10 vs 19 needed). This remains the root cause for massive delays in harvesting, weeding, and manuring. <span class='observation-ref'>(PA Report 1/2026, Pg. 11-12; Agronomy 1/2026, Pg. 18)</span>",
+                    "<b>Extreme Harvesting Delays & Crop Loss:</b> Harvesting intervals exceeded 20 days in P97 and P99 ravines. Direct crop losses are evident due to steep terrain, under-pruning, and uncollected rotten/loose fruits on collection platforms. <span class='observation-ref'>(Agronomy 1/2026, Pg. 20-25)</span>",
+                    "<b>Severe Manuring & Weeding Backlogs:</b> The 2026 manuring program is only 15% complete for OP and 0% for Rubber. Weeding is behind schedule, with P97/P99 overgrown and cattle intrusion damaging fronds in immature PR21B. <span class='observation-ref'>(Agronomy 1/2026, Pg. 16, 34-36, 46)</span>",
+                    "<b>Ganoderma & Pests:</b> Active Ganoderma detected in P01 and P05 requiring proper census and deboling. Mild rat damage noted across fields; half-yearly baiting without replacement is recommended. <span class='observation-ref'>(Agronomy 1/2026, Pg. 38-39)</span>",
+                    "<b>Rubber Tapping & Collection Issues:</b> Latex overflow is occurring in R14 due to a biweekly collection schedule (must be weekly). Deep tapping injuries are prevalent in R06 & R07. R14 yield reported an unverified 231% spike. <span class='observation-ref'>(Agronomy 1/2026, Pg. 51-54, 63)</span>",
+                    "<b>Replanting Put On Hold:</b> P97 and P99 are scheduled for 2026 replanting. Land preparation commenced in March but was halted due to the hike in diesel prices, leaving older palms neglected. <span class='observation-ref'>(Agronomy 1/2026, Pg. 11, 20)</span>"
                 ],
                 "reports": {
-                    "agronomy": { 
-                        "Executive Summary": "The estate's agronomic condition has deteriorated primarily due to an acute shortage of harvesters (short 9 workers), which has led to harvesting intervals exceeding 25 days in most fields. This has caused significant crop loss, particularly in the steep ravines of P97 and P99 where access is difficult. Overall Oil Palm yield declined by 4.8% (19.44 MT/ha), while Rubber yield dropped drastically by 34.1% due to poor tapper attendance and un-tapped areas. Key field upkeep operations, including pruning and weeding, are behind schedule. Immediate recruitment and rehabilitation of neglected areas are critical. (Agronomy Report 2/2025, Pg. 4-7)",
-                        "Nutrient Inputs/Progress of Manuring": "The 2025 manuring program was reported as 100% completed for both Oil Palm (NK Mixture, Mixture B, Kieserite, RP) and Rubber. However, the application timing was suboptimal, with significant deviations of over 2 months recorded for Mixture B in blocks P04, P13, and P18, and Rock Phosphate in P04, P05, and P13. Rubber manuring (R06, R07, R14) also faced similar schedule deviations. Strict adherence to the schedule is required in 2026 to ensure optimum nutrient uptake. (Agronomy Report 2/2025, Pg. 12-14)",
-                        "Agronomic Observation": "<b>Harvesting & Recovery:</b> Severe delays (>25 days) and direct crop loss are evident in the ravines of P97 and P99 due to steep terrain, under-pruning, and poor road conditions. P05 shows significant over-ripe bunches and loose fruits on the ground.<br><br><b>Vegetation:</b> Weeding is generally behind schedule. P97 and P99 ravines are overgrown with obstructive weeds. P04 showed incomplete eradication of broadleaf weeds. P13 has sporadic woody growth.<br><br><b>Canopy Management:</b> No pruning was done in P97 and P99. P01 was pruned but has excessive dry hanging fronds. Pruning in P04, P05, and P13 is incomplete.<br><br><b>Pests & Disease:</b> Ganoderma is active in P01 and P05 (de-boling is being carried out). Rat damage is currently insignificant (<5%).<br><br><b>Rubber:</b> Incomplete tapping was observed in R14 (trees left untapped). Signs of deep tapping injury were noted in R06 and R07. Immature R21 trees are undersized with 600 vacant points remaining. (Agronomy Report 2/2025, Pg. 15-49)",
-                        "Yield Performance": "Full year 2025 Oil Palm yield was 19.44 MT/ha, a 4.8% decline from 2024. Older blocks P97 and P99 suffered ~29% declines (approx. 14 MT/ha) due to inaccessibility and labor shortages. However, Young Mature block P18 was a highlight, improving by 27% to 20.57 MT/ha. P13 remains the lowest yielder (11.49 MT/ha) due to marginal soil conditions. Rubber yield declined sharply to 611 kg/ha (-34%) driven by low tapper outturn (83.9%) and un-tapped areas. (Agronomy Report 2/2025, Pg. 51-55)",
-                        "Fertilizer Recommendation": "The 2026 fertilizer program has been finalized. Blocks P97 and P99 are scheduled for replanting in 2026 (CRF 600g & RP 500g recommended for planting holes). P01 requires NK1 (7.0kg). P04, P05, and P13 require Mixture B, RP, and Kieserite (specifically for P13). A corrective application of Kieserite is specifically recommended for Young Mature P18A in March 2026 to address the low leaf Magnesium levels detected in foliar analysis. (Agronomy Report 2/2025, Pg. 56-59)"
-                    },
                     "plantation": { 
                         "Executive Summary": "The main issue is the prolonged labour shortage and high worker turnover disrupting schedules. Work quality has declined as work is often rushed. Adequate recruitment is vital as more areas move to maturity. (PA Report 1/2026, Pg. 7, 48)",
-                        "Area Statement": "Total Hectarage: 517.02 ha. Mature OP: 270.53 ha; Immature OP: 54.35 ha. PR21/H declared mature Jan 2026. P97A & P99B (78.51 ha) scheduled for 2026 replant; felling expected April/May. (PA Report 1/2026, Pg. 9-10)",
-                        "Labour Statement": "Oil Palm: Short 14 workers (10 Harvesters vs 19 required). Harvester ratio is 1:27 ha (Target 1:14 ha). Rubber: Short 5 tappers (11 vs 16 required). (PA Report 1/2026, Pg. 11-12)",
+                        "Area Statement": "Total Hectarage: 517.02 ha. <br>• <b>Mature OP:</b> 270.53 ha <br>• <b>Immature OP:</b> 54.35 ha <br>• <b>Replanting:</b> P97A & P99B (78.51 ha) scheduled for 2026 replant; felling expected April/May. (PA Report 1/2026, Pg. 9-10)",
+                        "Labour Statement": "<b>Oil Palm:</b> Short 14 workers (10 Harvesters vs 19 required). Harvester ratio is 1:27 ha (Target 1:14 ha). <br><b>Rubber:</b> Short 5 tappers (11 vs 16 required). (PA Report 1/2026, Pg. 11-12)",
                         "Staff Establishment": "Satisfactory. 6 personnel total, including Sr Asst In-Charge (Mr. Muruganathan), Asst Manager (Mr. Muhamad Hafiz), and Jr Asst Manager (Mr. Kogulan). (PA Report 1/2026, Pg. 13)",
                         "General Charges": "Road grading budgeted at RM10/chain; actual paid RM10/chain. Grader contractor stopped due to low rates; backhoe loader now used for patching. (PA Report 1/2026, Pg. 30)",
-                        "Upkeep & Cultivation": "Circle Spraying: 53% complete (shortage). Output 3.9 ha/md. Selective Spraying: 76% complete. VOPs, Lalang, and Asystasia still present. Manuring: 100% completed for OP and Rubber. OP output low at 20 bags/md. (PA Report 1/2026, Pg. 14-25)",
+                        "Upkeep & Cultivation": "• <b>Circle Spraying:</b> 53% complete (shortage). Output 3.9 ha/md. <br>• <b>Selective Spraying:</b> 76% complete. VOPs, Lalang, and Asystasia still present. <br>• <b>Manuring:</b> OP output low at 20 bags/md. (PA Report 1/2026, Pg. 14-25)",
                         "Harvesting and Collection": "Average interval is 23 days. Shortage of harvesters remains the primary yield resistance. 1 Badang unit used with 3 cutters/1 collector. (PA Report 1/2026, Pg. 34-35)",
                         "Crop Production": "Full year 2025 yield: 18.07 t/ha (3% below budget of 18.61 t/ha). 19 harvesting rounds achieved vs 24 budgeted. Rubber yield: 611 kg/ha (38% below budget). (PA Report 1/2026, Pg. 34, 37)",
                         "Production Cost": "Manual loading earning averages RM80. Piece rate for manuring RM2.40/bag. Harvesting rate for 2001-2005 plantings is RM37.00/ton. (PA Report 1/2026, Pg. 35, 24)",
                         "Vehicles Running Cost": "Backhoe hired for 1186 hours at RM50/hour (Total RM 59,300). Road grading completed only 193.97 chains vs 1200 chains budgeted. (PA Report 1/2026, Pg. 30)",
                         "Capital Expenditure": "N/A. Minor road repairs performed using hired backhoe loader. (PA Report 1/2026, Pg. 30)",
-                        "Immature": "R21 (Rubber): Growth uneven due to 3300 supplies in 2025. Side shoots need pruning. PR23 (OP): Palms appear satisfactory; good fruit sets. 150 supplies pending. PR21/H: Basal pruning 15 ha complete (Needs finish by May 2026). (PA Report 1/2026, Pg. 40-47)"
+                        "Immature": "• <b>R21 (Rubber):</b> Growth uneven due to 3300 supplies in 2025. Side shoots need pruning. <br>• <b>PR23 (OP):</b> Palms appear satisfactory; good fruit sets. 150 supplies pending. <br>• <b>PR21/H:</b> Basal pruning 15 ha complete. (PA Report 1/2026, Pg. 40-47)"
+                    },
+                    "agronomy": { 
+                        "Executive Summary": "Agronomic conditions remain below satisfactory due to widespread delays in major programs (manuring, weeding, pruning) driven by labor shortages. Harvesting delays persist in older blocks (P97/P99), causing severe crop losses in ravines. Rubber recovery is hampered by latex overflow from delayed collection and poor tapping quality. Immediate corrective actions are necessary. (Agronomy Report 1/2026, Pg. 64)",
+                        "Nutrient Inputs/Progress of Manuring": "Progress is severely delayed. As of June 2026, Oil Palm manuring is only 15% completed (50.27 MT Mixture B applied), and Rubber is 0% completed. Outstanding programs scheduled between January and May 2026 remain unattended. The estate must expedite this to prevent stunted palm growth. (Agronomy Report 1/2026, Pg. 16-18)",
+                        "Agronomic Observation": "<b>Harvesting:</b> Intervals >20 days in P97 & P99 ravines causing rotten bunches and severe crop loss. Over-ripe and oxidized loose fruits found uncollected in P01/P05.<br><br><b>Vegetation/Weeding:</b> Behind schedule. Only one round of inter-row weeding done in P01, P04, P05. Cattle intrusion spotted in immature PR21B damaging fronds.<br><br><b>Canopy Management:</b> Pruning pending in P97/P99. P01/P05 are up to date. Backlog clearing ongoing in P04/P13.<br><br><b>Pests & Disease:</b> Ganoderma active in P01/P05. Mild rat damage (half-yearly baiting recommended).<br><br><b>Rubber:</b> Latex overflow in R14 due to biweekly (instead of weekly) collection. Deep tapping injuries in R06/R07. (Agronomy Report 1/2026, Pg. 20-54)",
+                        "Yield Performance": "Total Oil Palm yield for Jan-Jun 2026 was 8.20 MT/ha (-2.8% vs 2025). Severe yield drops observed in P97 (2.95 MT/ha) and P99 (3.04 MT/ha). Rubber yield was recorded at 591 kg/ha (+91.3%), heavily driven by an unverified 231% spike in R14, while yields in R06 and R07 actually declined. Estate must recheck R14 yield calculations. (Agronomy Report 1/2026, Pg. 60-63)",
+                        "Fertilizer Recommendation": "The 2026 program has been revised. Mature OP blocks (P04, P05, P13) require Mixture B, RP, and KIE. P01 requires NK1. Replanting areas (P97/P99) require CRF 600g & RP 500g in planting holes during transplanting. Immature fields (PR21B, PR23C) require Mixture B, KIE, and RP. (Agronomy Report 1/2026, Pg. 65-68)"
                     },
                     "pinfosys": "Not Available"
                 },
-                "policy": "<div class='policy-item'><p class='font-semibold'>Manuring Schedule Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> Fertilizer applications must follow the schedule strictly. Delays >15 days require a mitigation report.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Intervals</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Harvesting intervals must not exceed 15 days to prevent loose fruit accumulation and crop loss.</p></div>"
+                "policy": "<div class='policy-item'><p class='font-semibold'>Manuring Schedule Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> Fertilizer applications must follow the schedule strictly. Delays >15 days require a mitigation report.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Intervals</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Harvesting intervals must not exceed 15 days to prevent loose fruit accumulation and crop loss.</p></div><div class='policy-item'><p class='font-semibold'>Rubber Tapping & Collection</p><p class='text-sm text-gray-600'><b>Policy Ref: RUB-TAP-03:</b> Latex collection must be conducted at least weekly to avoid overflow and sap hardening in the collection cups.</p></div>"
             };
 
             let chartInstances = {};
@@ -169,8 +167,8 @@
                 const summaryMetricsHTML = Object.values(estate.summaryMetrics).map(metric => {
                     const colorClass = metric.title.includes('Area') ? 'bg-blue-50 text-blue-800' : 
                                        metric.title.includes('Yield') ? 'bg-green-50 text-green-800' :
-                                       metric.title.includes('Labour') ? 'bg-red-50 text-red-800' :
-                                       metric.title.includes('Weeding') ? 'bg-yellow-50 text-yellow-800' : 'bg-purple-50 text-purple-800';
+                                       metric.title.includes('Cost') || metric.title.includes('Manual') ? 'bg-orange-50 text-orange-800' :
+                                       metric.title.includes('Weeding') || metric.title.includes('Status') ? 'bg-red-50 text-red-800' : 'bg-yellow-50 text-yellow-800';
                     let content;
                     if (metric.lines) {
                         content = metric.lines.map(line => `<p class="text-sm">${line}</p>`).join('');
@@ -184,7 +182,7 @@
                 }).join('');
 
                 const keyMetricsHTML = estate.keyMetrics.map(metric => `
-                    <div class="bg-gray-50 p-3 rounded-lg flex items-start space-x-4">
+                    <div class="bg-gray-50 p-3 rounded-lg flex items-start space-x-4 border border-gray-100">
                         <div class="flex-shrink-0 bg-gray-200 p-2 rounded-full mt-1">
                             ${metric.icon}
                         </div>
@@ -205,7 +203,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div>
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">FFB Yield by Block (2025 vs 2024)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
+                            <div><h3 class="text-xl font-semibold mb-2">FFB Yield by Block (1H 2026 vs 1H 2025)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${estate.observations.map(obs => `<li class="ml-4">${obs}</li>`).join('')}</ul></div>
@@ -234,8 +232,8 @@
                         data: {
                             labels: estateData.chartData.production.labels,
                             datasets: [
-                                { label: '2025 Yield (t/ha)', data: estateData.chartData.production.yield2025, backgroundColor: '#16a34a' },
-                                { label: '2024 Yield (t/ha)', data: estateData.chartData.production.yield2024, backgroundColor: '#bbf7d0' }
+                                { label: 'Jan-Jun 2026 Yield (t/ha)', data: estateData.chartData.production.yield2025, backgroundColor: '#16a34a' },
+                                { label: 'Jan-Jun 2025 Yield (t/ha)', data: estateData.chartData.production.yield2024, backgroundColor: '#bbf7d0' }
                             ]
                         },
                         options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, title: { display: true, text: 'Tonnes per Hectare' } } } }
@@ -248,7 +246,7 @@
                         type: 'pie',
                         data: {
                             labels: estateData.chartData.ageProfile.labels,
-                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#86efac', '#4ade80', '#22c55e', '#166534'], hoverOffset: 4 }]
+                            datasets: [{ data: estateData.chartData.ageProfile.data, backgroundColor: ['#86efac', '#4ade80', '#22c55e', '#166534', '#14532d'], hoverOffset: 4 }]
                         },
                         options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: estateData.chartData.ageProfile.title, font: { size: 16 } }, legend: { position: 'right' } } }
                     });
@@ -261,10 +259,10 @@
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
 
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-3 text-gray-900">${section}:</h4><p class="text-sm text-gray-600 mt-1">${content}</p>`).join('');
                 }
                 if (plantationDiv && estateData.reports.plantation) {
-                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-3 text-gray-900">${section}:</h4><p class="text-sm text-gray-600 mt-1">${content}</p>`).join('');
                 }
                 if (pinfosysDiv && estateData.reports.pinfosys === "Not Available") {
                     pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
@@ -290,7 +288,7 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalContent = document.getElementById('modalContent');
             modalTitle.innerText = `Agricultural Policy Cross-Reference: Ladang Sungai Beranang`;
-            modalContent.innerHTML = "<div class='policy-item'><p class='font-semibold'>Manuring Schedule Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> Fertilizer applications must follow the schedule strictly. Delays >15 days require a mitigation report.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Intervals</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Harvesting intervals must not exceed 15 days to prevent loose fruit accumulation and crop loss.</p></div>";
+            modalContent.innerHTML = "<div class='policy-item'><p class='font-semibold'>Manuring Schedule Compliance</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-APP-05:</b> Fertilizer applications must follow the schedule strictly. Delays >15 days require a mitigation report.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Intervals</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-INT-01:</b> Harvesting intervals must not exceed 15 days to prevent loose fruit accumulation and crop loss.</p></div><div class='policy-item'><p class='font-semibold'>Rubber Tapping & Collection</p><p class='text-sm text-gray-600'><b>Policy Ref: RUB-TAP-03:</b> Latex collection must be conducted at least weekly to avoid overflow and sap hardening in the collection cups.</p></div>";
             document.getElementById('policyModal').classList.add('active');
         }
 
