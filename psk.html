@@ -63,64 +63,62 @@
             const estateData = {
                 "id": "psk",
                 "name": "PSK Estate",
-                "reportInfo": "Data based on Agronomy Report 1/2026 (Visit: 12th February 2026) and PA Report 2/2025 (Visit: 6th August 2025).",
+                "reportInfo": "Data based on Agronomy Report 1/2026 (Visit: 12th February 2026) and PA Report 2/2026 (Visit: 29th July 2026).",
                 "summaryMetrics": {
                     "area": { 
                         "title": "Estate Area", 
                         "lines": ["Mature: 1,999.83 ha", "Immature: 0.00 ha", "Total: 1,999.83 ha"] 
-                        // (AR 1/2026, Pg. 8)
                     },
                     "yield": { 
-                        "title": "Yield/Ha (2025 Actual)", 
-                        "value": "12.72 MT", 
-                        "note": "Vs 12.89 MT in 2024 (-1%)" 
-                        // (AR 1/2026, Pg. 31)
+                        "title": "Yield/Ha (YTD Actual vs Budget)", 
+                        "value": "4.38 / 7.79 MT", 
+                        "note": "44% below budget (PA Pg. 42)" 
                     },
                     "cost": { 
-                        "title": "FFB Cost/Tonne (PA YTD June 25)", 
-                        "value": "RM 260.60", 
-                        "note": "Budget: RM 340.06 (PA Pg. 47)" 
+                        "title": "FFB Cost/Tonne (YTD Actual vs Budget)", 
+                        "value": "RM 389.93 / RM 301.22", 
+                        "note": "Ex-Estate YTD June 2026 (PA Pg. 44)" 
                     },
                     "weeding": { 
-                        "title": "Weeding Progress (2025 Total)", 
-                        "value": "Circle: 56%, Inter-row: 63%", 
-                        "note": "Incomplete program (AR Pg. 24)" 
+                        "title": "Weeding Progress (2026 YTD)", 
+                        "value": "Circle: 93%, Inter-row: 85%", 
+                        "note": "Drastically improved (PA Pg. 16, 19)" 
                     },
                     "manuring": { 
-                        "title": "Manuring Progress (2025 Total)", 
-                        "value": "74% (Mix B), 100% (RP)", 
-                        "note": "Final round withdrawn (AR Pg. 11)" 
+                        "title": "Manuring Progress (2026 YTD)", 
+                        "value": "57% Complete", 
+                        "note": "Delayed by late delivery (PA Pg. 27)" 
                     }
                 },
                 "keyMetrics": [
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Shortage", "value": "Short 48 Workers" }, // (AR 1/2026, Pg. 34)
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-green-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Rat Damage < 10%" }, // (AR 1/2026, Pg. 29)
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "ABW (2025)", "value": "19.30 kg (Low)" }, // (AR 1/2026, Pg. 32)
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Yield Target Met", "value": "77% of target rounds" }, // (AR 1/2026, Pg. 32)
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Max Harvest Int.", "value": "50 Days (Peat Areas)" }, // (AR 1/2026, Pg. 32)
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Palm Age Profile", "value": "99.8% Over 20 Years" } // (AR 1/2026, Pg. 10)
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Shortage", "value": "Short 31 Harvesters" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Rat Damage 18%" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "Yield Target Met", "value": "44% Below Budget" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Production Cost", "value": "RM 389.93 / Tonne (High)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Avg Harvest Int.", "value": "~13 Days" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Palm Age Profile", "value": "99.8% Over 20 Years" }
                 ],
                 "chartData": {
                     "production": { 
                         "labels": ["Jan-25", "Feb-25", "Mar-25", "Apr-25", "May-25", "Jun-25", "Jul-25", "Aug-25", "Sep-25", "Oct-25", "Nov-25", "Dec-25"], 
-                        "ffb": [1747, 1850, 1920, 2100, 2050, 1980, 2200, 2300, 2150, 2400, 2350, 2380], // Aggregated from AR Pg 40 data
-                        "rainfall": [276.0, 120.5, 282.0, 324.0, 352.0, 155.0, 36.0, 248.0, 190.0, 259.0, 480.0, 915.0], // (AR 1/2026, Pg. 39)
-                        "note": "*FFB data estimated from monthly totals. Rainfall data from AR 1/2026." 
+                        "ffb": [1747, 1850, 1920, 2100, 2050, 1980, 2200, 2300, 2150, 2400, 2350, 2380], 
+                        "rainfall": [276.0, 120.5, 282.0, 324.0, 352.0, 155.0, 36.0, 248.0, 190.0, 259.0, 480.0, 915.0], 
+                        "note": "*FFB and Rainfall data from AR 1/2026 (2025 Full Year Profile)." 
                     },
                     "ageProfile": { 
                         "labels": ["8-19 Years", "20-25 Years"], 
                         "data": [2.43, 1997.40], 
                         "title": "PSK Estate Palm Age Profile (ha)", 
-                        "note": "*99.8% of palms are 20-25 years old and in descending yield stage. (AR Pg 9-10)" 
+                        "note": "*99.8% of palms are 20-25 years old and in descending yield stage. (AR Pg. 9-10)" 
                     }
                 },
                 "observations": [
-                    "<b>Severe Manpower Shortage:</b> The estate faces a critical shortfall of 48 workers, primarily harvesters, which is the root cause of extended harvesting intervals and incomplete crop recovery. <span class='observation-ref'>(AR Pg. 31, 34)</span>",
-                    "<b>Extended Harvesting & Crop Loss:</b> Harvesting intervals in peat areas (Blocks A, B, E) consistently exceeded standards, reaching up to 50 days in early 2026. This has resulted in a high incidence of overripe and rotten bunches. <span class='observation-ref'>(AR Pg. 14, 32)</span>",
-                    "<b>Incomplete 2025 Manuring:</b> Only 74% of the Mix B program was completed in 2025. Delays (2+ months) were caused by flooding and lack of manpower, leading to the withdrawal of the final round and suboptimal nutrient status. <span class='observation-ref'>(AR Pg. 4, 11)</span>",
-                    "<b>Poor Yield Performance:</b> 2025 yield was 12.72 MT/ha, a slight decline from 2024. Only 77% of target harvesting rounds were met. Yield is severely limited by crop recovery issues and historical fertilizer deviations. <span class='observation-ref'>(AR Pg. 31-32)</span>",
-                    "<b>Pruning & Weeding Backlog:</b> Pruning only reached 74% completion in 2025, with Block F at a critical 17%. Similarly, weeding remains incomplete (56-63%), though ground vegetation is currently manageable. <span class='observation-ref'>(AR Pg. 19, 24)</span>",
-                    "<b>Peat Soil Challenges:</b> Palms in peat areas exhibit lower vigor, smaller bunches, and leaning. While drain desilting has improved water recession (6 months vs 60 days), prolonged flooding still disrupts all field operations. <span class='observation-ref'>(AR Pg. 18, 34)</span>"
+                    "<b>Severe Manpower Shortage:</b> The estate faces a critical shortfall of 31 harvesters (ratio 1:38 vs 1:24 required), leading to high turnover and severely limiting potential productivity. <span class='observation-ref'>(PA Pg. 11, 47)</span>",
+                    "<b>Poor Yield & High Cost:</b> YTD yield for June 2026 was only 4.38 MT/ha (44% below budget), driving the production cost up to RM 389.93/tonne against an ex-estate budget of RM 301.22/tonne. <span class='observation-ref'>(PA Pg. 42, 44)</span>",
+                    "<b>Pest & Disease (Rat Damage):</b> Rat damage census showed a high overall damage rate of 18%. 3 rounds of baiting have been completed, but continued vigilance is heavily required for the second half of the year. <span class='observation-ref'>(PA Pg. 32-34)</span>",
+                    "<b>Delayed 2026 Manuring:</b> Only 57% of the budgeted manuring program (2,872 out of 5,039 ha) was completed. This was delayed due to the late delivery of Mixture B and caking issues with NK 1 fertilizer. <span class='observation-ref'>(PA Pg. 27)</span>",
+                    "<b>Improved Field Upkeep:</b> Despite other challenges, field upkeep has improved drastically compared to previous periods. Circle spraying is 93% complete and inter-rows are clean (85% selective weeding), with most woodies successfully eradicated. <span class='observation-ref'>(PA Pg. 16-20)</span>",
+                    "<b>Peat Soil & Flooding Challenges:</b> Palms in low-lying peat areas continue to experience disrupted operations, smaller bunches (bunch weights decreased vs 2025), and require prompt mounding to prevent leaning/toppling. <span class='observation-ref'>(AR Pg. 18; PA Pg. 38, 43)</span>"
                 ],
                 "reports": {
                     "agronomy": {
@@ -131,22 +129,22 @@
                         "Fertilizer recommendation": "2025 carry-forward stocks should be used. Mixture C can be replaced by Mixture B if needed. Strict adherence to the 2026 program is mandatory to prevent further yield decline (Pg. 36)."
                     },
                     "plantation": {
-                        "Executive Summary": "The estate faces a critical shortage of 23 harvesters and 15 sprayers, leading to high turnover and low wages. Priority must be given to clearing Volunteer Oil Palms (VOPs) and Stenochlaena in low-lying areas. (PA Report, Pg. 50-51)",
-                        "Area statement": "Total mature planted area is 1,999.83 ha. No changes. (PA Report, Pg. 9)",
-                        "Labour Statement": "Critical shortage of 23 harvesters (ratio 1:33 ha vs 1:24 ha required). Overall ratio is 1:25 ha. (PA Report, Pg. 10-11)",
-                        "Staff Establishment": "Manager, 3 executives, 5 field staff. Most staff are inexperienced (<3 years). (PA Report, Pg. 12-13)",
-                        "General Charges": "Underspent by 49% as of June 2025. (PA Report, Pg. 14)",
-                        "Upkeep Cultivation": "Circle spraying 39% complete, manuring 33% (as of June 25). Pruning backlog of 1,298 ha exists. (PA Report, Pg. 16, 30)",
-                        "Harvesting and Collection": "Cost RM 78.90/tonne. Interval was 16 days. Productivity 1.7-2.0 MT/md. (PA Report, Pg. 41-42)",
-                        "Crop Production": "Yield as of June 2025 was 5.45 MT/ha (32% below budget). (PA Report, Pg. 44)",
-                        "Production Cost": "RM 260.60/tonne FFB. (PA Report, Pg. 47)",
-                        "Vehicles Running Cost": "Hilux running cost satisfactory. (PA Report, Pg. 48)",
-                        "Capital Expenditure": "Underspent as of June. (PA Report, Pg. 49)",
-                        "Immature": "N/A (PA Report, Pg. 9)"
+                        "Executive Summary": "The estate's production was severely impacted by harvester shortages and flooding in low-lying areas. Crop production was 44% below budget. The Manager is urged to recruit more harvesters, monitor working hours to boost productivity, and prioritize clearing Volunteer Oil Palms (VOPs). (PA Report, Pg. 7-8)",
+                        "Area Statement": "As of June 2026, the total mature planted area is 1,999.83 ha (100%). Total estate hectarage is 2,016.00 ha. This comprises:<br>&bull; <b>Mature:</b> 1,999.83 ha.<br>&bull; <b>Immature:</b> 0.00 ha. (PA Report, Pg. 10)",
+                        "Labour Statement": "Critical shortage of harvesters and sprayers.<br>&bull; <b>Harvesters:</b> 52 workers available vs 83 required (Ratio 1:38 ha vs ideal 1:24 ha). Short by 31 harvesters.<br>&bull; <b>Spraying:</b> Short by 8 workers.<br>&bull; <b>Overall Ratio:</b> 1:26 ha (Ideal is 1:12 ha). (PA Report, Pg. 11-12)",
+                        "Staff Establishment": "The staff establishment was restructured and includes 1 Manager, 3 Assistant Managers, 1 Cadet Assistant, 2 Clerks, and 5 Field Conductors. The Manager is required to actively train new assistants. (PA Report, Pg. 13-14)",
+                        "General Charges": "Total General Charges are <b>RM 475.60/ha</b>, which is 35% below the budget of RM 726.85/ha for YTD June 2026. (PA Report, Pg. 15)",
+                        "Upkeep and Cultivation": "&bull; <b>Weeding:</b> Circle spraying 93% complete. Selective spraying 85% complete. Inter-row conditions improved drastically.<br>&bull; <b>Manuring:</b> 57% complete (2,872.90 ha). Delayed by late delivery & caking of NK 1.<br>&bull; <b>Pruning:</b> 67% complete (8,041.42 ha). Task force engaged for low-lying unpruned palms.<br>&bull; <b>Pest & Disease:</b> Rat damage is high at 18%. 3 rounds of baiting completed. Sporadic Ganoderma observed. (PA Report, Pg. 16-34)",
+                        "Harvesting and Collection": "YTD Cost is <b>RM 71.77/MT</b>, which is slightly favorable compared to the budget of RM 81.53/MT.<br>&bull; <b>Interval:</b> Averaged 13 days.<br>&bull; <b>Mechanization:</b> 12 crawlers, 3 Badang units, and 2 new EV tricycles being tested for evacuation. (PA Report, Pg. 39-40)",
+                        "Crop Production": "YTD (6 Months) FFB Production is <b>8,765.54 MT</b>, which is 44% below the budget of 15,573.00 MT.<br>&bull; <b>Yield/Ha:</b> 4.38 MT/ha (6 months) vs 7.79 MT budget.<br>&bull; <b>Extraction:</b> CPO at 15.82%, PK at 5.00%. (PA Report, Pg. 42-43)",
+                        "Production Cost": "YTD Cost of Production is <b>RM 389.93/MT</b>, which is 29% unfavorable compared to the budget of RM 301.22/MT. This spike is directly due to low crop achievement.<br>&bull; <b>General Charges:</b> RM 108.51/MT.<br>&bull; <b>Upkeep:</b> RM 209.65/MT.<br>&bull; <b>Harvesting:</b> RM 71.77/MT. (PA Report, Pg. 44)",
+                        "Vehicles Running Cost": "Vehicle running costs are acceptable. Hilux MDC 1918 running cost is RM 0.49/km (vs budget 1.04). Gensets are running at RM 20.33 to 21.92/hr. (PA Report, Pg. 45)",
+                        "Capital Expenditure": "RM 16,358.00 spent YTD against a budget of RM 17,110.00. (Underspent). (PA Report, Pg. 46)",
+                        "Immature": "N/A (100% Mature Estate). (PA Report, Pg. 10)"
                     },
                     "pinfosys": "Not Available"
                 },
-                "policy": " <div class='policy-item'><p class='font-semibold'>Harvesting Intervals & Quality</p><p class='text-sm text-gray-600'><b>Policy 12.3:</b> Maintain interval at 10-12 days. PSK reaching 30-50 days is a critical breach leading to high crop loss. (Pg. 127)</p></div> <div class='policy-item'><p class='font-semibold'>Manuring Timeliness</p><p class='text-sm text-gray-600'><b>Policy 8.4.1 A:</b> Fertilizers must be applied during suitable weather and according to schedule. PSK delays of 2+ months and withdrawal of rounds is a major deviation. (Pg. 82)</p></div> <div class='policy-item'><p class='font-semibold'>Canopy Management (Pruning)</p><p class='text-sm text-gray-600'><b>Policy 11.01:</b> Systematic pruning is essential for harvesting efficiency. Current under-pruned conditions in Blocks A and F require urgent corrective action. (Pg. 124)</p></div> <div class='policy-item'><p class='font-semibold'>Rat Control Census</p><p class='text-sm text-gray-600'><b>Policy 9.1.3:</b> Conduct quarterly census. Baiting required if damage > 5%. Current status <10% requires careful monitoring. (Pg. 118)</p></div>"
+                "policy": " <div class='policy-item'><p class='font-semibold'>Harvesting Intervals & Quality</p><p class='text-sm text-gray-600'><b>Policy 12.3:</b> Maintain interval at 10-12 days. Exceeding intervals severely reduces crop quality and extraction potential. (Pg. 127)</p></div> <div class='policy-item'><p class='font-semibold'>Manuring Timeliness</p><p class='text-sm text-gray-600'><b>Policy 8.4.1 A:</b> Fertilizers must be applied during suitable weather and according to schedule. Logistics planning must anticipate delivery delays. (Pg. 82)</p></div> <div class='policy-item'><p class='font-semibold'>Canopy Management (Pruning)</p><p class='text-sm text-gray-600'><b>Policy 11.01:</b> Systematic pruning is essential for harvesting efficiency. Engagement of task forces for unpruned lowland areas requires strict supervision. (Pg. 124)</p></div> <div class='policy-item'><p class='font-semibold'>Rat Control Census</p><p class='text-sm text-gray-600'><b>Policy 9.1.3:</b> Conduct quarterly census. Baiting required if damage > 5%. Current status of 18% mandates consecutive rounds of baiting until suppression is achieved. (Pg. 118)</p></div>"
             };
 
             const container = document.getElementById('selected-estate-container');
@@ -190,13 +188,13 @@
                             <div><h3 class="text-xl font-semibold mb-2">Monthly Est. Prod. vs Rainfall (2025)</h3><div class="chart-container"><canvas id="prodChart"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Palm Age Profile</h3><div class="pie-chart-container"><canvas id="ageChart"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
-                        <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues (Blended)</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
+                        <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
                         <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
-                            <button data-dropdown-id="agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
-                            <div id="agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                             <button data-dropdown-id="plantation" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details</button>
                             <div id="plantation" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+                            <button data-dropdown-id="agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
+                            <div id="agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                             <button data-dropdown-id="pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Pinfosys Report Details</button>
                             <div id="pinfosys" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                         </div>
@@ -227,18 +225,29 @@
             }
             
             function populateDetails(estate) {
-                const sections = ['agronomy', 'plantation'];
-                sections.forEach(sec => {
-                    const div = document.getElementById(sec);
-                    if (div && estate.reports[sec]) {
-                        div.innerHTML = Object.entries(estate.reports[sec]).map(([k, v]) => `
-                            <div class="mb-4">
-                                <h4 class="font-bold text-gray-800 border-l-4 border-green-700 pl-2">${k}:</h4>
-                                <p class="text-sm text-gray-600 ml-3 mt-1 leading-relaxed">${v}</p>
-                            </div>`).join('');
-                    }
-                });
-                document.getElementById('pinfosys').innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                const agronomyDiv = document.getElementById('agronomy');
+                const plantationDiv = document.getElementById('plantation');
+                const pinfosysDiv = document.getElementById('pinfosys');
+
+                if (agronomyDiv && estate.reports.agronomy) {
+                    agronomyDiv.innerHTML = Object.entries(estate.reports.agronomy).map(([k, v]) => `
+                        <div class="mb-4">
+                            <h4 class="font-bold text-gray-800">${k}:</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">${v}</p>
+                        </div>`).join('');
+                }
+
+                if (plantationDiv && estate.reports.plantation) {
+                    plantationDiv.innerHTML = Object.entries(estate.reports.plantation).map(([k, v]) => `
+                        <div class="mb-4">
+                            <h4 class="font-bold text-gray-800">${k}:</h4>
+                            <p class="text-sm text-gray-600 mt-1 leading-relaxed">${v}</p>
+                        </div>`).join('');
+                }
+
+                if (pinfosysDiv) {
+                    pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">Not Available</p>`;
+                }
             }
 
             function attachEvents() {
