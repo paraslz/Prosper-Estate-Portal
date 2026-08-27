@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body { font-family: 'Inter', sans-serif; }
         .details-content { display: none; }
@@ -62,34 +63,33 @@
         </div>
     </div>
 
-    <!-- Main script for application logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const estateData = {
                 "id": "prosperkemayan",
                 "name": "Prosper Kemayan Estate",
-                "reportInfo": "Data based on Agronomy Report 1/2026 (Visit: 26th Jan 2026) and PA Report 1/2026 (Visit: 25th June 2026).",
+                "reportInfo": "Data based on PA Report 1/2026 (Visit: 25th June 2026) and Agronomy Report 2/2026 (Visit: 16th July 2026).",
                 "summaryMetrics": {
                     "area": { "title": "Estate Area", "lines": ["Mature: 974.82 ha (83%)", "Vacant (Gano): 190.70 ha", "Total: 1,170.73 ha"] },
-                    "yield": { "title": "Yield/Ha (5 Months 2026 Actual vs Budget)", "value": "7.26 MT / 8.88 MT", "note": "10% deficit in FFB vs budget" },
+                    "yield": { "title": "Yield/Ha (6 Months 2026 Actual vs Prev Year)", "value": "8.82 MT / 11.50 MT", "note": "23.3% deficit in FFB vs corresponding period" },
                     "cost": { "title": "FFB Cost/Tonne (April 2026)", "value": "RM 292.76", "note": "Slightly above budget (RM 286.61)" },
-                    "weeding": { "title": "Weeding Status", "value": "Completed", "note": "Targeted noxious weeds addressed" },
-                    "manuring": { "title": "Manuring Status", "value": "52% Applied", "note": "Delayed due to Mix B delivery" }
+                    "weeding": { "title": "Weeding Status", "value": "100% (Rd 1 & 2)", "note": "Missed some Clidemia hirta (broadleaf)" },
+                    "manuring": { "title": "Manuring Status", "value": "52% Applied", "note": "Delayed due to manpower & Mix A/B delivery" }
                 },
                 "keyMetrics": [
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-blue-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Labour Ratio", "value": "1:15 ha (Adequate)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Ganoderma (17% Loss)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>", "label": "P&D Status", "value": "Ganoderma (Progressively Incr.)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-yellow-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M13 10V3L4 14h7v7l9-11h-7z' /></svg>", "label": "OER %", "value": "19.00% (Prev. Actual)" },
                     { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-red-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z' /></svg>", "label": "Harvester Prod.", "value": "1.28 MT/md (Very Low)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "11-14 days (Good)" },
-                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Delayed (Mix B)" }
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-purple-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' /></svg>", "label": "Harvest Interval", "value": "<15 days (Acceptable)" },
+                    { "icon": "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 text-teal-600' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M17.657 18.343A8 8 0 016.343 7.029m11.314 11.314a8 8 0 01-11.314-11.314m2.121 13.435a2 2 0 01-2.828 0l-2.122-2.121a2 2 0 010-2.828l5.656-5.657a2 2 0 012.829 0l2.121 2.121a2 2 0 010 2.828l-5.657 5.657z' /></svg>", "label": "Nutrient Status", "value": "Delayed (Manpower/Mix A)" }
                 ],
                 "chartData": {
                     "production": {
-                        "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                        "ffb": [928, 1104, 1870, 2197, 2566, 2541, 2331, 1900, 1980, 1920, 1850, 1701],
-                        "rainfall": [240, 133, 192, 278, 155, 99, 28, 135, 170, 118, 285, 192], 
-                        "note": "*Rainfall data from Agronomy Report 1/2026. FFB trend estimated."
+                        "labels": ["Jan-26", "Feb-26", "Mar-26", "Apr-26", "May-26", "Jun-26"],
+                        "ffb": [1496.46, 1110.66, 1447.66, 1668.28, 1355.84, 1515.92],
+                        "rainfall": [13, 208, 30, 282, 96, 65.5], 
+                        "note": "*Production and rainfall data up to June 2026 (Source: AR 2/2026, Pg. 46-47)."
                     },
                     "ageProfile": {
                         "labels": ["Mature (P99A, P04B, P05C, P06D)", "Vacant (Ganoderma)"],
@@ -99,41 +99,39 @@
                     }
                 },
                 "observations": [
-                    "<b>Ganoderma Infection & Sanitation:</b> 17% of palms are dead or infested, creating 190.70 ha of vacant land. Deboling and mounding are budgeted but delayed in some fields, and past pits were found to be undersized (not meeting 1.5m³ specification). <span class='observation-ref'>(AR 1/2026, Pg. 36; PA Report 1/2026, Pg. 23-24, 38)</span>",
-                    "<b>Low Harvester Productivity:</b> Average daily productivity is critically low at 1.28 MT/manday, resulting in earnings below the minimum wage. Immediate verification and improvement measures are required to retain skilled harvesters. <span class='observation-ref'>(PA Report 1/2026, Pg. 31-32, 39)</span>",
-                    "<b>Delayed Manuring Program:</b> Only 52% of the 1st half 2026 fertilizer program (491.65 MT) was applied due to late delivery of Mixture B. Straight fertilizers (NK1, ARP) were fully applied. <span class='observation-ref'>(AR 1/2026, Pg. 11; PA Report 1/2026, Pg. 20)</span>",
-                    "<b>Barn Owl Box Occupancy:</b> Rat damage is under control (<3%), but barn owl box occupancy is only 56% (86 out of 153 boxes). 48 damaged boxes require gradual replacement. <span class='observation-ref'>(AR 1/2026, Pg. 33; PA Report 1/2026, Pg. 22)</span>",
-                    "<b>Production & Cost Challenges:</b> 5-month FFB production stands at 7,078.90 MT (10% deficit vs budget), pushing the overall cost of production slightly over budget to RM 292.76/MT. <span class='observation-ref'>(PA Report 1/2026, Pg. 35-36)</span>",
-                    "<b>Drainage & Road Upkeep:</b> Approximately 150 ha of low-lying areas are prone to flash floods and require drain desilting. Road grading (2,500 chains) must be initiated before peak cropping and monsoons to avoid FFB evacuation delays. <span class='observation-ref'>(PA Report 1/2026, Pg. 25-26, 39)</span>"
+                    "<b>Ganoderma Infection & Sanitation:</b> Infection rate is progressively increasing, with 2,189 infected palms and 21,048 fallen palms observed across all blocks (17% loss/vacant land overall). A new Ganoderma census has been strongly recommended. Undersized deboling pits previously noted in P99/P04 still require rectification to fully conform with the 1.5m³ specification. <span class='observation-ref'>(AR 2/2026, Pg. 34-35; PA Report 1/2026, Pg. 23-24)</span>",
+                    "<b>Yield Decline:</b> The cumulative 6-month yield (June 2026) is 8.82 MT/ha, which marks a significant 23.3% deficit compared to the 11.50 MT/ha achieved in the same period last year. P05C recorded the steepest drop at 35.9%. <span class='observation-ref'>(AR 2/2026, Pg. 38)</span>",
+                    "<b>Delayed Manuring Program:</b> Only 52% of the 2026 fertilizer program (547.40 MT out of 1,073.45 MT) has been applied to date. NK1 is at 63%, while Mixture A and B are entirely delayed (0% applied). Insufficient manuring manpower and delivery issues must be addressed immediately to prevent further backlog. <span class='observation-ref'>(AR 2/2026, Pg. 10; PA Report 1/2026, Pg. 20)</span>",
+                    "<b>Barn Owl Box Occupancy & Pest Control:</b> Rat damage is successfully maintained below the 10% threshold. However, barn owl box occupancy is only 56% (86 out of 153 boxes). The estate currently has more boxes than the optimal requirement (117 boxes for 1:10ha), but poor condition boxes should be repaired to maximize occupancy. <span class='observation-ref'>(AR 2/2026, Pg. 31-33; PA Report 1/2026, Pg. 22)</span>",
+                    "<b>Weeding Standards & Execution:</b> Inter-row and circle weeding for rounds 1 and 2 were 100% completed on schedule. However, poor wetting has led to the incomplete eradication of broadleaf noxious weeds, specifically <i>Clidemia hirta</i>. <span class='observation-ref'>(AR 2/2026, Pg. 26-27)</span>",
+                    "<b>Low Harvester Productivity:</b> Average daily productivity is critically low at 1.28 MT/manday, pushing earnings below minimum wage and risking the retention of skilled harvesters. <span class='observation-ref'>(PA Report 1/2026, Pg. 31-32)</span>",
+                    "<b>Drainage & Road Upkeep:</b> Approximately 150 ha of low-lying areas are prone to flash floods and require drain desilting. Road grading (2,500 chains) must be initiated before peak monsoons. <span class='observation-ref'>(PA Report 1/2026, Pg. 25-26)</span>"
                 ],
                 "reports": {
                     "agronomy": { 
-                        "Executive Summary": "Manuring for 2025 was completed (excluding AS which was deferred). 2026 AS application has commenced. Weeding is generally acceptable though specific weeds (Lantana, Clidemia) need attention. Pest damage is under control, though Ganoderma remains a significant threat. Yield dropped 7.8% in 2025. (Source: AR 1/2026, Pg. 4-6)",
-                        "Nutrient Inputs/Progress of Manuring": "All 2025 fertilizers (NK1, Mix B, ARP, MOP, Kieserite) were 100% applied. AS was deferred to 2026. For the 2026 program, 49% of Ammonium Sulphate (AS) has been applied to date. (Source: AR 1/2026, Pg. 11-12)",
-                        "Agronomic Observation": "Harvesting intervals ranged from 12-17 days in 2025. Pruning is satisfactory. Ganoderma infection is high in P04B and P99A. Rat damage is low (<10%) but barn owl box occupancy is only 71%. Bagworm is under control. (Source: AR 1/2026, Pg. 18-36)",
-                        "Yield Performance": "2025 yield was 23.48 MT/ha, a decline of 7.81% from 2024. Production peaked in May 2025. No significant harvesting delays were recorded (Source: AR 1/2026, Pg. 38-39)",
-                        "Fertilizer Recommendation": "The 2026 program includes Ammonium Sulphate (AS) to replace Ecofert. Manuring schedule adjusted to prioritize AS application early in the year. (Source: AR 1/2026, Pg. 41-43)"
+                        "Executive Summary": "Planted area currently sits at 974.82 ha. The 6-month yield (June 2026) was 8.82 MT/ha, a sharp 23.3% decline from the previous year. Manuring progress is sluggish (52% complete) due to acute manpower shortages and late delivery. Harvesting intervals improved to under 15 days in Q2. Weeding is on schedule (100% completion for Rounds 1 & 2), but Ganoderma infection is progressively increasing across all blocks. (Source: AR 2/2026, Pg. 8, 10, 14, 26, 34, 38)",
+                        "Nutrient Inputs/Progress of Manuring": "Of the 1,073.45 MT total required for 2026, 547.40 MT (52%) has been applied. Rock Phosphate (RP) and Ammonium Sulphate (AS) have achieved 100% application. NK1 is at 63%. Mixture A (173.70 MT) and Mixture B (199.00 MT) are severely delayed at 0% application. Insufficient manuring manpower is the primary cause of these delays. (Source: AR 2/2026, Pg. 10)",
+                        "Agronomic Observation": "Harvesting intervals averaged 11-14 days in Q2. Pruning (100% YTD target) is satisfactory, though random under-pruned palms exist. Foliar analysis reveals mild potassium (K) deficiency in P05C and P06D, particularly in sandy/low-lying zones. Weeding rounds were timely, yet broadleaf weeds (Clidemia hirta) persist due to poor wetting. Rat and bagworm damages are minimal. Barn owl occupancy is 56%. Ganoderma incidence is rising steadily. (Source: AR 2/2026, Pg. 14-36)",
+                        "Yield Performance": "Cumulative 6-month yield stood at 8.82 MT/ha compared to 11.50 MT/ha in 2025 (-23.3%). Sub-block P05C logged the heaviest deficit (-35.9%), followed by P06D (-29.0%) and P99A (-21.1%). The decline is attributed to overarching seasonal trends and potential water stress from low rainfall in Jan, Mar, May, and June. (Source: AR 2/2026, Pg. 38, 40)",
+                        "Fertilizer Recommendation": "The 2027 fertilizer program has been established, emphasizing NK1, Mixture A, Mixture B, and RP. Management is strongly urged to source adequate manpower to prevent current-year program backlogs from spilling over. (Source: AR 2/2026, Pg. 41-43)"
                     },
                     "plantation": {
-                        "Executive Summary": "The overall performance of the estate is acceptable, with a yield per hectare over a 5-month period of 7.26 mt and a production cost of RM 292.76 per mt. Labour is sufficient (1:15 ha). The pest attack is under control, but basal stem rot (Ganoderma) continues to increase. (PA Report, Pg. 38-40)",
-                        "Area Statement": "Total planted area is 974.82 ha of mature palms (83%). Vacant land due to Ganoderma is 190.70 ha (16%). Replanting proposed for 2027. (PA Report, Pg. 9-10)",
-                        "Labour Statement": "Current workforce is 67 workers vs requirement of 72 (Ratio 1:15 ha).<br>• <b>Harvesters:</b> 46 (Ratio 1:21 ha).<br>• <b>Checkroll:</b> 5 workers.<br>• <b>Contractors:</b> 62 workers across 5 contractors. Productivity needs monitoring to retain skilled workers. (PA Report, Pg. 12-13)",
-                        "Staff Establishment": "The staff establishment is adequate with 1 Assistant In Charge, 1 Assistant Manager, 4 Field Conductors, 2 Office Clerks, and 3 Security guards. Junior assistant manager transferred to audit dept. (PA Report, Pg. 11)",
-                        "General Charges": "Total General Charges as of April are <b>RM 715.42/ha</b>, which is 5% below the budget of RM 749.56/ha.<br>• <b>Overspending:</b> 'Security' (+87% due to extra watchman), 'HO/Agency Fees' (+67%), 'Bonus/EPF' due to higher remuneration.<br>• <b>Savings:</b> Underspent in Labour recruitment and fringe benefits. (PA Report, Pg. 14-15)",
-                        "Upkeep and Cultivation": "Total cost <b>RM 608.88/ha</b> (30% below budget).<br>• <b>Weeding:</b> Completed per schedule. Cost RM 87.11/ha.<br>• <b>Manuring:</b> Delayed (52% applied) due to late delivery of Mix B. Cost RM 475.96/ha (26% below budget).<br>• <b>Pest & Disease:</b> Very low spend (RM 0.13/ha). Barn owl occupancy at 56%. (PA Report, Pg. 16-24)",
-                        "Harvesting and Collection": "Cost is <b>RM 67.80/MT</b>, slightly lower than budget.<br>• <b>Interval:</b> 11-14 days.<br>• <b>Productivity:</b> Very low at 1.28 MT/manday.<br>• <b>Mechanization:</b> 10 Mechanical Buffaloes and 1 Mini Tractor used. Ratio needs reassessment. (PA Report, Pg. 31-34)",
-                        "Crop Production": "5 Months FFB Production is <b>7,078.90 MT</b>, a 10% deficit vs budget of 8,664.77 MT.<br>• <b>Yield/Ha:</b> 7.26 MT (5 months). (PA Report, Pg. 35)",
-                        "Production Cost": "Cost of Production is <b>RM 292.76/MT</b>, slightly higher than budget of RM 286.61/MT.<br>• <b>General Charges:</b> RM 121.25/MT (+21%)<br>• <b>Upkeep:</b> RM 103.71/MT (-11%)<br>• <b>Harvesting:</b> RM 67.80/MT. (PA Report, Pg. 36)",
-                        "Vehicles Running Cost": "Estate owns only 1 Toyota Hilux for the manager. Operating costs need to be recorded. (PA Report, Pg. 37)",
+                        "Executive Summary": "The overall performance of the estate is acceptable, with a yield per hectare over a 5-month period of 7.26 mt and a production cost of RM 292.76 per mt. Labour is sufficient (1:15 ha). The pest attack is under control, but basal stem rot (Ganoderma) continues to increase. (PA Report 1/2026, Pg. 38-40)",
+                        "Area Statement": "Total planted area is 974.82 ha of mature palms (83%). Vacant land due to Ganoderma is 190.70 ha (16%). Replanting proposed for 2027. (PA Report 1/2026, Pg. 9-10)",
+                        "Labour Statement": "Current workforce is 67 workers vs requirement of 72 (Ratio 1:15 ha).<br>• <b>Harvesters:</b> 46 (Ratio 1:21 ha).<br>• <b>Checkroll:</b> 5 workers.<br>• <b>Contractors:</b> 62 workers across 5 contractors. Productivity needs monitoring to retain skilled workers. (PA Report 1/2026, Pg. 12-13)",
+                        "Staff Establishment": "The staff establishment is adequate with 1 Assistant In Charge, 1 Assistant Manager, 4 Field Conductors, 2 Office Clerks, and 3 Security guards. Junior assistant manager transferred to audit dept. (PA Report 1/2026, Pg. 11)",
+                        "General Charges": "Total General Charges as of April are <b>RM 715.42/ha</b>, which is 5% below the budget of RM 749.56/ha.<br>• <b>Overspending:</b> 'Security' (+87% due to extra watchman), 'HO/Agency Fees' (+67%), 'Bonus/EPF' due to higher remuneration.<br>• <b>Savings:</b> Underspent in Labour recruitment and fringe benefits. (PA Report 1/2026, Pg. 14-15)",
+                        "Upkeep and Cultivation": "Total cost <b>RM 608.88/ha</b> (30% below budget).<br>• <b>Weeding:</b> Completed per schedule. Cost RM 87.11/ha.<br>• <b>Manuring:</b> Delayed (52% applied) due to late delivery of Mix B. Cost RM 475.96/ha (26% below budget).<br>• <b>Pest & Disease:</b> Very low spend (RM 0.13/ha). Barn owl occupancy at 56%. (PA Report 1/2026, Pg. 16-24)",
+                        "Harvesting and Collection": "Cost is <b>RM 67.80/MT</b>, slightly lower than budget.<br>• <b>Interval:</b> 11-14 days.<br>• <b>Productivity:</b> Very low at 1.28 MT/manday.<br>• <b>Mechanization:</b> 10 Mechanical Buffaloes and 1 Mini Tractor used. Ratio needs reassessment. (PA Report 1/2026, Pg. 31-34)",
+                        "Crop Production": "5 Months FFB Production is <b>7,078.90 MT</b>, a 10% deficit vs budget of 8,664.77 MT.<br>• <b>Yield/Ha:</b> 7.26 MT (5 months). (PA Report 1/2026, Pg. 35)",
+                        "Production Cost": "Cost of Production is <b>RM 292.76/MT</b>, slightly higher than budget of RM 286.61/MT.<br>• <b>General Charges:</b> RM 121.25/MT (+21%)<br>• <b>Upkeep:</b> RM 103.71/MT (-11%)<br>• <b>Harvesting:</b> RM 67.80/MT. (PA Report 1/2026, Pg. 36)",
+                        "Vehicles Running Cost": "Estate owns only 1 Toyota Hilux for the manager. Operating costs need to be recorded. (PA Report 1/2026, Pg. 37)",
                         "Capital Expenditure": "N/A",
                         "Immature": "N/A"
                     },
-                    "pinfosys": {
-                        "CEO Financial Summary": "N/A",
-                        "Summary of Oil Palm Expenditure": "N/A"
-                    }
+                    "pinfosys": "Not Available"
                 },
-                "policy": "<div class='policy-item'><p class='font-semibold'>Ganoderma Sanitation</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-01:</b> Deboling pits must measure 1.5m x 1.5m x 1.5m to effectively contain spread. Undersized pits observed in P99/P04 must be rectified.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Standards</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-QC-02:</b> Zero tolerance for unripe bunches. Field conductors must reject unripe bunches at the platform and penalty systems enforced.</p></div><div class='policy-item'><p class='font-semibold'>Noxious Weed Control</p><p class='text-sm text-gray-600'><b>Policy Ref: UPKEEP-WEED-05:</b> <i>Clidemia hirta</i> and <i>Lantana camara</i> are designated noxious weeds. Immediate rounds of selective spraying required upon detection.</p></div>"
+                "policy": "<div class='policy-item'><p class='font-semibold'>Ganoderma Sanitation</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-01:</b> Deboling pits must measure 1.5m x 1.5m x 1.5m to effectively contain spread. Undersized pits observed in P99/P04 must be rectified.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Standards</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-QC-02:</b> Zero tolerance for unripe bunches. Field conductors must reject unripe bunches at the platform and penalty systems enforced.</p></div><div class='policy-item'><p class='font-semibold'>Noxious Weed Control</p><p class='text-sm text-gray-600'><b>Policy Ref: UPKEEP-WEED-05:</b> <i>Clidemia hirta</i> and <i>Lantana camara</i> are designated noxious weeds. Immediate rounds of selective spraying required upon detection. Ensure proper pre-mixing to avoid poor wetting.</p></div><div class='policy-item'><p class='font-semibold'>Manuring Schedule</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-SCH-03:</b> Manuring must be completed within 30 days of the scheduled month. Acute delays exceeding 2 months require immediate reporting to the agency for emergency contractor mobilization.</p></div>"
             };
 
             let chartInstances = {};
@@ -175,16 +173,16 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">${summaryMetricsHTML}</div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-4 border-b pb-2">Key Metrics & Agronomic Status</h3><div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">${keyMetricsHTML}</div></div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
+                            <div><h3 class="text-xl font-semibold mb-2">Monthly Production vs Rainfall (2026)</h3><div class="chart-container"><canvas id="prodChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.production.note}</p></div>
                             <div><h3 class="text-xl font-semibold mb-2">Land Utilization Profile</h3><div class="pie-chart-container"><canvas id="ageChart-${estate.id}"></canvas></div><p class="text-xs text-center text-gray-500 mt-2">${estate.chartData.ageProfile.note}</p></div>
                         </div>
                         <div class="mb-8"><h3 class="text-xl font-semibold mb-2 border-b pb-2">Key Observations & Issues</h3><ul class="list-disc list-inside space-y-2 text-gray-700 mt-4">${observationsHTML}</ul></div>
                         <div class="mb-8 text-center"><button class="policy-modal-btn bg-green-800 text-white px-6 py-3 rounded-lg hover:bg-green-900 transition shadow-md">View Agricultural Policy Cross-Reference</button></div>
                         <div class="space-y-2">
-                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
-                            <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                             <button data-dropdown-id="${estate.id}-plantation" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Plantation Advisory Report Details</button>
                             <div id="${estate.id}-plantation" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
+                            <button data-dropdown-id="${estate.id}-agronomy" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Agronomy Report Details</button>
+                            <div id="${estate.id}-agronomy" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                             <button data-dropdown-id="${estate.id}-pinfosys" class="dropdown-btn w-full text-left bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 transition">Pinfosys Report Details</button>
                             <div id="${estate.id}-pinfosys" class="details-content bg-gray-50 p-4 rounded-md border border-gray-200"></div>
                         </div>
@@ -231,14 +229,22 @@
                 const pinfosysDiv = document.getElementById(`${estateData.id}-pinfosys`);
                 
                 if (agronomyDiv && estateData.reports.agronomy) {
-                    agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    if (typeof estateData.reports.agronomy === 'string') {
+                        agronomyDiv.innerHTML = `<p class="text-sm text-gray-600">${estateData.reports.agronomy}</p>`;
+                    } else {
+                        agronomyDiv.innerHTML = Object.entries(estateData.reports.agronomy).map(([section, content]) => `<h4 class="font-semibold mt-2 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    }
                 }
                 
                 if (plantationDiv && estateData.reports.plantation) {
-                    plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-3 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    if (typeof estateData.reports.plantation === 'string') {
+                        plantationDiv.innerHTML = `<p class="text-sm text-gray-600">${estateData.reports.plantation}</p>`;
+                    } else {
+                        plantationDiv.innerHTML = Object.entries(estateData.reports.plantation).map(([section, content]) => `<h4 class="font-semibold mt-3 text-gray-800">${section}:</h4><p class="text-sm text-gray-600">${content}</p>`).join('');
+                    }
                 }
                 
-                 if (pinfosysDiv && estateData.reports.pinfosys) {
+                if (pinfosysDiv && estateData.reports.pinfosys) {
                     if (typeof estateData.reports.pinfosys === 'string') {
                          pinfosysDiv.innerHTML = `<p class="text-sm text-gray-600">${estateData.reports.pinfosys}</p>`;
                     } else {
@@ -267,7 +273,7 @@
             const modalContent = document.getElementById('modalContent');
             const estateData = {
                 "name": "Prosper Kemayan Estate",
-                "policy": "<div class='policy-item'><p class='font-semibold'>Ganoderma Sanitation</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-01:</b> Deboling pits must measure 1.5m x 1.5m x 1.5m to effectively contain spread. Undersized pits observed in P99/P04 must be rectified.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Standards</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-QC-02:</b> Zero tolerance for unripe bunches. Field conductors must reject unripe bunches at the platform and penalty systems enforced.</p></div><div class='policy-item'><p class='font-semibold'>Noxious Weed Control</p><p class='text-sm text-gray-600'><b>Policy Ref: UPKEEP-WEED-05:</b> <i>Clidemia hirta</i> and <i>Lantana camara</i> are designated noxious weeds. Immediate rounds of selective spraying required upon detection.</p></div>"
+                "policy": "<div class='policy-item'><p class='font-semibold'>Ganoderma Sanitation</p><p class='text-sm text-gray-600'><b>Policy Ref: P&D-Gano-01:</b> Deboling pits must measure 1.5m x 1.5m x 1.5m to effectively contain spread. Undersized pits observed in P99/P04 must be rectified.</p></div><div class='policy-item'><p class='font-semibold'>Harvesting Standards</p><p class='text-sm text-gray-600'><b>Policy Ref: HARV-QC-02:</b> Zero tolerance for unripe bunches. Field conductors must reject unripe bunches at the platform and penalty systems enforced.</p></div><div class='policy-item'><p class='font-semibold'>Noxious Weed Control</p><p class='text-sm text-gray-600'><b>Policy Ref: UPKEEP-WEED-05:</b> <i>Clidemia hirta</i> and <i>Lantana camara</i> are designated noxious weeds. Immediate rounds of selective spraying required upon detection. Ensure proper pre-mixing to avoid poor wetting.</p></div><div class='policy-item'><p class='font-semibold'>Manuring Schedule</p><p class='text-sm text-gray-600'><b>Policy Ref: FERT-SCH-03:</b> Manuring must be completed within 30 days of the scheduled month. Acute delays exceeding 2 months require immediate reporting to the agency for emergency contractor mobilization.</p></div>"
             };
             modalTitle.innerText = `Agricultural Policy Cross-Reference: ${estateData.name}`;
             modalContent.innerHTML = estateData.policy;
